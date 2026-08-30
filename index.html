@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ebyan Cosmetics — Natural Handmade Soap</title>
+<meta name="description" content="Ebyan Cosmetics — natural handmade soap.">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--green:#174b27;--green2:#2f7140;--pale:#edf3eb;--ink:#111511;--muted:#687269;--line:#dde5dc;--paper:#fff;--dark:#0d120f}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink);font-family:Inter,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:80;height:72px;background:rgba(255,255,255,.95);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 5%;gap:28px}
+.brand{display:flex;align-items:center;gap:11px;flex:none}.brand img{width:46px;height:46px;object-fit:contain}.brand b{font:700 13px Georgia,serif;letter-spacing:.18em}
+.nav{display:flex;gap:28px;margin:auto}.nav a,.head-btn{font:700 8px Arial,sans-serif;letter-spacing:.12em;color:#29472f}.head{display:flex;align-items:center;gap:8px}.head-btn{border:0;background:transparent}.care{border:1px solid #ccd8cd;border-radius:999px;padding:10px 12px}.cart-btn{width:42px;height:42px;border:1px solid #cfdacf;border-radius:50%;background:#fff}
+.hero{display:grid;grid-template-columns:46% 54%;min-height:640px;background:#f7f9f6}.hero-copy{display:flex;justify-content:center;flex-direction:column;padding:75px 9% 75px 12%}.kicker{font:700 7px Arial,sans-serif;letter-spacing:.28em;color:#5d7462}.hero h1{font:400 clamp(64px,7vw,100px)/.84 Georgia,serif;letter-spacing:-.065em;margin:18px 0;color:#0e120f}.hero h1 em{font-style:italic;color:var(--green2)}.hero p{max-width:365px;color:var(--muted);font-size:11px;line-height:1.9}.cta{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;padding:14px 18px;border-radius:999px;width:max-content;margin-top:15px;font:700 8px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}.hero-photo{background:#e8eee5;display:flex;align-items:center;justify-content:center;overflow:hidden}.hero-photo img{width:100%;height:100%;object-fit:contain;display:block}
+.section{padding:72px 6%}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px}.label{font:700 7px Arial,sans-serif;letter-spacing:.21em;color:#788179}.section h2{font:400 48px/.95 Georgia,serif;margin:9px 0}.section h2 em,.about h2 em,.contact h2 em,.subscribe h2 em{color:var(--green2)}
+.track{display:flex;gap:16px;overflow:auto;scroll-snap-type:x mandatory;padding-bottom:14px;scrollbar-width:none}.track::-webkit-scrollbar{display:none}.card{flex:0 0 282px;background:#fff;border:1px solid var(--line);scroll-snap-align:start;overflow:hidden}.card img{width:100%;height:285px;object-fit:cover;display:block;background:#f4f6f2}.card-body{padding:16px}.card small{font:700 6px Arial,sans-serif;letter-spacing:.15em;color:#8a948c}.card h3{font:400 22px Georgia,serif;margin:8px 0 5px}.card p{font-size:8px;color:var(--muted);line-height:1.6;min-height:28px}.row{display:flex;justify-content:space-between;align-items:center}.price{font:700 12px Arial,sans-serif;color:var(--green)}.add{border:1px solid #c7d3c7;background:#fff;color:var(--green);border-radius:999px;padding:8px 12px;font:700 7px Arial,sans-serif}.add:disabled{opacity:.45;cursor:not-allowed}
+.features{background:#102d18;color:#fff;display:grid;grid-template-columns:repeat(3,1fr)}.feature{padding:30px 6%;border-right:1px solid rgba(255,255,255,.1)}.feature b{font:400 18px Georgia,serif}.feature span{display:block;margin-top:7px;color:rgba(255,255,255,.72);font-size:8px;line-height:1.6}
+.about{display:grid;grid-template-columns:48% 52%;background:#e7eee4}.about img{width:100%;height:100%;object-fit:cover;display:block}.about-copy{padding:70px 10%;display:flex;justify-content:center;flex-direction:column}.about h2{font:400 45px/.95 Georgia,serif}.about p{font-size:10px;line-height:1.9;color:#68736b;max-width:480px}
+.contact{display:grid;grid-template-columns:38% 62%;padding:72px 7%;gap:45px;background:#fff}.contact h2{font:400 50px/.92 Georgia,serif;margin:8px 0}.contact-right{display:grid;grid-template-columns:1fr 220px;gap:28px}.contact-list{border-top:1px solid var(--line)}.contact-row{display:flex;justify-content:space-between;gap:15px;padding:17px 0;border-bottom:1px solid var(--line)}.contact-row small{display:block;font:700 6px Arial,sans-serif;letter-spacing:.18em;color:#7a847c;margin-bottom:6px}.contact-row strong{font:400 18px Georgia,serif}.collection{border-left:1px solid var(--line);padding-left:20px}.collection h4{font:700 7px Arial,sans-serif;letter-spacing:.2em;color:#7b857c}.collection a{display:block;padding:10px 0;border-bottom:1px solid var(--line);font:400 12px Georgia,serif;color:#2b5234}
+.subscribe{display:grid;grid-template-columns:45% 55%;gap:28px;padding:34px 7%;background:#e7eee4}.subscribe h2{font:400 34px/.98 Georgia,serif;margin:7px 0}.subscribe p{font-size:8px;color:#68736b;line-height:1.6}.subform{display:flex;gap:6px;align-items:center;background:#fff;border:1px solid var(--line);padding:5px}.subform input{flex:1;border:0;outline:0;padding:9px;font-size:9px}.subform button{border:0;background:var(--green);color:#fff;border-radius:8px;padding:9px 12px;font:700 7px Arial,sans-serif}
+footer{padding:32px 6%;background:#0c120e;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:20px}.footer-brand{font:700 14px Georgia,serif;letter-spacing:.18em}.footer-sub{font-size:7px;opacity:.65;margin-top:4px}.footer-links{display:flex;gap:18px;font:700 7px Arial,sans-serif;letter-spacing:.1em}.copy{font-size:7px;opacity:.55}
+.overlay{position:fixed;inset:0;background:rgba(8,18,11,.66);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:200;padding:16px}.overlay.open{display:flex}.modal{width:min(520px,95vw);max-height:92vh;overflow:auto;background:#fff;border-radius:18px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.25);position:relative}.close{position:absolute;right:12px;top:8px;border:0;background:none;font-size:27px;color:#56605a}.modal-logo{width:130px;height:65px;object-fit:contain;display:block;margin:0 auto 12px}.modal h2{font:400 31px/1.05 Georgia,serif;text-align:center;margin:6px 0}.modal-sub{text-align:center;font-size:9px;color:#6e776f;line-height:1.6}.tabs{display:grid;grid-template-columns:1fr 1fr;background:#eef3ed;padding:4px;border-radius:9px;margin:16px 0}.tabs button{border:0;background:transparent;padding:9px;border-radius:7px;font-size:8px}.tabs .on{background:#fff;color:var(--green);box-shadow:0 2px 10px rgba(0,0,0,.06)}.field{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;margin:5px 0;outline:none;font-size:9px}.primary{width:100%;padding:12px;border:0;border-radius:9px;background:var(--green);color:#fff;font:700 8px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-top:7px}.link-btn{border:0;background:none;color:#315f39;text-decoration:underline;font-size:8px;margin-top:9px}.auth-msg{min-height:16px;text-align:center;font-size:8px;margin:8px 0}.auth-links{display:flex;justify-content:center;gap:14px}.guest{display:block;margin:12px auto 0;border:0;background:none;text-decoration:underline;color:#315f39;font-size:8px}
+.drawer{position:fixed;right:0;top:0;height:100vh;width:min(430px,94vw);background:#fff;z-index:210;transform:translateX(105%);transition:.28s;display:flex;flex-direction:column;box-shadow:-18px 0 55px rgba(0,0,0,.15)}.drawer.open{transform:translateX(0)}.drawer-head{padding:22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.drawer-body{flex:1;overflow:auto;padding:16px 20px}.cart-item{display:grid;grid-template-columns:62px 1fr auto;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);align-items:center}.cart-item img{width:62px;height:62px;object-fit:cover}.qty{display:flex;gap:6px;align-items:center;margin-top:7px}.qty button{width:22px;height:22px;border:1px solid var(--line);background:#fff}.drawer-foot{padding:18px 20px;border-top:1px solid var(--line)}.drawer-foot div{display:flex;justify-content:space-between;margin:7px 0;font-size:9px}.drawer-foot .tot{font-size:12px;padding-top:8px;border-top:1px solid var(--line)}
+.ai{position:fixed;right:18px;bottom:18px;z-index:120}.ai-btn{display:flex;align-items:center;gap:7px;border:1px solid #2f6640;background:#102d18;color:#fff;padding:9px 12px;border-radius:999px;box-shadow:0 10px 30px rgba(16,45,24,.2);font:700 7px Arial,sans-serif;letter-spacing:.14em}.ai-btn img{width:24px;height:24px;object-fit:contain}.aibox{display:none;position:absolute;right:0;bottom:55px;width:330px;background:#fff;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.15)}.aibox.open{display:block}.aitop{background:var(--green);color:#fff;padding:13px}.aibody{height:340px;padding:14px;overflow-y:auto;overflow-x:hidden;font-size:9px;display:flex;flex-direction:column;gap:6px}.aiform{display:flex;border-top:1px solid var(--line)}.aiform input{flex:1;border:0;padding:11px;outline:0;font-size:9px}.aiform button{border:0;background:#fff;color:var(--green);padding:0 13px}
+
+.cart-main{min-width:0}.cart-name{font:400 15px Georgia,serif;display:block}.cart-meta{font-size:8px;color:#6d776e;margin-top:4px}.cart-meta strong{color:var(--green)}.cart-line-total{font:700 11px Arial,sans-serif;color:var(--green);align-self:start;white-space:nowrap}.cart-benefit{display:inline-flex;align-items:center;gap:5px;margin-top:9px;color:#2f7140;background:#edf6ee;border:1px solid #c8dacb;border-radius:999px;padding:7px 10px;font:800 8px Arial,sans-serif;letter-spacing:.08em;text-decoration:none;transition:transform .2s ease,background .2s ease}.cart-benefit:hover{transform:translateY(-1px);background:#e3f0e5}.empty-cart{text-align:center;padding:55px 15px}.empty-cart p{max-width:270px;margin:10px auto 20px;line-height:1.7}.cart-shop{display:inline-flex;background:var(--green);color:#fff;border-radius:999px;padding:11px 14px;font:700 7px Arial,sans-serif;letter-spacing:.1em}
+.ai-btn{transition:transform .2s ease,box-shadow .2s ease}.ai-btn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(16,45,24,.28)}
+.aibox{display:block;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(12px) scale(.96);transform-origin:bottom right;bottom:42px;border-radius:18px;overflow:hidden;transition:opacity .22s ease,transform .28s cubic-bezier(.2,.8,.2,1),visibility .22s ease;width:340px}
+.aibox.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1)}
+.aitop{padding:14px 15px}.ai-brand{display:flex;align-items:center;gap:9px}.ai-brand img{width:35px;height:35px;object-fit:contain;background:#fff;border-radius:50%;padding:3px}.ai-brand b{display:block;font:600 15px Georgia,serif;letter-spacing:0}.ai-brand span{display:block;font:8px Arial,sans-serif;color:rgba(255,255,255,.72);margin-top:2px}.ai-close{margin-left:auto;border:0;background:rgba(255,255,255,.12);color:#fff;width:28px;height:28px;border-radius:50%;font-size:19px;line-height:1}
+.aibody{height:330px;background:#fbfcfa;padding:14px;font-size:11px}.ai-msg{max-width:86%;padding:10px 12px;border-radius:14px;line-height:1.5;white-space:pre-wrap}.ai-bot{background:#e8f0e6;color:#19331f;align-self:flex-start;border-bottom-left-radius:5px}.ai-user{background:#174b27;color:#fff;align-self:flex-end;border-bottom-right-radius:5px}.quick{margin-top:auto;display:flex;gap:5px;flex-wrap:wrap}.quick button{border:1px solid #cbd8cb;background:#fff;color:#2d5c36;border-radius:999px;padding:7px 9px;font-size:8px}.aiform{background:#fff}.aiform input{font-size:11px}.aiform button{font-size:16px}
+@media(max-width:760px){
+ .aibox{right:-2px;bottom:39px;width:min(350px,calc(100vw - 22px));max-height:72vh}
+ .aibody{height:52vh;max-height:430px}
+ .ai{right:11px;bottom:11px}
+ .ai-btn{padding:9px 11px}
+ .ai-btn img{width:26px;height:26px}
+ .cart-item{grid-template-columns:58px 1fr auto}.cart-item img{width:58px;height:58px}.cart-name{font-size:14px}.cart-line-total{font-size:10px}
+}
+.inline{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.badge{display:inline-block;padding:5px 8px;border-radius:999px;background:#eef3ed;color:#2b5c36;font-size:7px}.muted{color:#7a837c;font-size:8px}
+@media(max-width:760px){header{height:62px;padding:0 4%;gap:6px}.brand b{display:none}.brand img{width:39px;height:39px}.nav{display:none}.head{margin-left:auto}.care{padding:9px 10px;font-size:6px}.top-search{font-size:6px}.hero{display:flex;flex-direction:column}.hero-photo{order:1;min-height:47vh}.hero-copy{order:2;padding:34px 7% 42px}.hero h1{font-size:58px}.section{padding:50px 0 45px 7%}.section-head{padding-right:7%;display:block}.card{flex-basis:82vw}.features{grid-template-columns:1fr}.feature{border-right:0;border-bottom:1px solid rgba(255,255,255,.1)}.about{display:flex;flex-direction:column}.about img{min-height:280px}.about-copy{padding:42px 7%}.contact{display:block;padding:52px 7%}.contact-right{display:block}.collection{border-left:0;border-top:1px solid var(--line);padding:20px 0 0;margin-top:22px}.subscribe{display:block;padding:34px 7%}.subform{display:block}.subform input{width:100%}.subform button{width:100%;margin-top:8px}.grid4{grid-template-columns:1fr 1fr}.ai{right:10px;bottom:10px}.aibox{width:min(330px,calc(100vw - 20px))}}
+</style>
+
+
+
+
+
+
+<style id="ebyan-final-ui">
+.benefit-top{font-weight:800!important;color:#174b27!important}.benefit-bridge{margin:0 6%;padding:42px 34px;display:flex;align-items:center;justify-content:space-between;gap:28px;background:linear-gradient(135deg,#edf4ea,#f8faf6);border:1px solid #dce7da;border-radius:22px}.benefit-bridge h2{font:400 38px/.95 Georgia,serif;margin:8px 0}.benefit-bridge h2 em{color:#2f7140}.benefit-bridge p{max-width:600px;color:#687269;font-size:10px;line-height:1.7;margin:0}.bridge-btn{flex:none;background:#174b27;color:#fff;padding:14px 18px;border-radius:999px;font:800 8px Arial,sans-serif;letter-spacing:.1em}.bridge-btn span{font-size:14px;margin-left:5px}.cart-benefit{display:block;margin-top:7px;color:#2f7140;font:800 7px Arial,sans-serif;letter-spacing:.08em}.ai{position:fixed;right:22px;bottom:22px;z-index:120;display:flex;flex-direction:column;align-items:flex-end;gap:0}.ai-btn{position:relative;z-index:2;display:flex;align-items:center;gap:9px;border:1px solid #2f6640;background:#102d18;color:#fff;padding:8px 14px 8px 9px;border-radius:999px;box-shadow:0 12px 32px rgba(16,45,24,.22);font:800 8px Arial,sans-serif;letter-spacing:.08em}.ai-btn img{width:42px;height:42px;object-fit:contain;border-radius:50%}.aibox{position:absolute;right:0;bottom:50px;width:min(360px,calc(100vw - 28px));height:455px;background:#fff;border:1px solid #d5e0d5;border-radius:20px 20px 10px 10px;box-shadow:0 24px 70px rgba(10,30,15,.25);overflow:hidden;opacity:0;transform:translateY(14px) scale(.97);transform-origin:bottom right;pointer-events:none;transition:opacity .24s ease,transform .28s cubic-bezier(.2,.8,.2,1)}.ai.open .aibox{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}.ai.open .ai-btn{border-radius:0 0 999px 999px}.aitop{background:#174b27;color:#fff;padding:13px 14px}.ai-brand{display:flex;align-items:center;gap:10px}.ai-brand img{width:42px;height:42px;object-fit:contain;border-radius:50%;background:#fff}.ai-brand b{display:block;font:500 19px Georgia,serif}.ai-brand span{display:block;margin-top:2px;font:600 7px Arial,sans-serif;opacity:.78;letter-spacing:.04em}.ai-close{margin-left:auto;border:0;background:transparent;color:#fff;font-size:24px;line-height:1;padding:4px 7px}.aibody{height:344px;padding:14px;overflow-y:auto;font-size:11px;display:flex;flex-direction:column;gap:9px;background:#fbfcfa}.ai-msg{max-width:88%;padding:11px 12px;border-radius:13px;line-height:1.55;word-break:break-word}.ai-bot{background:#eaf2e8;color:#17301d;border:1px solid #dbe7d9}.ai-user{align-self:flex-end;background:#174b27;color:#fff}.quick{display:flex;flex-wrap:wrap;gap:6px}.quick button{border:1px solid #cbd9cc;background:#fff;color:#244c2c;border-radius:999px;padding:7px 9px;font:700 8px Arial,sans-serif}.aiform{height:58px;display:flex;border-top:1px solid #dce5dc;background:#fff}.aiform input{flex:1;border:0;padding:0 13px;outline:0;font-size:11px;color:#17231a}.aiform button{width:54px;border:0;background:#174b27;color:#fff;font-size:17px}.drawer .cart-item{align-items:start}.drawer .cart-item>div:nth-child(2){min-width:0}@media(max-width:760px){.benefit-bridge{margin:0 7%;padding:28px 22px;display:block}.benefit-bridge h2{font-size:31px}.bridge-btn{display:inline-block;margin-top:18px}.nav{display:none}.ai{right:10px;bottom:10px}.aibox{width:calc(100vw - 20px);height:min(510px,70vh);bottom:49px}.aibody{height:calc(min(510px,70vh) - 107px)}.ai-btn img{width:40px;height:40px}.ai-btn{padding-right:13px}}
+</style>
+<style id="ebyan-cart-benefit-style">
+.ebyan-cart-benefit-btn{display:block!important;width:100%!important;margin:10px 0 0!important;padding:10px 14px!important;border:1px solid currentColor!important;border-radius:10px!important;text-align:center!important;text-decoration:none!important;font-weight:800!important;cursor:pointer!important;box-sizing:border-box!important}
+</style>
+
+<style id="ebyan-cart-benefits-upgrade">
+.ebyan-explore-benefits{
+ display:flex!important;align-items:center!important;justify-content:space-between!important;
+ gap:12px!important;margin:10px 0 14px!important;padding:9px 12px!important;
+ border:1px solid rgba(23,77,58,.18)!important;border-radius:12px!important;
+ background:linear-gradient(135deg,#f7fbf8,#edf6f0)!important;
+ box-sizing:border-box!important;
+}
+.ebyan-explore-benefits .ebyan-explore-copy{font-size:12px!important;line-height:1.25!important;color:#587064!important}
+.ebyan-explore-benefits .ebyan-explore-btn{
+ flex:0 0 auto!important;padding:8px 11px!important;border-radius:9px!important;
+ background:#174d3a!important;color:#fff!important;text-decoration:none!important;
+ font-size:11px!important;font-weight:850!important;letter-spacing:.2px!important;
+}
+.ebyan-receipt-mini{font-size:11px!important;padding:5px 9px!important;border-radius:8px!important}
+</style>
+
+<style id="ebyan-cart-explore-final">
+.drawer .cart-benefit.ebyan-cart-explore{
+ display:inline-flex!important;align-items:center!important;width:auto!important;
+ margin:7px 0 0!important;padding:5px 9px!important;
+ border:1px solid rgba(23,75,39,.18)!important;border-radius:999px!important;
+ background:#f1f7f0!important;color:#174b27!important;
+ text-decoration:none!important;font:800 9px/1 Arial,sans-serif!important;
+ letter-spacing:.15px!important;box-sizing:border-box!important;
+ transition:transform .18s ease,background .18s ease!important;
+}
+.drawer .cart-benefit.ebyan-cart-explore:hover{transform:translateY(-1px)!important;background:#e5f0e3!important}
+</style>
+<style id="eby-cart-benefits">
+.eby-cart-benefit{display:inline-flex!important;align-items:center!important;gap:5px!important;margin-top:7px!important;padding:6px 9px!important;border-radius:9px!important;border:1px solid #cfe0d4!important;background:#f4f9f5!important;color:#174d3a!important;text-decoration:none!important;font-size:11px!important;font-weight:850!important;line-height:1!important}.eby-cart-benefit:hover{background:#e8f3eb!important}
+</style>
+<style id="eby-exact-ask-ebyan">
+.ai{position:fixed!important;right:18px!important;bottom:18px!important;z-index:1200!important}
+.ai-btn{display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;
+border:1px solid rgba(47,102,64,.35)!important;background:#fff!important;color:#173d2a!important;
+padding:7px 12px 7px 8px!important;border-radius:999px!important;
+box-shadow:0 10px 28px rgba(20,60,40,.18)!important;font:700 10px Arial,sans-serif!important;
+letter-spacing:.04em!important;white-space:nowrap!important}
+.ai-btn img{width:30px!important;height:30px!important;object-fit:contain!important;background:transparent!important;border-radius:0!important;padding:0!important}
+.ai-btn span{display:block!important}
+.aibox{bottom:54px!important;right:0!important;border-radius:18px!important;overflow:hidden!important}
+.ai-brand img{background:transparent!important;border-radius:0!important;padding:0!important;width:35px!important;height:35px!important}
+@media(max-width:760px){.ai{right:10px!important;bottom:12px!important}.ai-btn{padding:6px 10px 6px 7px!important}.ai-btn img{width:28px!important;height:28px!important}.aibox{right:0!important;bottom:50px!important}}
+</style>
+
+<style id="eby-cart-explore-final">
+.cart-benefit.ebyan-cart-explore{
+display:inline-flex!important;align-items:center!important;justify-content:center!important;
+margin-top:8px!important;padding:7px 10px!important;border:1px solid #b9d0bd!important;
+border-radius:999px!important;background:#f2f8f3!important;color:#205d35!important;
+font:800 8px Arial,sans-serif!important;letter-spacing:.05em!important;text-decoration:none!important;
+white-space:nowrap!important;transition:all .18s ease!important}
+.cart-benefit.ebyan-cart-explore:hover{transform:translateY(-1px)!important;background:#e5f1e7!important}
+</style>
+
+<style id="eby-final-cart-more">
+.drawer .cart-item .ebyan-cart-explore{
+display:inline-flex!important;align-items:center!important;justify-content:center!important;
+margin-top:8px!important;padding:6px 10px!important;border:1px solid #cfdacf!important;
+border-radius:999px!important;background:#fff!important;color:#174b27!important;
+font:700 8px Arial,sans-serif!important;letter-spacing:.04em!important;text-decoration:none!important;
+white-space:nowrap!important
+}
+.drawer .cart-item .ebyan-cart-explore:hover{background:#f0f5f1!important}
+</style>
+</head>
+<body>
+
+<header>
+<a class="brand" href="#home"><img src="assets/site-logo.jpeg" alt="Ebyan"><b>EBYAN</b></a>
+<nav class="nav"><a href="#home">HOME</a><a class="benefit-top" href="soap-benefits.html">Explore</a><a href="more.html">MORE</a><a href="#products">PRODUCTS</a><a href="#about">ABOUT US</a><a href="#contact">CONTACT</a></nav>
+<div class="head">
+<button class="head-btn top-search" id="searchBtn">SEARCH</button>
+<a class="head-btn care" href="tel:0722276879">CUSTOMER CARE</a>
+<button class="head-btn account-login-btn" id="accountBtn">ACCOUNT</button>
+<button class="cart-btn" id="cartBtn" aria-label="Open cart">🛒</button>
+</div>
+</header>
+
+<section class="hero" id="home">
+<div class="hero-copy"><span class="kicker">EBYAN NATURAL SOAP</span><h1>Natural<br><em>Handmade Soap.</em></h1><p>Everyday cleansing, beautifully made. Discover the Ebyan natural soap collection.</p><a class="cta" href="#products">Explore soaps →</a></div>
+<div class="hero-photo"><img src="assets/hero.jpg" alt="Ebyan Soap Collection"></div>
+</section>
+
+<section class="benefit-bridge"><div><span class="label">NATURAL CARE, SOAP BY SOAP</span><h2>Explore <em>every benefit.</em></h2><p>Choose a soap and discover its ingredients, qualities and everyday skincare advantages.</p></div><a class="bridge-btn" href="soap-benefits.html">Explore</a></section>
+
+<section class="section" id="products">
+<div class="section-head"><div><span class="label">THE EBYAN COLLECTION</span><h2>Our <em>soaps.</em></h2></div><span class="label">SWIPE TO SHOP →</span></div>
+<div class="track" id="productTrack"></div>
+</section>
+
+<section class="features"><div class="feature"><b>Natural care</b><span>Thoughtfully made soaps for everyday routines.</span></div><div class="feature"><b>Easy shopping</b><span>Fast cart, account and order tracking.</span></div><div class="feature"><b>Kenya delivery</b><span>Delivery cost shown before payment.</span></div></section>
+
+<section class="about" id="about"><div><img src="assets/about.jpg" alt="Ebyan"></div><div class="about-copy"><span class="label">ABOUT EBYAN</span><h2>Made with care.<br><em>Presented beautifully.</em></h2><p>Ebyan Cosmetics brings natural handmade soap into a clean, modern everyday experience.</p></div></section>
+
+<section class="contact" id="contact">
+<div><span class="label">CONTACT EBYAN</span><h2>We're here<br><em>for you.</em></h2><p style="font-size:10px;line-height:1.8;color:#6a746d">Reach Customer Care for orders, delivery, payment or product help.</p></div>
+<div class="contact-right"><div class="contact-list">
+<a class="contact-row" href="tel:0722276879"><div><small>PHONE</small><strong>0722 276 879</strong></div><b>↗</b></a>
+<a class="contact-row" href="tel:0726562792"><div><small>PHONE / M-PESA</small><strong>0726 562 792</strong></div><b>↗</b></a>
+<a class="contact-row" href="mailto:ebyansoap@ebyancosmetics.com"><div><small>EMAIL</small><strong>ebyansoap@ebyancosmetics.com</strong></div><b>↗</b></a>
+<a class="contact-row" href="https://instagram.com/ebyansoap" target="_blank"><div><small>INSTAGRAM</small><strong>@ebyansoap</strong></div><b>↗</b></a>
+</div><div class="collection"><h4>SHOP THE COLLECTION</h4><a href="#products">Aloe Vera</a><a href="#products">Honey</a><a href="#products">Papaya</a><a href="#products">Black Seed</a><a href="#products">Lemon</a><a href="#products">Cucumber</a></div></div>
+</section>
+
+<section class="subscribe"><div><span class="label">STAY CLOSE TO EBYAN</span><h2>Fresh drops.<br><em>Quietly delivered.</em></h2><p>Join the Ebyan list for new collection news.</p></div><form class="subform" id="subForm"><input id="subEmail" type="email" placeholder="Your email address" required><button>SUBSCRIBE →</button></form></section>
+
+<footer><div><div class="footer-brand">EBYAN</div><div class="footer-sub">Natural Soap · Cosmetics</div></div><div class="footer-links"><a href="#home">Home</a><a href="#products">Products</a><a href="#about">About Us</a><a href="#contact">Contact</a></div><div class="copy">© 2026 Ebyan Cosmetics</div></footer>
+
+<div class="drawer" id="cartDrawer"><div class="drawer-head"><div><span class="label">YOUR BAG</span><h3 style="font:400 28px Georgia,serif;margin:5px 0">Cart</h3></div><button class="close" data-close="cartDrawer">×</button></div><div class="drawer-body" id="cartItems"></div><div class="drawer-foot"><div><span>Subtotal</span><b id="cartSub">KSh 0</b></div><div><span>Delivery</span><b id="cartDel">KSh 0</b></div><div class="tot"><span>Total</span><b id="cartTot">KSh 0</b></div><button class="primary" id="checkoutBtn">CHECKOUT</button></div></div>
+
+<div class="overlay" id="authOverlay"><div class="modal"><button class="close" data-close="authOverlay">×</button><img class="modal-logo" src="assets/site-logo.jpeg" alt="Ebyan Natural Soap"><h2>Welcome to Ebyan</h2><p class="modal-sub">Sign in to complete your order, or create an account.</p><div class="tabs"><button class="on" data-auth-tab="login">Sign in</button><button data-auth-tab="register">Register</button></div>
+<div id="loginFields"><input class="field" id="identifier" placeholder="Email or phone number"><div style="position:relative"><input class="field" id="password" type="password" placeholder="Password" style="padding-right:70px"><button type="button" id="togglePw" style="position:absolute;right:8px;top:5px;border:0;background:transparent;color:#315f39;font-size:8px;padding:8px">SHOW</button></div><button class="primary" id="signIn">SIGN IN</button><div class="auth-links"><button class="link-btn" id="forgot">Forgot password?</button></div><button class="guest" id="guest">Skip for now</button></div>
+<div id="regFields" style="display:none"><input class="field" id="rname" placeholder="Full name"><input class="field" id="remail" type="email" placeholder="Email (optional)"><input class="field" id="rphone" placeholder="Phone number (optional)"><input class="field" id="rpass" type="password" placeholder="Password (6+ characters)"><button class="primary" id="register">CREATE ACCOUNT</button><p class="muted" style="text-align:center">We use email for account activation and password recovery. Your phone can be kept for delivery.</p></div>
+
+<div id="otpFields" style="display:none">
+  <div class="muted" id="otpText" style="text-align:center;margin:8px 0">Enter the 6-digit code we sent you.</div>
+  <input class="field" id="otpCode" inputmode="numeric" maxlength="6" placeholder="6-digit OTP">
+  <input class="field" id="otpNewPassword" type="password" placeholder="New password (only for phone recovery)" style="display:none">
+  <button class="primary" id="verifyOtp">VERIFY CODE</button>
+  <button class="link-btn" id="resendOtp">Resend code</button>
+</div>
+
+
+<div id="resetFields" style="display:none">
+  <div class="muted" id="resetText" style="text-align:center;margin:8px 0">Enter a new password for your Ebyan account.</div>
+  <input class="field" id="resetPassword" type="password" placeholder="New password (6+ characters)" autocomplete="new-password">
+  <input class="field" id="resetPassword2" type="password" placeholder="Confirm new password" autocomplete="new-password">
+  <button class="primary" id="resetPasswordBtn" type="button">UPDATE PASSWORD</button>
+  <button class="guest" id="cancelResetBtn" type="button">Back to sign in</button>
+</div>
+<div id="verifyFields" style="display:none">
+  <div class="muted" id="verifyText" style="text-align:center;margin:8px 0"></div>
+  <input class="field" id="verifyCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="6-digit code">
+  <button class="primary" id="verifyCodeBtn" type="button">VERIFY CODE</button>
+  <button class="link-btn" id="resendCodeBtn" type="button">RESEND CODE</button>
+  <button class="guest" id="backToLoginBtn" type="button">Back to sign in</button>
+</div>
+<div class="auth-msg" id="authMsg"></div><div id="loginHint" class="muted" style="text-align:center;margin-top:3px">Use your email and password.</div></div></div>
+
+<div class="overlay" id="checkoutOverlay"><div class="modal"><button class="close" data-close="checkoutOverlay">×</button><span class="label">CHECKOUT</span><h2 style="text-align:left">Complete your order</h2><p class="modal-sub" style="text-align:left">Your personal delivery details are required.</p><input class="field" id="cname" placeholder="Full name"><label for="cphone" style="display:block;font-size:9px;font-weight:800;margin:8px 0 3px">PHONE NUMBER <span style="color:#b33">*</span></label><input class="field" id="cphone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Phone number (required)" required><input class="field" id="caddress" placeholder="Personal delivery address"><input class="field" id="ctown" placeholder="Town / Area"><div class="inline"><button class="link-btn" id="useLocation">Use my current location</button><span class="muted" id="locMsg"></span></div><select class="field" id="pm"><option value="Pay on Delivery">Pay on Delivery</option><option value="M-Pesa">M-Pesa</option></select><div style="display:flex;justify-content:space-between;font-size:10px;margin-top:10px"><b>Products</b><b id="checkoutSub">KSh 0</b></div><div style="display:flex;justify-content:space-between;font-size:10px;margin-top:5px"><b>Delivery</b><b id="checkoutDel">KSh 0</b></div><div style="display:flex;justify-content:space-between;font-size:13px;margin-top:8px;padding-top:8px;border-top:1px solid var(--line)"><b>Total</b><b id="checkoutTotal">KSh 0</b></div><button class="primary" id="placeOrder">PLACE ORDER &amp; PAY</button><div class="auth-msg" id="checkoutMsg"></div><div id="mpesaBox" style="display:none;margin-top:10px;padding:10px;background:#eef4eb;border:1px solid var(--line);border-radius:10px;font-size:8px"></div></div></div>
+
+<div class="overlay" id="accountOverlay"><div class="modal" style="width:min(720px,96vw)"><button class="close" data-close="accountOverlay">×</button><span class="label">MY ACCOUNT</span><h2 id="acctTitle" style="text-align:left">My Account</h2><div id="acctBody"></div></div></div>
+</div>
+
+<div class="ai" id="aiWidget">
+  <div class="aibox" id="aiBox" aria-live="polite">
+    <div class="aitop">
+      <div class="ai-brand"><img src="assets/ebyan-ai-logo.png" alt="Ebyan"><div><b>Ask Ebyan</b><span>Your natural soap guide</span></div><button class="ai-close" id="aiClose" type="button" aria-label="Close">×</button></div>
+    </div>
+    <div class="aibody" id="aiBody"><div class="ai-msg ai-bot">Welcome to Ebyan ✦ Tell me your skin type, what you want from a soap, or ask about any Ebyan product.</div><div class="quick" id="aiQuick"></div></div>
+    <form class="aiform" id="aiForm"><input id="aiInput" autocomplete="off" placeholder="Ask about Ebyan..."><button aria-label="Send">➤</button></form>
+  </div>
+  <button class="ai-btn" id="aiBtn" type="button" aria-expanded="false" aria-controls="aiBox"><img src="assets/ebyan-ai-logo.png" alt="Ebyan"><span>Ask Ebyan</span></button>
+</div>
+
+<script>
+const SUPABASE_URL='https://ygcoolohknjfcxmcwbsm.supabase.co';
+const SUPABASE_KEY='sb_publishable_Zmog-FAbrdz6cxjW-NtxJQ_B4q_Dzgb';
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const productsSeed=[
+ {id:1,name:'Aloe Vera',price:400,image:'assets/aloe.jpg',description:'Natural soap with Aloe Vera.',skin_types:['dry','normal'],benefits:['moisturizing'],fragrance:'fresh'},
+ {id:2,name:'Honey',price:400,image:'assets/honey.jpg',description:'Natural soap with Honey.',skin_types:['dry','normal'],benefits:['moisturizing'],fragrance:'sweet'},
+ {id:3,name:'Papaya',price:400,image:'assets/papaya.jpg',description:'Natural soap with Papaya.',skin_types:['normal','oily'],benefits:['brightening'],fragrance:'fruity'},
+ {id:4,name:'Black Seed',price:400,image:'assets/blackseed.jpg',description:'Natural soap with Black Seed Oil.',skin_types:['oily','normal'],benefits:['clarifying'],fragrance:'herbal'},
+ {id:5,name:'Lemon',price:400,image:'assets/lemon.jpg',description:'Natural soap with Lemon.',skin_types:['oily','normal'],benefits:['refreshing'],fragrance:'citrus'},
+ {id:6,name:'Cucumber',price:400,image:'assets/cucumber.jpg',description:'Natural soap with Cucumber.',skin_types:['sensitive','dry'],benefits:['soothing','refreshing'],fragrance:'fresh'}
+];
+let products=[...productsSeed],cart=JSON.parse(localStorage.getItem('ebyan_cart')||'{}'),session=null,profile=null,lastOrders=[];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],money=n=>'KSh '+Number(n||0).toLocaleString('en-KE');
+function show(id){$('#'+id).classList.add('open')}function hide(id){$('#'+id).classList.remove('open')}
+function saveCart(){localStorage.setItem('ebyan_cart',JSON.stringify(cart));renderCart()}
+function renderProducts(){
+ const t=$('#productTrack');t.innerHTML='';
+ products.forEach((p,i)=>{const c=document.createElement('article');c.className='card';c.innerHTML=`<img src="${p.image}" alt="${p.name} soap"><div class="card-body"><small>Collection ${String(i+1).padStart(2,'0')}</small><h3>${p.name}</h3><p>${p.description||''}</p><div class="row"><span class="price">${money(p.price)}</span><button class="add" ${Number(p.stock??1)<=0?'disabled':''}>${Number(p.stock??1)<=0?'OUT OF STOCK':'ADD TO CART'}</button></div></div>`;c.querySelector('.add').onclick=()=>addProduct(p.id);t.appendChild(c)})
+}
+function addProduct(id){const p=products.find(x=>x.id===id);if(!p)return;cart[id]={id:p.id,name:p.name,price:Number(p.price),qty:(cart[id]?.qty||0)+1,image:p.image};saveCart();openCart()}
+function openCart(){show('cartDrawer');renderCart()}
+function renderCart(){const el=$('#cartItems');el.innerHTML='';let sub=0;Object.values(cart).forEach(i=>{sub+=i.price*i.qty;const soap=i.name;el.innerHTML+=`<div class="cart-item"><img src="${i.image}" alt="${soap}"><div><b style="font:400 14px Georgia,serif">${soap}</b><div style="font-size:8px;color:#6d776e">${money(i.price)} each</div><div class="qty"><button data-id="${i.id}" data-d="-1">−</button><b>${i.qty}</b><button data-id="${i.id}" data-d="1">+</button></div><a class="cart-benefit ebyan-cart-explore" href="soap-benefits.html?soap=${encodeURIComponent(soap)}" aria-label="Explore more benefits for ${soap}">Explore More →</a></div><b>${money(i.price*i.qty)}</b></div>`});if(!Object.keys(cart).length)el.innerHTML='<p class="muted" style="text-align:center;margin-top:40px">Your cart is empty.</p>';const del=Object.keys(cart).length?150:0;$('#cartSub').textContent=money(sub);$('#cartDel').textContent=money(del);$('#cartTot').textContent=money(sub+del);$('#checkoutSub').textContent=money(sub);$('#checkoutDel').textContent=money(del);$('#checkoutTotal').textContent=money(sub+del);el.querySelectorAll('button[data-id]').forEach(b=>b.onclick=()=>changeQty(b.dataset.id,Number(b.dataset.d)))}
+async function loadProfile(){
+  if(!session)return;
+  const r=await sb.from('profiles').select('*').eq('id',session.user.id).single();
+  profile=r.data||null;
+}
+function setAccount(){
+  const name=profile?.full_name?.trim();
+  $('#accountBtn').textContent=name?name.split(/\s+/)[0].toUpperCase():'ACCOUNT';
+}
+function authMsg(t,good=false){
+  const e=$('#authMsg');
+  if(e){e.textContent=t;e.style.color=good?'#2d6a3a':'#a43a34';}
+}
+function normalizeKePhone(v){
+  v=(v||'').trim().replace(/\s+/g,'').replace(/^\(\+?254\)/,'+254');
+  if(/^0\d{9}$/.test(v)) return '+254'+v.slice(1);
+  if(/^254\d{9}$/.test(v)) return '+'+v;
+  return v;
+}
+function resetAuthView(){
+  $('#verifyFields').style.display='none';
+  $('#loginFields').style.display='block';
+  $('#regFields').style.display='none';
+  otpContext=null;
+}
+let otpContext=null;
+let resendTimer=null;
+function startResendCountdown(){
+  const b=$('#resendCodeBtn');
+  if(!b)return;
+  let left=60;
+  b.disabled=true;
+  const tick=()=>{
+    b.textContent=left>0?`RESEND CODE (${left})`:'RESEND CODE';
+    if(left<=0){b.disabled=false;clearInterval(resendTimer);resendTimer=null;return}
+    left--;
+  };
+  tick();
+  clearInterval(resendTimer);
+  resendTimer=setInterval(tick,1000);
+}
+function showVerification(kind,target){
+  $('#loginFields').style.display='none';
+  $('#regFields').style.display='none';
+  $('#verifyFields').style.display='block';
+  $('#verifyCode').value='';
+  $('#verifyText').textContent=kind==='email'
+    ? `Check ${target} for your verification link. If your provider uses a code, enter it here.`
+    : `Enter the 6-digit SMS code sent to ${target}.`;
+  $('#resendCodeBtn').textContent='RESEND CODE';
+  startResendCountdown();
+}
+async function signIn(){
+  const email=$('#identifier').value.trim(), pw=$('#password').value;
+  if(!email||!pw)return authMsg('Enter your email and password.');
+  if(!email.includes('@'))return authMsg('Please sign in with your email address.');
+  const r=await sb.auth.signInWithPassword({email,password:pw});
+  if(r.error)return authMsg(r.error.message);
+  session=r.data.session;await loadProfile();
+  if(profile?.disabled){await sb.auth.signOut();session=null;profile=null;return authMsg('This account is disabled. Contact Customer Care.');}
+  hide('authOverlay');setAccount();
+}
+async function register(){
+  const name=$('#rname').value.trim();
+  const email=$('#remail').value.trim();
+  const phoneRaw=$('#rphone').value.trim();
+  const pw=$('#rpass').value;
+  if(!name||pw.length<6||(!email&&!phoneRaw))
+    return authMsg('Enter your name, a 6+ character password, and email or phone.');
+  if(email){
+    const r=await sb.auth.signUp({email,password:pw,options:{data:{full_name:name},emailRedirectTo:'https://ebyancosmetics.com/'} });
+    if(r.error){
+      if(String(r.error.message||'').toLowerCase().includes('rate limit'))
+        return authMsg('Email sending is temporarily rate-limited. Please wait before requesting another email.');
+      return authMsg(r.error.message);
+    }
+    if(r.data.session){
+      session=r.data.session;await loadProfile();hide('authOverlay');setAccount();authMsg('Account created successfully.',true);
+      return;
+    }
+    otpContext={type:'email_signup',email,name};
+    showVerification('email',email);
+    authMsg('Your account was created. Check your inbox for the activation email.',true);
+  }else{
+    const phone=normalizeKePhone(phoneRaw);
+    if(!/^\+254\d{9}$/.test(phone))return authMsg('Enter a valid Kenyan phone number, e.g. 0712 345 678.');
+    const r=await sb.auth.signUp({phone,password:pw,options:{data:{full_name:name}}});
+    if(r.error){
+      if(String(r.error.message||'').toLowerCase().includes('phone signups are disabled'))
+        return authMsg('Phone sign-up is not enabled yet. Enable SMS phone authentication in Supabase.');
+      return authMsg(r.error.message);
+    }
+    if(r.data.session){
+      session=r.data.session;await loadProfile();hide('authOverlay');setAccount();return;
+    }
+    otpContext={type:'phone_signup',phone,name};
+    showVerification('phone',phone);
+    authMsg('SMS verification code sent.',true);
+  }
+}
+async function forgot(){
+  let id=$('#identifier').value.trim();
+  if(!id)return authMsg('Enter your email or phone number first.');
+  if(id.includes('@')){
+    const redirect='https://ebyancosmetics.com/reset-password.html';
+    const r=await sb.auth.resetPasswordForEmail(id,{redirectTo:redirect});
+    if(r.error){
+      const m=String(r.error.message||'');
+      if(m.toLowerCase().includes('rate limit')||r.error.status===429)
+        return authMsg('A reset email was requested too recently. Please wait about 60 seconds, then try again.');
+      return authMsg(m);
+    }
+    authMsg('Reset link sent. Check your inbox and spam folder, then open the link on this same website.',true);
+    return;
+  }
+  const phone=normalizeKePhone(id);
+  if(!/^\+254\d{9}$/.test(phone))return authMsg('Enter a valid Kenyan phone number, e.g. 0712 345 678.');
+  const r=await sb.auth.signInWithOtp({phone});
+  if(r.error){
+    if(String(r.error.message||'').toLowerCase().includes('phone provider'))
+      return authMsg('SMS recovery is not enabled yet. Enable phone authentication in Supabase.');
+    return authMsg(r.error.message);
+  }
+  otpContext={type:'phone_recovery',phone};
+  showVerification('phone',phone);
+  $('#verifyText').textContent=`Enter the 6-digit SMS code sent to ${phone} to continue recovery.`;
+  authMsg('SMS recovery code sent.',true);
+}
+function updateAccountAfterAuth(){
+  setAccount();
+  if(profile?.disabled){
+    sb.auth.signOut();session=null;profile=null;
+    authMsg('This account is disabled. Contact Customer Care.');
+    return false;
+  }
+  return true;
+}
+async function account(){if(!session)return show('authOverlay');await loadProfile();const o=await sb.from('orders').select('*').eq('user_id',session.user.id).order('created_at',{ascending:false});lastOrders=o.data||[];$('#acctTitle').textContent=profile?.full_name||'My Account';$('#acctBody').innerHTML=`<div class="inline"><span class="badge">${profile?.role||'customer'}</span><span class="muted">${profile?.email||session.user.email||''}</span><span class="muted">${profile?.phone||session.user.phone||''}</span></div><div style="margin:18px 0"><h3 style="font:400 21px Georgia,serif">Saved profile</h3><input class="field" id="pname" value="${profile?.full_name||''}" placeholder="Full name"><input class="field" id="pphone" value="${profile?.phone||session.user.phone||''}" placeholder="Phone"><input class="field" id="pcontact" value="${profile?.preferred_contact||'phone'}" placeholder="Preferred contact"><button class="primary" id="saveProfile">SAVE PROFILE</button></div><h3 style="font:400 21px Georgia,serif">Previous orders</h3>${lastOrders.map(o=>`<div style="padding:10px 0;border-bottom:1px solid var(--line);font-size:9px"><b>${o.order_number||o.id}</b> · ${money(o.total)} · ${o.status} <button type="button" class="link-btn account-receipt" data-order-id="${o.id}" style="font-size:8px;margin-left:6px">Receipt</button></div>`).join('')||'<p class="muted">No orders yet.</p>'}<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px"><a class="head-btn" href="more.html" style="border:1px solid #ccd8cd;border-radius:999px;padding:9px 12px;text-decoration:none">MORE</a><a class="head-btn" href="receipt.html" style="border:1px solid #ccd8cd;border-radius:999px;padding:9px 12px;text-decoration:none">MY RECEIPTS</a></div><button class="link-btn" id="logout">Log out</button>`;$('#saveProfile').onclick=async()=>{await sb.from('profiles').update({full_name:$('#pname').value.trim(),phone:$('#pphone').value.trim(),preferred_contact:$('#pcontact').value}).eq('id',session.user.id);await loadProfile();setAccount()};$('#logout').onclick=async()=>{await sb.auth.signOut();location.reload()};document.querySelectorAll('.account-receipt').forEach(b=>b.onclick=()=>{const o=lastOrders.find(x=>String(x.id)===String(b.dataset.orderId));if(o){localStorage.setItem('ebyan_last_order',JSON.stringify({orderNumber:o.order_number||o.id,total:o.total,status:o.status,customerName:profile?.full_name,phone:profile?.phone,paymentMethod:o.payment_method||o.paymentMethod||'-',date:o.created_at,items:o.items||[]}));location.href='receipt.html'}});show('accountOverlay')}
+async function openCheckout(){if(!Object.keys(cart).length)return;hide('cartDrawer');if(!session){show('authOverlay');authMsg('Please sign in or register before completing an order.');return}renderCart();show('checkoutOverlay');if(profile){$('#cname').value=profile.full_name||'';$('#cphone').value=profile.phone||session.user.phone||''}}
+async function saveOrder(){const name=$('#cname').value.trim(),phone=$('#cphone').value.trim(),address=$('#caddress').value.trim(),town=$('#ctown').value.trim(),method=$('#pm').value;if(!name||!phone||!address||!town)return $('#checkoutMsg').textContent='Complete your name, phone and personal address.';
+  if(!/^(?:\+254|0)7\d{8}$/.test(phone.replace(/[\s-]/g,'')))return $('#checkoutMsg').textContent='Enter a valid Kenyan phone number, e.g. 0722 276 879.';let items=Object.values(cart),sub=items.reduce((s,i)=>s+i.price*i.qty,0),delivery=150,total=sub+delivery;const r=await sb.from('orders').insert({user_id:session.user.id,customer_name:name,customer_phone:phone,customer_email:session.user.email||null,delivery_address:address,town_area:town,subtotal:sub,delivery_fee:delivery,total,payment_method:method,payment_status:'pending',status:method==='Pay on Delivery'?'pending':'pending'}).select().single();if(r.error)return $('#checkoutMsg').textContent=r.error.message;await sb.from('order_items').insert(items.map(i=>({order_id:r.data.id,product_id:i.id,product_name:i.name,unit_price:i.price,quantity:i.qty})));await sb.from('addresses').upsert({user_id:session.user.id,label:'Primary',full_name:name,phone,address_line:address,town_area:town},{onConflict:'user_id'});try{
+      const tok=(await sb.auth.getSession()).data.session?.access_token;
+      if(tok) await fetch('https://ygcoolohknjfcxmcwbsm.supabase.co/functions/v1/notify_order_v2',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':'Bearer '+tok},
+        body:JSON.stringify({order_id:r.data.id})
+      });
+    }catch(_){/* order remains saved even if notification delivery is unavailable */}
+    if(method==='M-Pesa'){$('#checkoutMsg').textContent='M-Pesa STK Push will be activated once the production Daraja credentials are connected.';return}cart={};saveCart();hide('checkoutOverlay');alert('Order received · '+(r.data.order_number||r.data.id));}
+function aiReply(text){const s=text.toLowerCase();if(s.includes('dry'))return 'For dry skin, I would start with Aloe Vera or Honey. Aloe Vera is the softer, fresher option; Honey is the richer, sweeter option.';if(s.includes('oily'))return 'For oily skin, Black Seed, Lemon, and Papaya are strong options. I would start with Black Seed for a more clarifying feel.';if(s.includes('sensitive'))return 'For sensitive skin, Cucumber is the gentlest match in the Ebyan collection.';if(s.includes('sweet'))return 'Honey is the best match for a sweet fragrance preference.';if(s.includes('fresh'))return 'Cucumber and Aloe Vera fit a fresh fragrance preference.';if(s.includes('order'))return session?'Open My Account to see your orders and current status.':'Sign in first and I can help you access your orders.';return 'I can help with Ebyan soaps, prices, shopping, delivery, payments, and orders. Try asking about skin type, fragrance, or your order.'}
+
+$('#cartBtn').onclick=openCart;
+$('#checkoutBtn').onclick=openCheckout;
+$('#accountBtn').onclick=account;
+$('#signIn').onclick=signIn;
+$('#register').onclick=register;
+$('#forgot').onclick=forgot;
+$('#guest').onclick=()=>{hide('authOverlay');resetAuthView();};
+$('#verifyCodeBtn').onclick=async()=>{
+  if(!otpContext)return authMsg('Verification session expired. Start again.');
+  const code=$('#verifyCode').value.trim();
+  if(!/^\d{6}$/.test(code))return authMsg('Enter the 6-digit code.');
+  if(otpContext.type==='phone_signup'){
+    const r=await sb.auth.verifyOtp({phone:otpContext.phone,token:code,type:'sms'});
+    if(r.error)return authMsg(r.error.message);
+    session=r.data.session;await loadProfile();
+    hide('authOverlay');resetAuthView();updateAccountAfterAuth();authMsg('Phone verified and account created.',true);
+  }else if(otpContext.type==='phone_recovery'){
+    const r=await sb.auth.verifyOtp({phone:otpContext.phone,token:code,type:'sms'});
+    if(r.error)return authMsg(r.error.message);
+    session=r.data.session;await loadProfile();
+    hide('authOverlay');resetAuthView();updateAccountAfterAuth();open('accountOverlay');
+  }else{
+    authMsg('Email verification uses the link sent to your inbox. Open that email to finish verification.',true);
+  }
+};
+$('#resendCodeBtn').onclick=async()=>{
+  if(!otpContext)return;
+  try{
+    if(otpContext.type==='phone_signup'||otpContext.type==='phone_recovery'){
+      const r=await sb.auth.signInWithOtp({phone:otpContext.phone,options:{shouldCreateUser:false}});
+      if(r.error)return authMsg(r.error.message);
+      authMsg('A new SMS code was sent.',true);startResendCountdown();
+    }else if(otpContext.type==='email_signup'){
+      authMsg('Please use the verification email already sent. Resending is protected by Supabase rate limits.',true);
+    }
+  }catch(e){authMsg(e.message||'Could not resend code.')}
+};
+$('#backToLoginBtn').onclick=()=>{resetAuthView();authMsg('');};
+$('#searchBtn').onclick=()=>{
+  const q=prompt('Search Ebyan soaps');
+  if(q){
+    location.hash='#products';
+    const cards=$$('#productTrack .card');
+    cards.forEach(c=>c.style.display=c.textContent.toLowerCase().includes(q.toLowerCase())?'block':'none');
+  }
+};
+$('#placeOrder').onclick=saveOrder;
+$('#subForm').onsubmit=async e=>{
+  e.preventDefault();
+  const email=$('#subEmail').value.trim();
+  const r=await sb.from('subscribers').upsert({email},{onConflict:'email'});
+  alert(r.error?r.error.message:'You’re on the Ebyan list.');
+  if(!r.error)e.target.reset();
+};
+$$('[data-close]').forEach(b=>b.onclick=()=>hide(b.dataset.close));
+$$('[data-auth-tab]').forEach(b=>b.onclick=()=>{
+  $$('[data-auth-tab]').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  resetAuthView();
+  const reg=b.dataset.authTab==='register';
+  $('#loginFields').style.display=reg?'none':'block';
+  $('#regFields').style.display=reg?'block':'none';
+  $('#verifyFields').style.display='none';
+});
+renderProducts();
+renderCart();
+authInit();
+sb.auth.onAuthStateChange(async(_,s)=>{session=s;if(s){await loadProfile();setAccount();hide('authOverlay')}else{profile=null;setAccount()}});
+</script>
+
+
+
+
+
+<script>
+(function(){
+  let seen=new Set();
+})();
+</script>
+
+<script>
+document.getElementById('togglePw').onclick=()=>{
+  const p=document.getElementById('password'),b=document.getElementById('togglePw');
+  p.type=p.type==='password'?'text':'password';
+  b.textContent=p.type==='password'?'SHOW':'HIDE';
+};
+</script>
+
+<script>
+(function(){
+  function setAuthMessage(text, good=false){
+    const e=document.getElementById('authMsg');
+    if(e){e.textContent=text;e.style.color=good?'#2d6a3a':'#a43a34';}
+  }
+  function showReset(){
+    document.getElementById('loginFields').style.display='none';
+    document.getElementById('regFields').style.display='none';
+    document.getElementById('verifyFields').style.display='none';
+    document.getElementById('resetFields').style.display='block';
+    document.getElementById('resetPassword').value='';
+    document.getElementById('resetPassword2').value='';
+    document.getElementById('resetText').textContent='Choose a new password for your Ebyan account.';
+  }
+  function showLogin(){
+    document.getElementById('resetFields').style.display='none';
+    document.getElementById('verifyFields').style.display='none';
+    document.getElementById('loginFields').style.display='block';
+    document.getElementById('regFields').style.display='none';
+  }
+  document.getElementById('resetPasswordBtn').onclick=async()=>{
+    const p=document.getElementById('resetPassword').value;
+    const p2=document.getElementById('resetPassword2').value;
+    if(p.length<6)return setAuthMessage('Password must be at least 6 characters.');
+    if(p!==p2)return setAuthMessage('The passwords do not match.');
+    const r=await sb.auth.updateUser({password:p});
+    if(r.error)return setAuthMessage(r.error.message);
+    setAuthMessage('Password updated successfully. You can now sign in.',true);
+    document.getElementById('resetFields').style.display='none';
+    document.getElementById('loginFields').style.display='block';
+    document.getElementById('password').value='';
+  };
+  document.getElementById('cancelResetBtn').onclick=showLogin;
+
+  // Supabase opens the site with a PASSWORD_RECOVERY auth event after reset-link click.
+  sb.auth.onAuthStateChange(async(event, newSession)=>{
+    if(event==='PASSWORD_RECOVERY' && newSession){
+      session=newSession;
+      await loadProfile();
+      show('authOverlay');
+      showReset();
+      setAuthMessage('Reset link accepted. Choose your new password.',true);
+    }
+  });
+
+  // On page load, inspect the URL hash/query for a recovery session.
+  // getSession() is enough because Supabase processes the recovery token in the client.
+  sb.auth.getSession().then(async ({data})=>{
+    if(data?.session){
+      session=data.session;
+      const hash=(location.hash||'').toLowerCase();
+      if(hash.includes('type=recovery') || hash.includes('access_token=')){
+        show('authOverlay');
+        showReset();
+        setAuthMessage('Reset link accepted. Choose your new password.',true);
+      }
+    }
+  });
+})();
+</script>
+<script>
+(function(){
+ const btn=document.getElementById('aiBtn');
+ const box=document.getElementById('aiBox');
+ const close=document.getElementById('aiClose');
+ const form=document.getElementById('aiForm');
+ const input=document.getElementById('aiInput');
+ const body=document.getElementById('aiBody');
+ const quick=document.getElementById('aiQuick');
+ if(!btn||!box||!form||!input||!body)return;
+
+ function toggle(open){
+   box.classList.toggle('open',open);
+   btn.setAttribute('aria-expanded',String(open));
+   if(open)setTimeout(()=>input.focus(),220);
+ }
+ btn.addEventListener('click',()=>toggle(!box.classList.contains('open')));
+ close?.addEventListener('click',()=>toggle(false));
+ document.addEventListener('click',e=>{
+   if(!document.getElementById('aiWidget').contains(e.target))toggle(false);
+ });
+
+ function reply(text){
+   const q=text.toLowerCase();
+   if(q.includes('aloe'))return 'Aloe Vera is a fresh, gentle choice with a moisturising-feel routine. It is a lovely everyday option for skin that prefers a softer cleanse.';
+   if(q.includes('honey'))return 'Honey is a rich, comforting option with a nourishing, soft-skin feel. It suits people who enjoy a warmer, sweeter soap experience.';
+   if(q.includes('papaya'))return 'Papaya has a fresh fruity character and is a popular choice for a smooth-feeling cleansing routine.';
+   if(q.includes('black seed')||q.includes('blackseed'))return 'Black Seed has an earthy herbal character and a deeper, clarifying-feel cleanse. It is especially popular with people who prefer a fresh, clean finish.';
+   if(q.includes('lemon'))return 'Lemon brings a bright citrus character and a refreshing cleansing experience.';
+   if(q.includes('cucumber'))return 'Cucumber gives a cool, fresh and gentle-feeling cleansing experience, making it a lovely choice for a simple everyday routine.';
+   if(q.includes('dry'))return 'For dry-feeling skin, I would start with Aloe Vera or Honey. Both have a softer, more moisturising-feel routine.';
+   if(q.includes('oily'))return 'For oily-feeling skin, Black Seed, Lemon or Papaya are good choices for a fresh, clarifying-feel cleanse.';
+   if(q.includes('sensitive'))return 'For sensitive-feeling skin, Cucumber is the gentlest match in the collection. Patch-test new skincare products if your skin is reactive.';
+   if(q.includes('price')||q.includes('cost'))return 'Every Ebyan soap is KSh 400.';
+   if(q.includes('delivery'))return 'Ebyan delivers across Kenya. The current cart shows the delivery charge before you place your order.';
+   return 'I can help you choose an Ebyan soap, compare benefits, check prices, explain the products, or help with delivery and orders.';
+ }
+ function send(text){
+   text=text.trim(); if(!text)return;
+   const user=document.createElement('div');user.className='ai-msg ai-user';user.textContent=text;
+   const bot=document.createElement('div');bot.className='ai-msg ai-bot';bot.textContent=reply(text);
+   body.append(user,bot);body.scrollTop=body.scrollHeight;
+ }
+ form.addEventListener('submit',e=>{e.preventDefault();send(input.value);input.value='';});
+ [
+   ['Dry skin','I have dry skin'],
+   ['Sensitive skin','I have sensitive skin'],
+   ['Which soap?','Help me choose a soap'],
+   ['Prices','What are the prices?']
+ ].forEach(([label,text])=>{
+   const q=document.createElement('button');q.type='button';q.textContent=label;q.onclick=()=>send(text);quick.appendChild(q);
+ });
+})();
+</script>
+</body>
+</html>

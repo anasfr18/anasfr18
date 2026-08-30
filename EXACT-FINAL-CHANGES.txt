@@ -1,0 +1,4 @@
+Only requested fixes in this build:
+1. Ask Ebyan uses the exact supplied Ebyan icon (logo.png), with logo first and Ask Ebyan text to the right.
+2. Cart has an explicit per-soap EXPLORE MORE BENEFITS button linking to that exact soap's benefits page.
+3. Receipt pages are intentionally small and compact.

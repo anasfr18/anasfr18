@@ -1,0 +1,1 @@
+Cart: compact Explore More Benefits control for soap items. Receipts: compact UI. No other intended feature changes.

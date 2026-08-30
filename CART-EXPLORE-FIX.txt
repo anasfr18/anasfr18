@@ -1,0 +1,2 @@
+The storefront cart has an explicit Explore More Benefits control.
+It is styled as a full-width button and should appear with cart benefit navigation.

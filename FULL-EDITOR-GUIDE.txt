@@ -1,0 +1,23 @@
+EBYAN FULL VISUAL ADMIN
+
+The admin panel includes:
+- Visual Editor dashboard + customer preview
+- Text editing
+- Image replacement/preview
+- Button labels + destinations
+- Product add/edit/remove
+- Page create/edit/delete
+- Design controls (font, radius, spacing, theme)
+- Cart controls
+- Ask Ebyan controls
+- Admin login/logout via Supabase Auth
+
+IMPORTANT:
+This build's editor state is saved in the browser for safety. To make edits global for every customer,
+wire the CMS state to the included Supabase CMS tables and Storage and enforce admin access with RLS.
+The storefront itself must read those records to display global changes.
+
+For the admin account: create an email/password user in Supabase Auth and add that user's UUID to
+the admin_users table described in SUPABASE-CMS-SETUP.sql.
+
+Never place a Supabase service-role key in frontend code.

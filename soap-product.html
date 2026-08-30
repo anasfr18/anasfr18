@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ebyan — Soap Benefits</title>
+<style>
+body{margin:0;background:#f7faf6;color:#142016;font-family:Arial,sans-serif}
+.wrap{max-width:1120px;margin:auto;padding:24px 5% 70px}.top{display:flex;justify-content:space-between;align-items:center;gap:15px}.back{color:#2b5b34;text-decoration:none;font-size:11px}
+.product{margin-top:26px;display:grid;grid-template-columns:45% 55%;background:#fff;border:1px solid #dce6da;border-radius:28px;overflow:hidden;box-shadow:0 18px 55px rgba(20,45,24,.08)}
+.photo{background:#edf3ea;min-height:550px;display:flex;align-items:center;justify-content:center}.photo img{width:100%;height:100%;object-fit:contain}
+.copy{padding:46px}.eyebrow{font-size:9px;font-weight:800;letter-spacing:.18em;color:#6c7a70}.copy h1{font:400 58px/.92 Georgia,serif;margin:12px 0}.copy h1 em{color:#2f7140}.price{font-weight:800;color:#174b27;font-size:18px}.lead{color:#68736b;line-height:1.75;font-size:13px}
+.box{border-top:1px solid #dce6da;margin-top:24px;padding-top:20px}.box h3{font:400 25px Georgia,serif;margin:0 0 13px}.list{display:grid;grid-template-columns:1fr 1fr;gap:9px}.item{background:#edf4eb;padding:12px;border-radius:12px;color:#285834;font-size:11px;line-height:1.4}
+.actions{display:flex;gap:9px;margin-top:25px}.btn{border:0;background:#174b27;color:#fff;border-radius:999px;padding:14px 18px;font-weight:800;font-size:10px;cursor:pointer;text-decoration:none}.secondary{background:#fff;color:#174b27;border:1px solid #cbd9cc}.ok{margin-top:12px;color:#2f7140;font-size:11px}
+.related{margin-top:44px}.related h2{font:400 36px Georgia,serif}.related-grid{display:flex;gap:14px;overflow:auto}.related-card{flex:0 0 210px;background:#fff;border:1px solid #dce6da;padding:10px}.related-card img{width:100%;height:180px;object-fit:cover}.related-card b{display:block;font:400 18px Georgia,serif;margin:9px 0}.related-card a{font-size:8px;font-weight:800;color:#2f7140}
+@media(max-width:760px){.top{align-items:flex-start}.product{grid-template-columns:1fr}.photo{min-height:350px}.copy{padding:30px 23px}.copy h1{font-size:44px}.list{grid-template-columns:1fr}.actions{flex-direction:column}.btn{text-align:center}}
+</style>
+
+<style id="ebyan-cart-benefit-style">
+.ebyan-cart-benefit-btn{display:block!important;width:100%!important;margin:10px 0 0!important;padding:10px 14px!important;border:1px solid currentColor!important;border-radius:10px!important;text-align:center!important;text-decoration:none!important;font-weight:800!important;cursor:pointer!important;box-sizing:border-box!important}
+</style>
+
+<style id="ebyan-cart-benefits-upgrade">
+.ebyan-explore-benefits{
+ display:flex!important;align-items:center!important;justify-content:space-between!important;
+ gap:12px!important;margin:10px 0 14px!important;padding:9px 12px!important;
+ border:1px solid rgba(23,77,58,.18)!important;border-radius:12px!important;
+ background:linear-gradient(135deg,#f7fbf8,#edf6f0)!important;
+ box-sizing:border-box!important;
+}
+.ebyan-explore-benefits .ebyan-explore-copy{font-size:12px!important;line-height:1.25!important;color:#587064!important}
+.ebyan-explore-benefits .ebyan-explore-btn{
+ flex:0 0 auto!important;padding:8px 11px!important;border-radius:9px!important;
+ background:#174d3a!important;color:#fff!important;text-decoration:none!important;
+ font-size:11px!important;font-weight:850!important;letter-spacing:.2px!important;
+}
+.ebyan-receipt-mini{font-size:11px!important;padding:5px 9px!important;border-radius:8px!important}
+</style>
+</head>
+<body>
+<main class="wrap">
+<div class="top"><a class="back" href="soap-product.html?soap=${encodeURIComponent(item.name)}" class="ebyan-cart-benefit-btn" class="ebyan-explore-btn">Explore More Benefits →</a><a class="back" href="index.html#products">Back to shop</a></div>
+<section class="product">
+<div class="photo"><img id="photo" src="assets/aloe.jpg" alt="Ebyan soap"></div>
+<div class="copy">
+<span class="eyebrow">EBYAN NATURAL SOAP · HANDMADE CARE</span>
+<h1 id="name">Aloe Vera</h1><div class="price">KSh 400</div>
+<p class="lead" id="desc"></p>
+<div class="box"><h3>Explore its advantages</h3><div class="list" id="list"></div></div>
+<div class="box"><h3>What makes it Ebyan?</h3><p class="lead">Handmade with a natural, botanical character and designed for a simple everyday cleansing ritual. Lather gently, rinse well, and follow with your preferred moisturiser. Every soap has its own ingredients, scent and skin-feel character.</p></div>
+<div class="actions"><button class="btn" id="add">ADD TO CART · KSh 400</button><a class="btn secondary" href="soap-product.html?soap=${encodeURIComponent(item.name)}" class="ebyan-cart-benefit-btn" class="ebyan-explore-btn">Explore More Benefits →</a></div>
+<div id="ok" class="ok"></div>
+</div></section>
+<section class="related"><h2>Explore the collection.</h2><div class="related-grid" id="related"></div></section>
+</main>
+<script>
+const D={
+"Aloe Vera":{img:"aloe.jpg",desc:"A fresh botanical soap for a soft, comfortable everyday cleansing routine.",benefits:["Moisturising-feel cleanse","Soothing-feel routine","Fresh botanical character","Gentle everyday wash","Leaves skin feeling comfortable","Soft skin-feel finish","Fresh, clean after-feel","Simple daily skincare choice","Aloe botanical character","Suitable for a calm routine","Works well with a body moisturiser","Handmade natural soap character","Fresh-feeling lather","Easy everyday use"]},
+"Honey":{img:"honey.jpg",desc:"A warm, comforting handmade soap with a nourishing-feel routine and naturally sweet character.",benefits:["Nourishing-feel cleanse","Soft skin-feel finish","Comforting everyday wash","Warm honey character","Gentle-feeling lather","Fresh clean after-feel","Comfortable daily routine","Rich-feeling cleansing","Sweet botanical experience","Pairs well with moisturiser","Handmade soap character","Skin feels soft after washing","Simple daily care","Comforting shower experience"]},
+"Papaya":{img:"papaya.jpg",desc:"A fruity botanical soap for a fresh cleansing ritual and a smooth-feeling finish.",benefits:["Fresh fruity cleanse","Smooth skin-feel finish","Papaya botanical character","Refreshing daily wash","Clean after-feel","Fruity shower experience","Gentle everyday lather","Fresh-feeling routine","Simple daily skincare","Comfortable cleansing","Pairs well with moisturiser","Handmade natural character","Invigorating wash","Light fruity experience"]},
+"Black Seed":{img:"blackseed.jpg",desc:"An earthy herbal soap for people who enjoy a deeper, clarifying-feel cleanse and a clean finish.",benefits:["Clarifying-feel cleanse","Deep-feeling wash","Earthy herbal character","Fresh clean finish","Herbal everyday routine","Cleansing-focused feel","Comfortable lather","Fresh after-feel","Simple daily wash","Black seed botanical character","Suitable for a fresh routine","Pairs well with moisturiser","Handmade natural character","Invigorating cleansing experience"]},
+"Lemon":{img:"lemon.jpg",desc:"A bright citrus soap with a refreshing botanical character for an invigorating everyday wash.",benefits:["Refreshing citrus cleanse","Bright lemon character","Fresh-feeling finish","Invigorating wash","Clean after-feel","Citrus shower experience","Fresh daily routine","Light botanical feel","Comfortable lather","Simple everyday cleansing","Pairs well with moisturiser","Handmade natural character","Fresh morning routine","Crisp citrus experience"]},
+"Cucumber":{img:"cucumber.jpg",desc:"A cool, refreshing handmade soap for a gentle-feeling everyday cleansing routine.",benefits:["Cooling-feel cleanse","Gentle everyday wash","Fresh cucumber character","Refreshing after-feel","Comfortable lather","Cool shower experience","Simple daily care","Soft-feeling cleanse","Fresh botanical routine","Light clean finish","Pairs well with moisturiser","Handmade natural character","Calm-feeling routine","Refreshing daily use"]}
+};
+const q=new URLSearchParams(location.search),n=q.get("soap")||"Aloe Vera",d=D[n]||D["Aloe Vera"];
+document.title="Ebyan — "+n+" Soap";document.getElementById("name").textContent=n;document.getElementById("photo").src="assets/"+d.img;document.getElementById("photo").alt=n+" soap";document.getElementById("desc").textContent=d.desc;
+document.getElementById("list").innerHTML=d.benefits.map(x=>'<div class="item">✦ '+x+'</div>').join('');
+document.getElementById("add").onclick=()=>{let c=JSON.parse(localStorage.getItem("ebyan_cart")||"{}"),id=n.toLowerCase().replace(/\s+/g,"-");c[id]={id,name:n,price:400,qty:(c[id]?.qty||0)+1,image:"assets/"+d.img};localStorage.setItem("ebyan_cart",JSON.stringify(c));document.getElementById("ok").textContent=n+" added to cart · KSh 400";};
+document.getElementById("related").innerHTML=Object.keys(D).filter(x=>x!==n).map(x=>'<article class="related-card"><img src="assets/'+D[x].img+'" alt="'+x+' soap"><b>'+x+'</b><a href="soap-product.html?soap=${encodeURIComponent(item.name)}"+encodeURIComponent(x)+'" class="ebyan-cart-benefit-btn" class="ebyan-explore-btn">Explore More Benefits →</a></article>').join("");
+</script>
+<!-- EBYAN RECEIPT LINK --><a href="receipt.html" class="ebyan-receipt-link" style="display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800;background:#174d3a;color:#fff">View / Print Receipt</a></body></html>

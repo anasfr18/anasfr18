@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ebyan Order Receipt</title>
+<style>
+body{margin:0;background:#f5f7f5;color:#17382d;font-family:Inter,system-ui,Arial;padding:24px}
+.wrap{max-width:600px;margin:auto}.receipt{background:#fff;border:1px solid #dfe8e2;border-radius:15px;padding:18px;box-shadow:0 15px 50px #17352b12}
+header{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #e3e9e4;padding-bottom:18px}h1{margin:0;font-size:21px}.muted{color:#718078;font-size:13px}.row{display:flex;justify-content:space-between;gap:15px;padding:9px 0}.items{margin:20px 0;border-top:1px solid #e3e9e4;border-bottom:1px solid #e3e9e4}.total{font-size:16px;font-weight:900}.status{display:inline-block;padding:7px 10px;border-radius:99px;background:#eaf4ee;color:#174d3a;font-weight:800;font-size:12px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{border:0;border-radius:11px;padding:8px 11px;font-weight:800;cursor:pointer;background:#174d3a;color:white}.soft{background:#eaf3ed;color:#174d3a}@media print{body{padding:0;background:#fff}.actions{display:none}.receipt{box-shadow:none;border:0}}
+</style>
+
+<style id="ebyan-receipt-compact">
+body{padding:10px!important;background:#f7f9f7!important}
+.wrap{max-width:390px!important;margin:8px auto!important}
+.receipt{padding:14px!important;border-radius:13px!important;box-shadow:0 8px 28px rgba(23,56,45,.08)!important}
+.receipt header{padding-bottom:10px!important}
+.receipt h1{font-size:17px!important;letter-spacing:-.2px!important}
+.receipt .muted{font-size:10px!important}
+.receipt .row{padding:5px 0!important;font-size:11px!important}
+.receipt .total{font-size:14px!important}
+.receipt .status{padding:4px 7px!important;font-size:9px!important}
+.receipt .actions{margin-top:12px!important;gap:6px!important}
+.receipt .btn{padding:7px 9px!important;border-radius:8px!important;font-size:10px!important}
+.receipt .items{margin:10px 0!important}
+.receipt #note{margin-top:10px!important;font-size:10px!important}
+</style>
+
+<style id="eby-small-receipt">
+body{padding:12px!important;background:#f3f6f3!important}
+.wrap{max-width:390px!important;margin:18px auto!important}
+.receipt{padding:15px!important;border-radius:14px!important;box-shadow:0 8px 24px rgba(20,60,40,.08)!important}
+header{padding-bottom:10px!important}
+h1{font-size:18px!important}
+.muted{font-size:10px!important}
+.row{padding:5px 0!important;font-size:11px!important}
+.items{margin:12px 0!important}
+.total{font-size:14px!important}
+.status{padding:5px 8px!important;font-size:9px!important}
+.actions{gap:7px!important;margin-top:12px!important}
+.btn{padding:7px 10px!important;border-radius:8px!important;font-size:10px!important}
+</style>
+</head>
+<body><div class="wrap"><div class="receipt">
+<header><div><div class="muted">EBYAN COSMETICS</div><h1>Order Receipt</h1></div><div style="text-align:right"><div id="orderNo" class="muted"></div><div id="status" class="status"></div></div></header>
+<div style="margin-top:18px"><div class="row"><span class="muted">Customer</span><b id="customer"></b></div><div class="row"><span class="muted">Phone</span><b id="phone"></b></div><div class="row"><span class="muted">Delivery</span><b id="address"></b></div><div class="row"><span class="muted">Date</span><b id="date"></b></div><div class="row"><span class="muted">Payment</span><b id="payment"></b></div></div>
+<div class="items"><div id="items"></div></div>
+<div><div class="row"><span>Subtotal</span><b id="subtotal"></b></div><div class="row"><span>Delivery</span><b id="delivery"></b></div><div class="row total"><span>Total</span><span id="total"></span></div></div>
+<div id="note" class="muted" style="margin-top:18px"></div>
+<div class="actions"><button class="btn" onclick="window.print()">Print / Save PDF</button><button class="btn soft" onclick="location.href='index.html'">Continue Shopping</button></div>
+</div></div>
+<script>
+const o=JSON.parse(localStorage.getItem('ebyan_last_order')||'null');
+if(!o){document.body.innerHTML='<div class="wrap"><div class="receipt"><h1>No receipt found</h1><p class="muted">Place an order first.</p></div></div>'}
+else{
+const money=n=>'KSh '+Number(n||0).toLocaleString();
+document.getElementById('orderNo').textContent=o.orderNumber||('EBY-'+Date.now());
+document.getElementById('status').textContent=o.status==='paid'?'CONFIRMED / PAID':o.status==='confirmed'?'ORDER CONFIRMED':'PAYMENT PENDING VERIFICATION';
+document.getElementById('customer').textContent=o.customerName||'-';document.getElementById('phone').textContent=o.phone||'-';document.getElementById('address').textContent=o.address||'-';document.getElementById('date').textContent=o.date?new Date(o.date).toLocaleString():new Date().toLocaleString();document.getElementById('payment').textContent=o.paymentMethod||'-';
+const list=Array.isArray(o.items)?o.items:[];document.getElementById('items').innerHTML=list.map(i=>`<div class="row"><span>${String(i.name||'Soap')} × ${Number(i.quantity||1)}</span><b>${money((Number(i.price)||400)*(Number(i.quantity)||1))}</b></div>`).join('');
+document.getElementById('subtotal').textContent=money(o.subtotal);document.getElementById('delivery').textContent=money(o.delivery);document.getElementById('total').textContent=money(o.total);
+document.getElementById('note').textContent=o.paymentMethod==='Pay on Delivery'?'Your order is confirmed. Payment will be made on delivery.':o.status==='paid'?'Your M-Pesa payment has been verified.':'Your M-Pesa screenshot has been received and is awaiting verification.';
+}
+</script></body></html>

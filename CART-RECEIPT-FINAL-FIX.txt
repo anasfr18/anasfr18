@@ -1,0 +1,1 @@
+Final requested UI-only fix: per-soap compact Explore benefits button in cart; receipt UI reduced to a small card. No intended business-flow changes.

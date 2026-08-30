@@ -1,0 +1,14 @@
+EBYAN ADMIN LOGIN SETUP
+
+The admin login is intentionally tied to Supabase email/password authentication.
+Do NOT hard-code an admin password in the website.
+
+1. In Supabase Authentication > Users, create the admin user's email/password.
+2. Configure the public Supabase project URL and publishable/anon key in admin.html:
+   const SUPABASE_URL = 'YOUR_PUBLIC_SUPABASE_URL';
+   const SUPABASE_ANON_KEY = 'YOUR_PUBLIC_ANON_KEY';
+3. For production, restrict admin access with a database role/RLS policy (for example an admin profile/role).
+4. The Site Editor preview and drafts are local in this version. To make edits visible to every customer,
+   connect the editor fields to a Supabase content/settings table or a server-side content API.
+
+Never put a Supabase service-role key in admin.html.

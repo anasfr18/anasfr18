@@ -1,0 +1,12 @@
+RECEIPTS
+
+receipt.html = customer receipt
+merchant-receipt.html = merchant/admin receipt
+
+Checkout should save the final order object as `ebyan_last_order` in localStorage before
+redirecting to receipt.html.
+
+IMPORTANT:
+This is a client-side receipt template. For production, the authoritative order and receipt
+must be generated from the shared Supabase order record. Email delivery requires the configured
+email backend (e.g. Resend/SMTP). M-Pesa receipts must remain pending until manually verified.
