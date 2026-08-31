@@ -540,7 +540,7 @@ async function saveOrder(){
   console.error('Checkout error',e);msg.textContent=e?.message||'Checkout failed. Please try again.';msg.style.color='#a43a34';action('Checkout needs attention','Please review the message and try again');
  }finally{btn.disabled=false;btn.classList.remove('ebyan-loading')}
 }
-async function notifyOrder(orderId){try{const tok=(await sb.auth.getSession()).data.session?.access_token;if(tok)await fetch(`${SUPABASE_URL}/functions/v1/notify_order_v2`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+tok},body:JSON.stringify({order_id:orderId})})}catch(e){console.warn('Notification unavailable',e)}}
+async function notifyOrder(orderId){try{const tok=(await sb.auth.getSession()).data.session?.access_token;if(tok)await fetch(`${SUPABASE_URL}/functions/v1/notify_order_v3`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+tok},body:JSON.stringify({order_id:orderId})})}catch(e){console.warn('Notification unavailable',e)}}
 document.addEventListener('click',e=>{const b=e.target.closest('#cartBtn');if(b){e.preventDefault();openCart();}});
 $('#cartBtn').onclick=openCart;
 $('#floatingCartBtn').onclick=openCart;
