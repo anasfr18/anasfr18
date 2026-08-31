@@ -24,22 +24,28 @@ body{padding:10px!important;background:#f7f9f7!important}
 .receipt .items{margin:10px 0!important}
 .receipt #note{margin-top:10px!important;font-size:10px!important}
 </style>
-
-<style id="eby-small-receipt">
-body{padding:12px!important;background:#f3f6f3!important}
-.wrap{max-width:390px!important;margin:18px auto!important}
-.receipt{padding:15px!important;border-radius:14px!important;box-shadow:0 8px 24px rgba(20,60,40,.08)!important}
-header{padding-bottom:10px!important}
-h1{font-size:18px!important}
-.muted{font-size:10px!important}
-.row{padding:5px 0!important;font-size:11px!important}
-.items{margin:12px 0!important}
-.total{font-size:14px!important}
-.status{padding:5px 8px!important;font-size:9px!important}
-.actions{gap:7px!important;margin-top:12px!important}
-.btn{padding:7px 10px!important;border-radius:8px!important;font-size:10px!important}
-</style>
-</head>
+<style id="ebyan-everything-animation">
+/* Ebyan motion system — consistent across every page and interaction */
+:root{--ebyan-ease:cubic-bezier(.2,.8,.2,1)}
+html{scroll-behavior:smooth}
+body{animation:ebyanPageIn .45s var(--ebyan-ease) both}
+@keyframes ebyanPageIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+button,.btn,a,input,select,textarea,.card,.panel,.order,.item,.feature,.benefit-bridge,.modal,.drawer,.ai-btn{transition:transform .22s var(--ebyan-ease),box-shadow .22s var(--ebyan-ease),opacity .22s ease,border-color .22s ease,background-color .22s ease}
+button:not(:disabled):hover,.btn:not(:disabled):hover{transform:translateY(-2px)}
+button:not(:disabled):active,.btn:not(:disabled):active{transform:translateY(0) scale(.97)}
+.card:hover,.panel:hover,.order:hover,.item:hover,.feature:hover{transform:translateY(-3px);box-shadow:0 16px 42px rgba(23,77,58,.10)}
+input:focus,select:focus,textarea:focus{transform:translateY(-1px);box-shadow:0 0 0 3px rgba(23,77,58,.10)}
+.ebyan-ripple{position:absolute;border-radius:999px;pointer-events:none;background:rgba(255,255,255,.38);transform:scale(0);animation:ebyanRipple .55s ease-out forwards}
+@keyframes ebyanRipple{to{transform:scale(4);opacity:0}}
+.ebyan-press{animation:ebyanPress .28s ease both}
+@keyframes ebyanPress{50%{transform:scale(.96)}100%{transform:none}}
+.ebyan-reveal{animation:ebyanReveal .55s var(--ebyan-ease) both}
+@keyframes ebyanReveal{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.ebyan-loading{position:relative;pointer-events:none;opacity:.72}
+.ebyan-loading:after{content:"";width:13px;height:13px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;display:inline-block;margin-left:8px;vertical-align:-2px;animation:ebyanSpin .65s linear infinite}
+@keyframes ebyanSpin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style></head>
 <body><div class="wrap"><div class="receipt">
 <header><div><div class="muted">EBYAN COSMETICS</div><h1>Order Receipt</h1></div><div style="text-align:right"><div id="orderNo" class="muted"></div><div id="status" class="status"></div></div></header>
 <div style="margin-top:18px"><div class="row"><span class="muted">Customer</span><b id="customer"></b></div><div class="row"><span class="muted">Phone</span><b id="phone"></b></div><div class="row"><span class="muted">Delivery</span><b id="address"></b></div><div class="row"><span class="muted">Date</span><b id="date"></b></div><div class="row"><span class="muted">Payment</span><b id="payment"></b></div></div>
@@ -60,4 +66,12 @@ const list=Array.isArray(o.items)?o.items:[];document.getElementById('items').in
 document.getElementById('subtotal').textContent=money(o.subtotal);document.getElementById('delivery').textContent=money(o.delivery);document.getElementById('total').textContent=money(o.total);
 document.getElementById('note').textContent=o.paymentMethod==='Pay on Delivery'?'Your order is confirmed. Payment will be made on delivery.':o.status==='paid'?'Your M-Pesa payment has been verified.':'Your M-Pesa screenshot has been received and is awaiting verification.';
 }
+</script><script id="ebyan-everything-animation-runtime">
+(function(){
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ripple(el,e){if(reduce||!el||el.disabled)return; if(getComputedStyle(el).position==='static')el.style.position='relative'; if(getComputedStyle(el).overflow==='visible')el.style.overflow='hidden'; const r=document.createElement('span');r.className='ebyan-ripple';const rect=el.getBoundingClientRect();const size=Math.max(rect.width,rect.height)*.55;r.style.width=r.style.height=size+'px';r.style.left=(e.clientX-rect.left-size/2)+'px';r.style.top=(e.clientY-rect.top-size/2)+'px';el.appendChild(r);setTimeout(()=>r.remove(),600)}
+  function bind(root=document){root.querySelectorAll('button,a,.btn').forEach(el=>{if(el.dataset.ebyanMotion)return;el.dataset.ebyanMotion='1';el.addEventListener('pointerdown',e=>ripple(el,e));el.addEventListener('click',()=>{if(!reduce){el.classList.remove('ebyan-press');void el.offsetWidth;el.classList.add('ebyan-press');}})});}
+  function reveal(){document.querySelectorAll('.card,.feature,.panel,.order,.item,.benefit-bridge').forEach((el,i)=>{if(el.dataset.ebyanReveal)return;el.dataset.ebyanReveal='1';el.style.animationDelay=Math.min(i*.035,.35)+'s';el.classList.add('ebyan-reveal')})}
+  bind();reveal();new MutationObserver(m=>{if(m.some(x=>x.addedNodes.length)){bind();reveal()}}).observe(document.body,{subtree:true,childList:true});
+})();
 </script></body></html>

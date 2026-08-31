@@ -35,19 +35,40 @@ body{margin:0;background:#f7faf6;color:#142016;font-family:Arial,sans-serif}
 }
 .ebyan-receipt-mini{font-size:11px!important;padding:5px 9px!important;border-radius:8px!important}
 </style>
-</head>
+<style id="ebyan-everything-animation">
+/* Ebyan motion system — consistent across every page and interaction */
+:root{--ebyan-ease:cubic-bezier(.2,.8,.2,1)}
+html{scroll-behavior:smooth}
+body{animation:ebyanPageIn .45s var(--ebyan-ease) both}
+@keyframes ebyanPageIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+button,.btn,a,input,select,textarea,.card,.panel,.order,.item,.feature,.benefit-bridge,.modal,.drawer,.ai-btn{transition:transform .22s var(--ebyan-ease),box-shadow .22s var(--ebyan-ease),opacity .22s ease,border-color .22s ease,background-color .22s ease}
+button:not(:disabled):hover,.btn:not(:disabled):hover{transform:translateY(-2px)}
+button:not(:disabled):active,.btn:not(:disabled):active{transform:translateY(0) scale(.97)}
+.card:hover,.panel:hover,.order:hover,.item:hover,.feature:hover{transform:translateY(-3px);box-shadow:0 16px 42px rgba(23,77,58,.10)}
+input:focus,select:focus,textarea:focus{transform:translateY(-1px);box-shadow:0 0 0 3px rgba(23,77,58,.10)}
+.ebyan-ripple{position:absolute;border-radius:999px;pointer-events:none;background:rgba(255,255,255,.38);transform:scale(0);animation:ebyanRipple .55s ease-out forwards}
+@keyframes ebyanRipple{to{transform:scale(4);opacity:0}}
+.ebyan-press{animation:ebyanPress .28s ease both}
+@keyframes ebyanPress{50%{transform:scale(.96)}100%{transform:none}}
+.ebyan-reveal{animation:ebyanReveal .55s var(--ebyan-ease) both}
+@keyframes ebyanReveal{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.ebyan-loading{position:relative;pointer-events:none;opacity:.72}
+.ebyan-loading:after{content:"";width:13px;height:13px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;display:inline-block;margin-left:8px;vertical-align:-2px;animation:ebyanSpin .65s linear infinite}
+@keyframes ebyanSpin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style></head>
 <body>
 <main class="wrap">
-<div class="top"><a class="back" href="soap-product.html?soap=${encodeURIComponent(item.name)}" class="ebyan-cart-benefit-btn" class="ebyan-explore-btn">Explore More Benefits →</a><a class="back" href="index.html#products">Back to shop</a></div>
+<div class="top"><a class="back" href="index.html#products" class="ebyan-cart-benefit-btn ebayan-explore-btn">Explore More Benefits →</a><a class="back" href="index.html#products">Back to shop</a></div>
 <section class="product">
 <div class="photo"><img id="photo" src="assets/aloe.jpg" alt="Ebyan soap"></div>
 <div class="copy">
 <span class="eyebrow">EBYAN NATURAL SOAP · HANDMADE CARE</span>
-<h1 id="name">Aloe Vera</h1><div class="price">KSh 400</div>
+<h1 id="name">Aloe Vera</h1><div class="price">KSh 300</div>
 <p class="lead" id="desc"></p>
 <div class="box"><h3>Explore its advantages</h3><div class="list" id="list"></div></div>
 <div class="box"><h3>What makes it Ebyan?</h3><p class="lead">Handmade with a natural, botanical character and designed for a simple everyday cleansing ritual. Lather gently, rinse well, and follow with your preferred moisturiser. Every soap has its own ingredients, scent and skin-feel character.</p></div>
-<div class="actions"><button class="btn" id="add">ADD TO CART · KSh 400</button><a class="btn secondary" href="soap-product.html?soap=${encodeURIComponent(item.name)}" class="ebyan-cart-benefit-btn" class="ebyan-explore-btn">Explore More Benefits →</a></div>
+<div class="actions"><button class="btn" id="add">ADD TO CART · KSh 300</button><a class="btn secondary" href="index.html#products" class="ebyan-cart-benefit-btn ebayan-explore-btn">Explore More Benefits →</a></div>
 <div id="ok" class="ok"></div>
 </div></section>
 <section class="related"><h2>Explore the collection.</h2><div class="related-grid" id="related"></div></section>
@@ -64,7 +85,15 @@ const D={
 const q=new URLSearchParams(location.search),n=q.get("soap")||"Aloe Vera",d=D[n]||D["Aloe Vera"];
 document.title="Ebyan — "+n+" Soap";document.getElementById("name").textContent=n;document.getElementById("photo").src="assets/"+d.img;document.getElementById("photo").alt=n+" soap";document.getElementById("desc").textContent=d.desc;
 document.getElementById("list").innerHTML=d.benefits.map(x=>'<div class="item">✦ '+x+'</div>').join('');
-document.getElementById("add").onclick=()=>{let c=JSON.parse(localStorage.getItem("ebyan_cart")||"{}"),id=n.toLowerCase().replace(/\s+/g,"-");c[id]={id,name:n,price:400,qty:(c[id]?.qty||0)+1,image:"assets/"+d.img};localStorage.setItem("ebyan_cart",JSON.stringify(c));document.getElementById("ok").textContent=n+" added to cart · KSh 400";};
-document.getElementById("related").innerHTML=Object.keys(D).filter(x=>x!==n).map(x=>'<article class="related-card"><img src="assets/'+D[x].img+'" alt="'+x+' soap"><b>'+x+'</b><a href="soap-product.html?soap=${encodeURIComponent(item.name)}"+encodeURIComponent(x)+'" class="ebyan-cart-benefit-btn" class="ebyan-explore-btn">Explore More Benefits →</a></article>').join("");
+document.getElementById("add").onclick=()=>{let c=JSON.parse(localStorage.getItem("ebyan_cart")||"{}"),id=n.toLowerCase().replace(/\s+/g,"-");const price=300;c[id]={id,name:n,price,qty:(c[id]?.qty||0)+1,image:"assets/"+d.img};localStorage.setItem("ebyan_cart",JSON.stringify(c));document.getElementById("ok").textContent=n+" added to cart · KSh "+price;};
+document.getElementById("related").innerHTML=Object.keys(D).filter(x=>x!==n).map(x=>'<article class="related-card"><img src="assets/'+D[x].img+'" alt="'+x+' soap"><b>'+x+'</b><a href="soap-product.html?soap='+encodeURIComponent(x)+'" class="ebyan-cart-benefit-btn ebyan-explore-btn">Explore More Benefits →</a></article>').join("");
 </script>
-<!-- EBYAN RECEIPT LINK --><a href="receipt.html" class="ebyan-receipt-link" style="display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800;background:#174d3a;color:#fff">View / Print Receipt</a></body></html>
+<!-- EBYAN RECEIPT LINK --><a href="receipt.html" class="ebyan-receipt-link" style="display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800;background:#174d3a;color:#fff">View / Print Receipt</a><script id="ebyan-everything-animation-runtime">
+(function(){
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ripple(el,e){if(reduce||!el||el.disabled)return; if(getComputedStyle(el).position==='static')el.style.position='relative'; if(getComputedStyle(el).overflow==='visible')el.style.overflow='hidden'; const r=document.createElement('span');r.className='ebyan-ripple';const rect=el.getBoundingClientRect();const size=Math.max(rect.width,rect.height)*.55;r.style.width=r.style.height=size+'px';r.style.left=(e.clientX-rect.left-size/2)+'px';r.style.top=(e.clientY-rect.top-size/2)+'px';el.appendChild(r);setTimeout(()=>r.remove(),600)}
+  function bind(root=document){root.querySelectorAll('button,a,.btn').forEach(el=>{if(el.dataset.ebyanMotion)return;el.dataset.ebyanMotion='1';el.addEventListener('pointerdown',e=>ripple(el,e));el.addEventListener('click',()=>{if(!reduce){el.classList.remove('ebyan-press');void el.offsetWidth;el.classList.add('ebyan-press');}})});}
+  function reveal(){document.querySelectorAll('.card,.feature,.panel,.order,.item,.benefit-bridge').forEach((el,i)=>{if(el.dataset.ebyanReveal)return;el.dataset.ebyanReveal='1';el.style.animationDelay=Math.min(i*.035,.35)+'s';el.classList.add('ebyan-reveal')})}
+  bind();reveal();new MutationObserver(m=>{if(m.some(x=>x.addedNodes.length)){bind();reveal()}}).observe(document.body,{subtree:true,childList:true});
+})();
+</script></body></html>

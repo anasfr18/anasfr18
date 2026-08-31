@@ -21,7 +21,7 @@ header{position:sticky;top:0;z-index:80;height:72px;background:rgba(255,255,255,
 .subscribe{display:grid;grid-template-columns:45% 55%;gap:28px;padding:34px 7%;background:#e7eee4}.subscribe h2{font:400 34px/.98 Georgia,serif;margin:7px 0}.subscribe p{font-size:8px;color:#68736b;line-height:1.6}.subform{display:flex;gap:6px;align-items:center;background:#fff;border:1px solid var(--line);padding:5px}.subform input{flex:1;border:0;outline:0;padding:9px;font-size:9px}.subform button{border:0;background:var(--green);color:#fff;border-radius:8px;padding:9px 12px;font:700 7px Arial,sans-serif}
 footer{padding:32px 6%;background:#0c120e;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:20px}.footer-brand{font:700 14px Georgia,serif;letter-spacing:.18em}.footer-sub{font-size:7px;opacity:.65;margin-top:4px}.footer-links{display:flex;gap:18px;font:700 7px Arial,sans-serif;letter-spacing:.1em}.copy{font-size:7px;opacity:.55}
 .overlay{position:fixed;inset:0;background:rgba(8,18,11,.66);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:200;padding:16px}.overlay.open{display:flex}.modal{width:min(520px,95vw);max-height:92vh;overflow:auto;background:#fff;border-radius:18px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.25);position:relative}.close{position:absolute;right:12px;top:8px;border:0;background:none;font-size:27px;color:#56605a}.modal-logo{width:130px;height:65px;object-fit:contain;display:block;margin:0 auto 12px}.modal h2{font:400 31px/1.05 Georgia,serif;text-align:center;margin:6px 0}.modal-sub{text-align:center;font-size:9px;color:#6e776f;line-height:1.6}.tabs{display:grid;grid-template-columns:1fr 1fr;background:#eef3ed;padding:4px;border-radius:9px;margin:16px 0}.tabs button{border:0;background:transparent;padding:9px;border-radius:7px;font-size:8px}.tabs .on{background:#fff;color:var(--green);box-shadow:0 2px 10px rgba(0,0,0,.06)}.field{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;margin:5px 0;outline:none;font-size:9px}.primary{width:100%;padding:12px;border:0;border-radius:9px;background:var(--green);color:#fff;font:700 8px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-top:7px}.link-btn{border:0;background:none;color:#315f39;text-decoration:underline;font-size:8px;margin-top:9px}.auth-msg{min-height:16px;text-align:center;font-size:8px;margin:8px 0}.auth-links{display:flex;justify-content:center;gap:14px}.guest{display:block;margin:12px auto 0;border:0;background:none;text-decoration:underline;color:#315f39;font-size:8px}
-.drawer{position:fixed;right:0;top:0;height:100vh;width:min(430px,94vw);background:#fff;z-index:210;transform:translateX(105%);transition:.28s;display:flex;flex-direction:column;box-shadow:-18px 0 55px rgba(0,0,0,.15)}.drawer.open{transform:translateX(0)}.drawer-head{padding:22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.drawer-body{flex:1;overflow:auto;padding:16px 20px}.cart-item{display:grid;grid-template-columns:62px 1fr auto;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);align-items:center}.cart-item img{width:62px;height:62px;object-fit:cover}.qty{display:flex;gap:6px;align-items:center;margin-top:7px}.qty button{width:22px;height:22px;border:1px solid var(--line);background:#fff}.drawer-foot{padding:18px 20px;border-top:1px solid var(--line)}.drawer-foot div{display:flex;justify-content:space-between;margin:7px 0;font-size:9px}.drawer-foot .tot{font-size:12px;padding-top:8px;border-top:1px solid var(--line)}
+body{overflow-x:hidden}.cart-open{overflow:hidden}.drawer{position:fixed;right:0;top:0;height:100dvh;max-height:100dvh;width:min(520px,94vw);background:#fff;z-index:210;transform:translate3d(105%,0,0);transition:transform .3s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;box-shadow:-24px 0 70px rgba(0,0,0,.18);overflow:hidden}.drawer.open{transform:translate3d(0,0,0)}.drawer-head{flex:0 0 auto;padding:20px 22px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start;background:#fff}.drawer-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding:14px 22px 20px;-webkit-overflow-scrolling:touch}.cart-item{display:grid;grid-template-columns:68px minmax(0,1fr) auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:center}.cart-item img{width:68px;height:68px;object-fit:cover;border-radius:8px}.qty{display:flex;gap:6px;align-items:center;margin-top:8px}.qty button{width:28px;height:28px;border:1px solid var(--line);background:#fff;border-radius:7px;cursor:pointer}.drawer-foot{flex:0 0 auto;padding:14px 22px max(16px,env(safe-area-inset-bottom));border-top:1px solid var(--line);background:#fff}.drawer-foot div{display:flex;justify-content:space-between;margin:7px 0;font-size:10px}.drawer-foot .tot{font-size:14px;padding-top:9px;border-top:1px solid var(--line)}
 .ai{position:fixed;right:18px;bottom:18px;z-index:120}.ai-btn{display:flex;align-items:center;gap:7px;border:1px solid #2f6640;background:#102d18;color:#fff;padding:9px 12px;border-radius:999px;box-shadow:0 10px 30px rgba(16,45,24,.2);font:700 7px Arial,sans-serif;letter-spacing:.14em}.ai-btn img{width:24px;height:24px;object-fit:contain}.aibox{display:none;position:absolute;right:0;bottom:55px;width:330px;background:#fff;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.15)}.aibox.open{display:block}.aitop{background:var(--green);color:#fff;padding:13px}.aibody{height:340px;padding:14px;overflow-y:auto;overflow-x:hidden;font-size:9px;display:flex;flex-direction:column;gap:6px}.aiform{display:flex;border-top:1px solid var(--line)}.aiform input{flex:1;border:0;padding:11px;outline:0;font-size:9px}.aiform button{border:0;background:#fff;color:var(--green);padding:0 13px}
 
 .cart-main{min-width:0}.cart-name{font:400 15px Georgia,serif;display:block}.cart-meta{font-size:8px;color:#6d776e;margin-top:4px}.cart-meta strong{color:var(--green)}.cart-line-total{font:700 11px Arial,sans-serif;color:var(--green);align-self:start;white-space:nowrap}.cart-benefit{display:inline-flex;align-items:center;gap:5px;margin-top:9px;color:#2f7140;background:#edf6ee;border:1px solid #c8dacb;border-radius:999px;padding:7px 10px;font:800 8px Arial,sans-serif;letter-spacing:.08em;text-decoration:none;transition:transform .2s ease,background .2s ease}.cart-benefit:hover{transform:translateY(-1px);background:#e3f0e5}.empty-cart{text-align:center;padding:55px 15px}.empty-cart p{max-width:270px;margin:10px auto 20px;line-height:1.7}.cart-shop{display:inline-flex;background:var(--green);color:#fff;border-radius:999px;padding:11px 14px;font:700 7px Arial,sans-serif;letter-spacing:.1em}
@@ -85,47 +85,96 @@ footer{padding:32px 6%;background:#0c120e;color:#fff;display:flex;justify-conten
 </style>
 <style id="eby-cart-benefits">
 .eby-cart-benefit{display:inline-flex!important;align-items:center!important;gap:5px!important;margin-top:7px!important;padding:6px 9px!important;border-radius:9px!important;border:1px solid #cfe0d4!important;background:#f4f9f5!important;color:#174d3a!important;text-decoration:none!important;font-size:11px!important;font-weight:850!important;line-height:1!important}.eby-cart-benefit:hover{background:#e8f3eb!important}
+</style><style id="ebyan-action-animation">.ebyan-action{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:rgba(17,25,19,.25);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:.2s}.ebyan-action.show{opacity:1}.ebyan-action-card{min-width:210px;padding:22px;border-radius:20px;background:#fff;box-shadow:0 25px 80px rgba(0,0,0,.2);text-align:center;transform:translateY(10px) scale(.96);transition:.25s}.ebyan-action.show .ebyan-action-card{transform:none}.ebyan-check{width:54px;height:54px;border-radius:50%;margin:0 auto 10px;display:grid;place-items:center;background:#174d3a;color:#fff;font-size:28px}.ebyan-action-card b{display:block;font-size:14px}.ebyan-action-card span{display:block;margin-top:5px;font-size:10px;color:#687269}</style><style id="ebyan-everything-animation">
+/* Ebyan motion system — consistent across every page and interaction */
+:root{--ebyan-ease:cubic-bezier(.2,.8,.2,1)}
+html{scroll-behavior:smooth}
+body{animation:ebyanPageIn .45s ease both}
+@keyframes ebyanPageIn{from{opacity:0}to{opacity:1}}
+button,.btn,a,input,select,textarea,.card,.panel,.order,.item,.feature,.benefit-bridge,.modal,.drawer,.ai-btn{transition:transform .22s var(--ebyan-ease),box-shadow .22s var(--ebyan-ease),opacity .22s ease,border-color .22s ease,background-color .22s ease}
+button:not(:disabled):hover,.btn:not(:disabled):hover{transform:translateY(-2px)}
+button:not(:disabled):active,.btn:not(:disabled):active{transform:translateY(0) scale(.97)}
+.card:hover,.panel:hover,.order:hover,.item:hover,.feature:hover{transform:translateY(-3px);box-shadow:0 16px 42px rgba(23,77,58,.10)}
+input:focus,select:focus,textarea:focus{transform:translateY(-1px);box-shadow:0 0 0 3px rgba(23,77,58,.10)}
+.ebyan-ripple{position:absolute;border-radius:999px;pointer-events:none;background:rgba(255,255,255,.38);transform:scale(0);animation:ebyanRipple .55s ease-out forwards}
+@keyframes ebyanRipple{to{transform:scale(4);opacity:0}}
+.ebyan-press{animation:ebyanPress .28s ease both}
+@keyframes ebyanPress{50%{transform:scale(.96)}100%{transform:none}}
+.ebyan-reveal{animation:ebyanReveal .55s var(--ebyan-ease) both}
+@keyframes ebyanReveal{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.ebyan-loading{position:relative;pointer-events:none;opacity:.72}
+.ebyan-loading:after{content:"";width:13px;height:13px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;display:inline-block;margin-left:8px;vertical-align:-2px;animation:ebyanSpin .65s linear infinite}
+@keyframes ebyanSpin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style><style id="ebyan-more-menu-fix">
+.more-trigger{cursor:pointer}
+#moreOverlay .modal{width:min(560px,94vw);max-height:min(720px,88dvh);overflow:auto}
+.more-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.more-card{display:flex;flex-direction:column;gap:5px;text-align:left;padding:15px;border:1px solid #d9e3da;background:#f7faf7;border-radius:14px;color:#17301d;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.more-card:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(20,50,25,.08);background:#eef6ef}
+.more-card b{font:700 12px Arial,sans-serif}.more-card span{font:9px/1.5 Arial,sans-serif;color:#687269}
+@media(max-width:760px){#moreOverlay .modal{width:calc(100vw - 24px);max-height:88dvh}.more-grid{grid-template-columns:1fr}}
+</style><style id="ebyan-navigation-animations">
+.overlay.open .modal{animation:morePop .42s cubic-bezier(.2,.8,.2,1) both}
+#moreOverlay.open .more-card{animation:moreItem .42s cubic-bezier(.2,.8,.2,1) both}
+#moreOverlay.open .more-card:nth-child(1){animation-delay:.04s}#moreOverlay.open .more-card:nth-child(2){animation-delay:.08s}#moreOverlay.open .more-card:nth-child(3){animation-delay:.12s}#moreOverlay.open .more-card:nth-child(4){animation-delay:.16s}#moreOverlay.open .more-card:nth-child(5){animation-delay:.20s}#moreOverlay.open .more-card:nth-child(6){animation-delay:.24s}
+@keyframes morePop{from{opacity:0;transform:translateY(22px) scale(.94)}60%{opacity:1;transform:translateY(-3px) scale(1.01)}to{opacity:1;transform:none}}
+@keyframes moreItem{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
+.page-leave{animation:pageLeave .28s ease forwards!important}
+@keyframes pageLeave{to{opacity:0;transform:translateY(-7px)}}
+.explore-nav,.benefit-top,.bridge-btn{position:relative;overflow:hidden}
+.explore-nav::after,.benefit-top::after,.bridge-btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.35) 50%,transparent 80%);transform:translateX(-120%);transition:transform .5s ease;pointer-events:none}
+.explore-nav:hover::after,.benefit-top:hover::after,.bridge-btn:hover::after{transform:translateX(120%)}
 </style>
-<style id="eby-exact-ask-ebyan">
-.ai{position:fixed!important;right:18px!important;bottom:18px!important;z-index:1200!important}
-.ai-btn{display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;
-border:1px solid rgba(47,102,64,.35)!important;background:#fff!important;color:#173d2a!important;
-padding:7px 12px 7px 8px!important;border-radius:999px!important;
-box-shadow:0 10px 28px rgba(20,60,40,.18)!important;font:700 10px Arial,sans-serif!important;
-letter-spacing:.04em!important;white-space:nowrap!important}
-.ai-btn img{width:30px!important;height:30px!important;object-fit:contain!important;background:transparent!important;border-radius:0!important;padding:0!important}
-.ai-btn span{display:block!important}
-.aibox{bottom:54px!important;right:0!important;border-radius:18px!important;overflow:hidden!important}
-.ai-brand img{background:transparent!important;border-radius:0!important;padding:0!important;width:35px!important;height:35px!important}
-@media(max-width:760px){.ai{right:10px!important;bottom:12px!important}.ai-btn{padding:6px 10px 6px 7px!important}.ai-btn img{width:28px!important;height:28px!important}.aibox{right:0!important;bottom:50px!important}}
+<style id="ebyan-cart-ai-final-fix">
+/* Keep the cart and Ask Ebyan truly floating and independent from page content. */
+header{z-index:100!important}
+.cart-btn{position:relative;z-index:101!important}
+.drawer{position:fixed!important;inset:0 0 0 auto!important;height:100dvh!important;max-height:100dvh!important;z-index:1800!important;transform:translate3d(105%,0,0)!important;transition:transform .38s cubic-bezier(.22,.8,.22,1)!important}
+.drawer.open{transform:translate3d(0,0,0)!important}
+.ai{position:fixed!important;right:22px!important;bottom:22px!important;z-index:2200!important;display:flex!important;flex-direction:column!important;align-items:flex-end!important;pointer-events:none!important}
+.ai>*{pointer-events:auto!important}
+.ai-btn{animation:ebyanAiFloat 3.2s ease-in-out infinite!important}
+.aibox{z-index:2201!important;animation:ebyanAiPop .3s cubic-bezier(.2,.8,.2,1) both}
+.aibox:not(.open){animation:none}
+@keyframes ebyanAiFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes ebyanAiPop{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.cart-float{position:fixed;right:22px;bottom:82px;z-index:2150;display:flex;align-items:center;gap:7px;border:1px solid #2f6640;background:#fff;color:#174b27;padding:10px 13px;border-radius:999px;box-shadow:0 12px 30px rgba(16,45,24,.18);font:800 8px Arial,sans-serif;letter-spacing:.08em;animation:cartFloatIn .32s cubic-bezier(.2,.8,.2,1) both}
+.cart-float[hidden]{display:none}
+.cart-float .badge{min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#174b27;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:8px}
+@keyframes cartFloatIn{from{opacity:0;transform:translateY(12px) scale(.92)}to{opacity:1;transform:none}}
+@media(max-width:760px){.ai{right:14px!important;bottom:14px!important}.cart-float{right:14px;bottom:70px}.aibox{width:min(330px,calc(100vw - 28px))!important}.drawer{width:min(100vw,520px)!important}}
 </style>
 
-<style id="eby-cart-explore-final">
-.cart-benefit.ebyan-cart-explore{
-display:inline-flex!important;align-items:center!important;justify-content:center!important;
-margin-top:8px!important;padding:7px 10px!important;border:1px solid #b9d0bd!important;
-border-radius:999px!important;background:#f2f8f3!important;color:#205d35!important;
-font:800 8px Arial,sans-serif!important;letter-spacing:.05em!important;text-decoration:none!important;
-white-space:nowrap!important;transition:all .18s ease!important}
-.cart-benefit.ebyan-cart-explore:hover{transform:translateY(-1px)!important;background:#e5f1e7!important}
-</style>
-
-<style id="eby-final-cart-more">
-.drawer .cart-item .ebyan-cart-explore{
-display:inline-flex!important;align-items:center!important;justify-content:center!important;
-margin-top:8px!important;padding:6px 10px!important;border:1px solid #cfdacf!important;
-border-radius:999px!important;background:#fff!important;color:#174b27!important;
-font:700 8px Arial,sans-serif!important;letter-spacing:.04em!important;text-decoration:none!important;
-white-space:nowrap!important
+<style id="ebyan-layer-fix-v2">
+/* FINAL LAYERING: every floating control and window stays in the current viewport. */
+html,body{width:100%;min-height:100%;}
+body{overflow-x:hidden;}
+.overlay{position:fixed!important;inset:0!important;z-index:2600!important;display:none!important;align-items:center!important;justify-content:center!important;padding:18px!important;overflow:hidden!important;}
+.overlay.open{display:flex!important;}
+.overlay .modal{position:relative!important;z-index:2601!important;max-height:min(90dvh,760px)!important;overflow:auto!important;margin:auto!important;animation:ebyanModalIn .34s cubic-bezier(.18,.82,.22,1) both;}
+.drawer{z-index:2400!important;}
+.drawer.open{transform:translate3d(0,0,0)!important;}
+.cart-float{z-index:2450!important;}
+.ai{position:fixed!important;right:22px!important;bottom:22px!important;z-index:3200!important;pointer-events:none!important;}
+.ai>*{pointer-events:auto!important;}
+.ai-btn{animation:ebyanAiFloat 3.2s ease-in-out infinite!important;}
+.aibox{z-index:3201!important;}
+@keyframes ebyanModalIn{0%{opacity:0;transform:translateY(26px) scale(.94)}65%{opacity:1;transform:translateY(-3px) scale(1.012)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes ebyanAiFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@media(max-width:760px){
+ .overlay{padding:12px!important;}
+ .overlay .modal{width:min(94vw,560px)!important;max-height:88dvh!important;border-radius:18px!important;}
+ .ai{right:12px!important;bottom:12px!important;}
+ .aibox{width:min(350px,calc(100vw - 20px))!important;max-height:72dvh!important;}
 }
-.drawer .cart-item .ebyan-cart-explore:hover{background:#f0f5f1!important}
 </style>
 </head>
-<body>
+<body><div class="ebyan-action" id="actionAnimation"><div class="ebyan-action-card"><div class="ebyan-check">✓</div><b id="actionTitle">Done</b><span id="actionSub">Success</span></div></div>
 
 <header>
 <a class="brand" href="#home"><img src="assets/site-logo.jpeg" alt="Ebyan"><b>EBYAN</b></a>
-<nav class="nav"><a href="#home">HOME</a><a class="benefit-top" href="soap-benefits.html">Explore</a><a href="more.html">MORE</a><a href="#products">PRODUCTS</a><a href="#about">ABOUT US</a><a href="#contact">CONTACT</a></nav>
+<nav class="nav"><a href="#home">HOME</a><a class="benefit-top explore-nav" href="soap-benefits.html">EXPLORE</a><a href="#more" class="more-trigger" id="moreBtn">MORE</a><a href="#products">PRODUCTS</a><a href="#about">ABOUT US</a><a href="#contact">CONTACT</a></nav>
 <div class="head">
 <button class="head-btn top-search" id="searchBtn">SEARCH</button>
 <a class="head-btn care" href="tel:0722276879">CUSTOMER CARE</a>
@@ -139,7 +188,7 @@ white-space:nowrap!important
 <div class="hero-photo"><img src="assets/hero.jpg" alt="Ebyan Soap Collection"></div>
 </section>
 
-<section class="benefit-bridge"><div><span class="label">NATURAL CARE, SOAP BY SOAP</span><h2>Explore <em>every benefit.</em></h2><p>Choose a soap and discover its ingredients, qualities and everyday skincare advantages.</p></div><a class="bridge-btn" href="soap-benefits.html">Explore</a></section>
+<section class="benefit-bridge"><div><span class="label">NATURAL CARE, SOAP BY SOAP</span><h2>Explore <em>every benefit.</em></h2><p>Choose a soap and discover its ingredients, qualities and everyday skincare advantages.</p></div><a class="bridge-btn explore-nav" href="soap-benefits.html">EXPLORE →</a></section>
 
 <section class="section" id="products">
 <div class="section-head"><div><span class="label">THE EBYAN COLLECTION</span><h2>Our <em>soaps.</em></h2></div><span class="label">SWIPE TO SHOP →</span></div>
@@ -195,7 +244,16 @@ white-space:nowrap!important
 </div>
 <div class="auth-msg" id="authMsg"></div><div id="loginHint" class="muted" style="text-align:center;margin-top:3px">Use your email and password.</div></div></div>
 
-<div class="overlay" id="checkoutOverlay"><div class="modal"><button class="close" data-close="checkoutOverlay">×</button><span class="label">CHECKOUT</span><h2 style="text-align:left">Complete your order</h2><p class="modal-sub" style="text-align:left">Your personal delivery details are required.</p><input class="field" id="cname" placeholder="Full name"><label for="cphone" style="display:block;font-size:9px;font-weight:800;margin:8px 0 3px">PHONE NUMBER <span style="color:#b33">*</span></label><input class="field" id="cphone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Phone number (required)" required><input class="field" id="caddress" placeholder="Personal delivery address"><input class="field" id="ctown" placeholder="Town / Area"><div class="inline"><button class="link-btn" id="useLocation">Use my current location</button><span class="muted" id="locMsg"></span></div><select class="field" id="pm"><option value="Pay on Delivery">Pay on Delivery</option><option value="M-Pesa">M-Pesa</option></select><div style="display:flex;justify-content:space-between;font-size:10px;margin-top:10px"><b>Products</b><b id="checkoutSub">KSh 0</b></div><div style="display:flex;justify-content:space-between;font-size:10px;margin-top:5px"><b>Delivery</b><b id="checkoutDel">KSh 0</b></div><div style="display:flex;justify-content:space-between;font-size:13px;margin-top:8px;padding-top:8px;border-top:1px solid var(--line)"><b>Total</b><b id="checkoutTotal">KSh 0</b></div><button class="primary" id="placeOrder">PLACE ORDER &amp; PAY</button><div class="auth-msg" id="checkoutMsg"></div><div id="mpesaBox" style="display:none;margin-top:10px;padding:10px;background:#eef4eb;border:1px solid var(--line);border-radius:10px;font-size:8px"></div></div></div>
+<div class="overlay" id="moreOverlay"><div class="modal"><button class="close" data-close="moreOverlay">×</button><span class="label">EBYAN</span><h2 style="text-align:left">More</h2><p class="modal-sub" style="text-align:left">Everything you may need, in one place.</p><div class="more-grid">
+<a class="more-card" href="soap-benefits.html"><b>Explore</b><span>Discover the benefits of every soap.</span></a>
+<a class="more-card" href="receipt.html"><b>Receipts</b><span>View your customer receipts and order records.</span></a>
+<a class="more-card" href="#account" id="moreAccount"><b>My Account</b><span>Edit your information and view your orders.</span></a>
+<a class="more-card" href="#checkout-help" id="moreCheckoutHelp"><b>Checkout & Payments</b><span>Get help with checkout, M-Pesa and Pay on Delivery.</span></a>
+<a class="more-card" href="#mpesa-help" id="moreMpesaHelp"><b>M-Pesa</b><span>See the payment and screenshot-proof instructions.</span></a>
+<a class="more-card" href="reset-password.html"><b>Password & Security</b><span>Reset your password and manage account access.</span></a>
+</div><div id="moreHelp" style="display:none;margin-top:14px;padding:13px;border:1px solid #d9e3da;background:#f5f8f5;border-radius:12px;font-size:9px;line-height:1.65"></div></div></div>
+
+<div class="overlay" id="checkoutOverlay"><div class="modal"><button class="close" data-close="checkoutOverlay">×</button><span class="label">CHECKOUT</span><h2 style="text-align:left">Complete your order</h2><p class="modal-sub" style="text-align:left">Almost done. We’ll guide you through every step.</p><div style="background:#f5f8f5;border:1px solid var(--line);border-radius:12px;padding:11px;margin:10px 0;font-size:9px;line-height:1.6"><b>1. Delivery details</b> → <b>2. Payment</b> → <b>3. Confirmation</b><br><span class="muted">Need help? Ask Ebyan below or contact Customer Care.</span></div><input class="field" id="cname" placeholder="Full name"><label for="cphone" style="display:block;font-size:9px;font-weight:800;margin:8px 0 3px">PHONE NUMBER <span style="color:#b33">*</span></label><input class="field" id="cphone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 0722 276 879" required><input class="field" id="caddress" placeholder="Delivery address / building"><input class="field" id="ctown" placeholder="Town / Area"><div class="inline"><button class="link-btn" id="useLocation" type="button">Use my current location</button><span class="muted" id="locMsg"></span></div><label for="pm" style="display:block;font-size:9px;font-weight:800;margin:8px 0 3px">HOW WOULD YOU LIKE TO PAY?</label><select class="field" id="pm"><option value="Pay on Delivery">Pay on Delivery — pay when your order arrives</option><option value="M-Pesa">M-Pesa — pay now &amp; upload proof</option></select><div id="mpesaHelp" style="display:none;margin:10px 0;padding:12px;background:#eef6f0;border:1px solid #cfe0d3;border-radius:12px;font-size:9px;line-height:1.6"><b>M-Pesa payment</b><br>Send the exact total to the Ebyan M-Pesa number shown below.<br>After paying, upload a clear screenshot of the M-Pesa confirmation below.</div><div id="proofWrap" style="display:none;margin:10px 0"><label for="paymentProof" style="display:block;font-size:9px;font-weight:800;margin:0 0 4px">PAYMENT SCREENSHOT <span style="color:#b33">*</span></label><input class="field" id="paymentProof" type="file" accept="image/png,image/jpeg,image/webp"><div class="muted">Max 5 MB. Use a clear image of the M-Pesa confirmation. Your proof is private and only used to verify this order.</div></div><div style="display:flex;justify-content:space-between;font-size:10px;margin-top:10px"><b>Products</b><b id="checkoutSub">KSh 0</b></div><div style="display:flex;justify-content:space-between;font-size:10px;margin-top:5px"><b>Delivery</b><b id="checkoutDel">KSh 0</b></div><div style="display:flex;justify-content:space-between;font-size:13px;margin-top:8px;padding-top:8px;border-top:1px solid var(--line)"><b>Total</b><b id="checkoutTotal">KSh 0</b></div><button class="primary" id="placeOrder" type="button">CONFIRM ORDER</button><div class="auth-msg" id="checkoutMsg"></div><div id="mpesaBox" style="display:none"></div></div></div>
 
 <div class="overlay" id="accountOverlay"><div class="modal" style="width:min(720px,96vw)"><button class="close" data-close="accountOverlay">×</button><span class="label">MY ACCOUNT</span><h2 id="acctTitle" style="text-align:left">My Account</h2><div id="acctBody"></div></div></div>
 </div>
@@ -203,13 +261,14 @@ white-space:nowrap!important
 <div class="ai" id="aiWidget">
   <div class="aibox" id="aiBox" aria-live="polite">
     <div class="aitop">
-      <div class="ai-brand"><img src="assets/ebyan-ai-logo.png" alt="Ebyan"><div><b>Ask Ebyan</b><span>Your natural soap guide</span></div><button class="ai-close" id="aiClose" type="button" aria-label="Close">×</button></div>
+      <div class="ai-brand"><img src="assets/ask-ebyan-logo.png" alt="Ebyan"><div><b>Ask Ebyan</b><span>Your natural soap guide</span></div><button class="ai-close" id="aiClose" type="button" aria-label="Close">×</button></div>
     </div>
     <div class="aibody" id="aiBody"><div class="ai-msg ai-bot">Welcome to Ebyan ✦ Tell me your skin type, what you want from a soap, or ask about any Ebyan product.</div><div class="quick" id="aiQuick"></div></div>
     <form class="aiform" id="aiForm"><input id="aiInput" autocomplete="off" placeholder="Ask about Ebyan..."><button aria-label="Send">➤</button></form>
   </div>
-  <button class="ai-btn" id="aiBtn" type="button" aria-expanded="false" aria-controls="aiBox"><img src="assets/ebyan-ai-logo.png" alt="Ebyan"><span>Ask Ebyan</span></button>
+  <button class="ai-btn" id="aiBtn" type="button" aria-expanded="false" aria-controls="aiBox"><img src="assets/ask-ebyan-logo.png" alt="Ebyan"><span>Ask Ebyan</span></button>
 </div>
+<button class="cart-float" id="floatingCartBtn" type="button" hidden aria-label="Open cart"><span>🛒 CART</span><span class="badge" id="floatingCartCount">0</span></button>
 
 <script>
 const SUPABASE_URL='https://ygcoolohknjfcxmcwbsm.supabase.co';
@@ -223,22 +282,49 @@ const productsSeed=[
  {id:5,name:'Lemon',price:400,image:'assets/lemon.jpg',description:'Natural soap with Lemon.',skin_types:['oily','normal'],benefits:['refreshing'],fragrance:'citrus'},
  {id:6,name:'Cucumber',price:400,image:'assets/cucumber.jpg',description:'Natural soap with Cucumber.',skin_types:['sensitive','dry'],benefits:['soothing','refreshing'],fragrance:'fresh'}
 ];
-let products=[...productsSeed],cart=JSON.parse(localStorage.getItem('ebyan_cart')||'{}'),session=null,profile=null,lastOrders=[];
+let products=[...productsSeed],cart=JSON.parse(localStorage.getItem('ebyan_cart')||'{}'),session=null,profile=null,lastOrders=[],deliveryFee=150,mpesaNumbers=['0722 276 879','0726 562 792'],cartColumns={product:true,price:true,quantity:true,benefits:true,total:true};
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],money=n=>'KSh '+Number(n||0).toLocaleString('en-KE');
-function show(id){$('#'+id).classList.add('open')}function hide(id){$('#'+id).classList.remove('open')}
+function show(id){$('#'+id).classList.add('open')}function hide(id){$('#'+id).classList.remove('open');if(id==='cartDrawer')document.body.classList.remove('cart-open')}
+async function loadCartSettings(){try{const r=await sb.from('site_settings').select('value').eq('key','cart_columns').maybeSingle();if(r.data?.value)cartColumns={...cartColumns,...r.data.value};}catch(e){console.warn('Cart settings unavailable',e)}renderCart()}
+function normalizeCartToLiveProducts(){
+ const next={};
+ Object.values(cart||{}).forEach(i=>{
+  const match=products.find(p=>String(p.id)===String(i.id)||String(p.name).toLowerCase()===String(i.name||i.id).toLowerCase());
+  if(!match)return;
+  const qty=Math.max(1,Number(i.qty)||1);
+  next[String(match.id)]={id:match.id,name:match.name,price:Number(match.price),qty,image:match.image};
+ });
+ cart=next;
+ localStorage.setItem('ebyan_cart',JSON.stringify(cart));
+}
 function saveCart(){localStorage.setItem('ebyan_cart',JSON.stringify(cart));renderCart()}
 function renderProducts(){
  const t=$('#productTrack');t.innerHTML='';
  products.forEach((p,i)=>{const c=document.createElement('article');c.className='card';c.innerHTML=`<img src="${p.image}" alt="${p.name} soap"><div class="card-body"><small>Collection ${String(i+1).padStart(2,'0')}</small><h3>${p.name}</h3><p>${p.description||''}</p><div class="row"><span class="price">${money(p.price)}</span><button class="add" ${Number(p.stock??1)<=0?'disabled':''}>${Number(p.stock??1)<=0?'OUT OF STOCK':'ADD TO CART'}</button></div></div>`;c.querySelector('.add').onclick=()=>addProduct(p.id);t.appendChild(c)})
 }
-function addProduct(id){const p=products.find(x=>x.id===id);if(!p)return;cart[id]={id:p.id,name:p.name,price:Number(p.price),qty:(cart[id]?.qty||0)+1,image:p.image};saveCart();openCart()}
-function openCart(){show('cartDrawer');renderCart()}
-function renderCart(){const el=$('#cartItems');el.innerHTML='';let sub=0;Object.values(cart).forEach(i=>{sub+=i.price*i.qty;const soap=i.name;el.innerHTML+=`<div class="cart-item"><img src="${i.image}" alt="${soap}"><div><b style="font:400 14px Georgia,serif">${soap}</b><div style="font-size:8px;color:#6d776e">${money(i.price)} each</div><div class="qty"><button data-id="${i.id}" data-d="-1">−</button><b>${i.qty}</b><button data-id="${i.id}" data-d="1">+</button></div><a class="cart-benefit ebyan-cart-explore" href="soap-benefits.html?soap=${encodeURIComponent(soap)}" aria-label="Explore more benefits for ${soap}">Explore More →</a></div><b>${money(i.price*i.qty)}</b></div>`});if(!Object.keys(cart).length)el.innerHTML='<p class="muted" style="text-align:center;margin-top:40px">Your cart is empty.</p>';const del=Object.keys(cart).length?150:0;$('#cartSub').textContent=money(sub);$('#cartDel').textContent=money(del);$('#cartTot').textContent=money(sub+del);$('#checkoutSub').textContent=money(sub);$('#checkoutDel').textContent=money(del);$('#checkoutTotal').textContent=money(sub+del);el.querySelectorAll('button[data-id]').forEach(b=>b.onclick=()=>changeQty(b.dataset.id,Number(b.dataset.d)))}
+function addProduct(id){const p=products.find(x=>x.id===id);if(!p)return;action('Added to cart',p.name+' is in your bag');cart[id]={id:p.id,name:p.name,price:Number(p.price),qty:(cart[id]?.qty||0)+1,image:p.image};saveCart();openCart()}
+function openCart(){show('cartDrawer');document.body.classList.add('cart-open');renderCart();requestAnimationFrame(()=>document.querySelector('#cartDrawer .close')?.focus())}
+function renderCart(){const el=$('#cartItems');el.innerHTML='';let sub=0;const floatBtn=$('#floatingCartBtn');const floatCount=$('#floatingCartCount');const itemCount=Object.values(cart).reduce((n,i)=>n+Number(i.qty||0),0);if(floatBtn){floatBtn.hidden=itemCount===0;if(floatCount)floatCount.textContent=itemCount;}Object.values(cart).forEach(i=>{sub+=i.price*i.qty;const image=cartColumns.product?`<img src="${i.image}" alt="">`:'';const product=cartColumns.product?`<b style="font:400 14px Georgia,serif">${i.name}</b>`:'';const price=cartColumns.price?`<div style="font-size:8px;color:#6d776e">${money(i.price)} each</div>`:'';const qty=cartColumns.quantity?`<div class="qty"><button data-id="${i.id}" data-d="-1">−</button><b>${i.qty}</b><button data-id="${i.id}" data-d="1">+</button></div>`:'';const benefits=cartColumns.benefits?`<a class="cart-benefit ebyan-cart-explore" href="soap-product.html?soap=${encodeURIComponent(i.name)}">✦ Explore</a>`:'';const total=cartColumns.total?`<b>${money(i.price*i.qty)}</b>`:'';el.innerHTML+=`<div class="cart-item">${image}<div class="cart-main">${product}${price}${qty}${benefits}</div>${total}</div>`});if(!Object.keys(cart).length)el.innerHTML='<p class="muted" style="text-align:center;margin-top:40px">Your cart is empty.</p>';const del=Object.keys(cart).length?deliveryFee:0;$('#cartSub').textContent=money(sub);$('#cartDel').textContent=money(del);$('#cartTot').textContent=money(sub+del);$('#checkoutSub').textContent=money(sub);$('#checkoutDel').textContent=money(del);$('#checkoutTotal').textContent=money(sub+del);el.querySelectorAll('button[data-id]').forEach(b=>b.onclick=()=>changeQty(b.dataset.id,Number(b.dataset.d)))}
+function changeQty(id,d){if(!cart[id])return;cart[id].qty+=d;if(cart[id].qty<=0)delete cart[id];saveCart()}
+
+async function authInit(){
+  try{
+    const r=await sb.auth.getSession();
+    session=r.data.session||null;
+    if(session){await loadProfile();setAccount();}
+    if(!session)hide('authOverlay');
+  }catch(e){
+    console.error('Auth init error',e);
+    if(!session)hide('authOverlay');
+  }
+}
 async function loadProfile(){
   if(!session)return;
   const r=await sb.from('profiles').select('*').eq('id',session.user.id).single();
   profile=r.data||null;
 }
+async function loadStoreSettings(){const r=await sb.from('site_settings').select('key,value').in('key',['payment','delivery']);for(const x of (r.data||[])){if(x.key==='payment'&&Array.isArray(x.value?.mpesa_numbers)&&x.value.mpesa_numbers.length)mpesaNumbers=x.value.mpesa_numbers;if(x.key==='delivery'&&Number.isFinite(Number(x.value?.minimum_fee)))deliveryFee=Number(x.value.minimum_fee)}renderCart()}
+async function loadLiveProducts(){const r=await sb.from('products').select('id,name,price,image_url,description,skin_types,benefits,fragrance,active,published,sort_order').eq('active',true).eq('published',true).order('sort_order',{ascending:true});if(r.data?.length)products=r.data.map(x=>({id:x.id,name:x.name,price:Number(x.price),image:x.image_url||'assets/ebyan-soap-template.png',description:x.description||'Natural handmade soap.',skin_types:x.skin_types||[],benefits:x.benefits||[],fragrance:x.fragrance||''}));normalizeCartToLiveProducts();renderProducts();}
 function setAccount(){
   const name=profile?.full_name?.trim();
   $('#accountBtn').textContent=name?name.split(/\s+/)[0].toUpperCase():'ACCOUNT';
@@ -294,7 +380,7 @@ async function signIn(){
   if(r.error)return authMsg(r.error.message);
   session=r.data.session;await loadProfile();
   if(profile?.disabled){await sb.auth.signOut();session=null;profile=null;return authMsg('This account is disabled. Contact Customer Care.');}
-  hide('authOverlay');setAccount();
+  hide('authOverlay');setAccount();action('Welcome back','You are signed in');
 }
 async function register(){
   const name=$('#rname').value.trim();
@@ -311,7 +397,7 @@ async function register(){
       return authMsg(r.error.message);
     }
     if(r.data.session){
-      session=r.data.session;await loadProfile();hide('authOverlay');setAccount();authMsg('Account created successfully.',true);
+      session=r.data.session;await loadProfile();hide('authOverlay');setAccount();authMsg('Account created successfully.',true);action('Account created','Welcome to Ebyan');
       return;
     }
     otpContext={type:'email_signup',email,name};
@@ -371,23 +457,68 @@ function updateAccountAfterAuth(){
   }
   return true;
 }
-async function account(){if(!session)return show('authOverlay');await loadProfile();const o=await sb.from('orders').select('*').eq('user_id',session.user.id).order('created_at',{ascending:false});lastOrders=o.data||[];$('#acctTitle').textContent=profile?.full_name||'My Account';$('#acctBody').innerHTML=`<div class="inline"><span class="badge">${profile?.role||'customer'}</span><span class="muted">${profile?.email||session.user.email||''}</span><span class="muted">${profile?.phone||session.user.phone||''}</span></div><div style="margin:18px 0"><h3 style="font:400 21px Georgia,serif">Saved profile</h3><input class="field" id="pname" value="${profile?.full_name||''}" placeholder="Full name"><input class="field" id="pphone" value="${profile?.phone||session.user.phone||''}" placeholder="Phone"><input class="field" id="pcontact" value="${profile?.preferred_contact||'phone'}" placeholder="Preferred contact"><button class="primary" id="saveProfile">SAVE PROFILE</button></div><h3 style="font:400 21px Georgia,serif">Previous orders</h3>${lastOrders.map(o=>`<div style="padding:10px 0;border-bottom:1px solid var(--line);font-size:9px"><b>${o.order_number||o.id}</b> · ${money(o.total)} · ${o.status} <button type="button" class="link-btn account-receipt" data-order-id="${o.id}" style="font-size:8px;margin-left:6px">Receipt</button></div>`).join('')||'<p class="muted">No orders yet.</p>'}<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px"><a class="head-btn" href="more.html" style="border:1px solid #ccd8cd;border-radius:999px;padding:9px 12px;text-decoration:none">MORE</a><a class="head-btn" href="receipt.html" style="border:1px solid #ccd8cd;border-radius:999px;padding:9px 12px;text-decoration:none">MY RECEIPTS</a></div><button class="link-btn" id="logout">Log out</button>`;$('#saveProfile').onclick=async()=>{await sb.from('profiles').update({full_name:$('#pname').value.trim(),phone:$('#pphone').value.trim(),preferred_contact:$('#pcontact').value}).eq('id',session.user.id);await loadProfile();setAccount()};$('#logout').onclick=async()=>{await sb.auth.signOut();location.reload()};document.querySelectorAll('.account-receipt').forEach(b=>b.onclick=()=>{const o=lastOrders.find(x=>String(x.id)===String(b.dataset.orderId));if(o){localStorage.setItem('ebyan_last_order',JSON.stringify({orderNumber:o.order_number||o.id,total:o.total,status:o.status,customerName:profile?.full_name,phone:profile?.phone,paymentMethod:o.payment_method||o.paymentMethod||'-',date:o.created_at,items:o.items||[]}));location.href='receipt.html'}});show('accountOverlay')}
-async function openCheckout(){if(!Object.keys(cart).length)return;hide('cartDrawer');if(!session){show('authOverlay');authMsg('Please sign in or register before completing an order.');return}renderCart();show('checkoutOverlay');if(profile){$('#cname').value=profile.full_name||'';$('#cphone').value=profile.phone||session.user.phone||''}}
-async function saveOrder(){const name=$('#cname').value.trim(),phone=$('#cphone').value.trim(),address=$('#caddress').value.trim(),town=$('#ctown').value.trim(),method=$('#pm').value;if(!name||!phone||!address||!town)return $('#checkoutMsg').textContent='Complete your name, phone and personal address.';
-  if(!/^(?:\+254|0)7\d{8}$/.test(phone.replace(/[\s-]/g,'')))return $('#checkoutMsg').textContent='Enter a valid Kenyan phone number, e.g. 0722 276 879.';let items=Object.values(cart),sub=items.reduce((s,i)=>s+i.price*i.qty,0),delivery=150,total=sub+delivery;const r=await sb.from('orders').insert({user_id:session.user.id,customer_name:name,customer_phone:phone,customer_email:session.user.email||null,delivery_address:address,town_area:town,subtotal:sub,delivery_fee:delivery,total,payment_method:method,payment_status:'pending',status:method==='Pay on Delivery'?'pending':'pending'}).select().single();if(r.error)return $('#checkoutMsg').textContent=r.error.message;await sb.from('order_items').insert(items.map(i=>({order_id:r.data.id,product_id:i.id,product_name:i.name,unit_price:i.price,quantity:i.qty})));await sb.from('addresses').upsert({user_id:session.user.id,label:'Primary',full_name:name,phone,address_line:address,town_area:town},{onConflict:'user_id'});try{
-      const tok=(await sb.auth.getSession()).data.session?.access_token;
-      if(tok) await fetch('https://ygcoolohknjfcxmcwbsm.supabase.co/functions/v1/notify_order_v2',{
-        method:'POST',
-        headers:{'Content-Type':'application/json','Authorization':'Bearer '+tok},
-        body:JSON.stringify({order_id:r.data.id})
-      });
-    }catch(_){/* order remains saved even if notification delivery is unavailable */}
-    if(method==='M-Pesa'){$('#checkoutMsg').textContent='M-Pesa STK Push will be activated once the production Daraja credentials are connected.';return}cart={};saveCart();hide('checkoutOverlay');alert('Order received · '+(r.data.order_number||r.data.id));}
-function aiReply(text){const s=text.toLowerCase();if(s.includes('dry'))return 'For dry skin, I would start with Aloe Vera or Honey. Aloe Vera is the softer, fresher option; Honey is the richer, sweeter option.';if(s.includes('oily'))return 'For oily skin, Black Seed, Lemon, and Papaya are strong options. I would start with Black Seed for a more clarifying feel.';if(s.includes('sensitive'))return 'For sensitive skin, Cucumber is the gentlest match in the Ebyan collection.';if(s.includes('sweet'))return 'Honey is the best match for a sweet fragrance preference.';if(s.includes('fresh'))return 'Cucumber and Aloe Vera fit a fresh fragrance preference.';if(s.includes('order'))return session?'Open My Account to see your orders and current status.':'Sign in first and I can help you access your orders.';return 'I can help with Ebyan soaps, prices, shopping, delivery, payments, and orders. Try asking about skin type, fragrance, or your order.'}
+function action(title,sub='Done'){const o=$('#actionAnimation');if(!o)return;$('#actionTitle').textContent=title;$('#actionSub').textContent=sub;o.classList.add('show');setTimeout(()=>o.classList.remove('show'),1100)}
+async function account(){if(!session)return show('authOverlay');await loadProfile();const o=await sb.from('orders').select('*').eq('user_id',session.user.id).order('created_at',{ascending:false});lastOrders=o.data||[];$('#acctTitle').textContent=profile?.full_name||'My Account';$('#acctBody').innerHTML=`<div class="inline"><span class="badge">${profile?.role||'customer'}</span><span class="muted">${profile?.email||session.user.email||''}</span><span class="muted">${profile?.phone||session.user.phone||''}</span></div><div style="margin:18px 0"><h3 style="font:400 21px Georgia,serif">Your information</h3><p class="muted">Keep your delivery details saved so checkout is faster next time.</p><input class="field" id="pname" value="${profile?.full_name||''}" placeholder="Full name"><input class="field" id="pphone" value="${profile?.phone||session.user.phone||''}" placeholder="Phone"><select class="field" id="pcontact"><option value="phone">Preferred contact: Phone</option><option value="email">Preferred contact: Email</option></select><button class="primary" id="saveProfile">SAVE PROFILE</button><div class="auth-msg" id="profileMsg"></div></div><h3 style="font:400 21px Georgia,serif">Previous orders</h3>${lastOrders.map(o=>`<div style="padding:10px 0;border-bottom:1px solid var(--line);font-size:9px"><b>${o.order_number||o.id}</b> · ${money(o.total)} · ${String(o.status||'pending').replaceAll('_',' ') } · ${o.payment_method||''}</div>`).join('')||'<p class="muted">No orders yet.</p>'}<button class="link-btn" id="logout">Log out</button>`;$('#pcontact').value=profile?.preferred_contact||'phone';$('#saveProfile').onclick=async()=>{const btn=$('#saveProfile');btn.disabled=true;const r=await sb.from('profiles').update({full_name:$('#pname').value.trim(),phone:$('#pphone').value.trim(),preferred_contact:$('#pcontact').value}).eq('id',session.user.id);btn.disabled=false;if(r.error){$('#profileMsg').textContent=r.error.message;return}await loadProfile();setAccount();$('#profileMsg').textContent='✓ Profile saved successfully.';$('#profileMsg').style.color='#2d6a3a';action('Profile saved','Your information is ready for faster checkout');};$('#logout').onclick=async()=>{action('Signing out…','See you again soon');await new Promise(r=>setTimeout(r,350));await sb.auth.signOut();location.reload()};show('accountOverlay')}
+async function openCheckout(){if(!Object.keys(cart).length)return;hide('cartDrawer');if(!session){show('authOverlay');authMsg('Please sign in or register before completing an order.');return}renderCart();show('checkoutOverlay');checkoutMotion();if(profile){$('#cname').value=profile.full_name||'';$('#cphone').value=profile.phone||session.user.phone||''}$('#caddress').value='';$('#ctown').value='';$('#paymentProof').value='';togglePaymentMethod()}
+function togglePaymentMethod(){const mp=$('#pm').value==='M-Pesa';$('#mpesaHelp').innerHTML='<b>M-Pesa payment</b><br>Send the exact total to <b>'+mpesaNumbers.join('</b> or <b>')+'</b>.<br>After paying, upload a clear screenshot of the M-Pesa confirmation below.';$('#mpesaHelp').style.display=mp?'block':'none';$('#proofWrap').style.display=mp?'block':'none';$('#placeOrder').textContent=mp?'SUBMIT PAYMENT PROOF':'CONFIRM ORDER';$('#checkoutMsg').textContent=''}
 
+function checkoutMotion(){
+ const modal=document.querySelector('#checkoutOverlay .modal');if(!modal)return;
+ modal.classList.remove('ebyan-reveal');void modal.offsetWidth;modal.classList.add('ebyan-reveal');
+ ['#cname','#cphone','#caddress','#ctown','#pm','#placeOrder'].forEach((sel,i)=>{const el=$(sel);if(el)el.style.animationDelay=(i*.04)+'s'});
+}
+$('#pm').addEventListener('change',togglePaymentMethod);
+async function saveOrder(){
+ const name=$('#cname').value.trim(),phone=$('#cphone').value.trim(),address=$('#caddress').value.trim(),town=$('#ctown').value.trim(),method=$('#pm').value,msg=$('#checkoutMsg'),btn=$('#placeOrder');
+ msg.style.color='';
+ if(!name||!phone||!address||!town){msg.textContent='Please complete your name, phone, address and town/area.';action('Almost there','Complete all delivery details');return}
+ const normalized=normalizeKePhone(phone);
+ if(!/^\+2547\d{8}$/.test(normalized)){msg.textContent='Enter a valid Kenyan mobile number, e.g. 0722 276 879.';action('Check your phone','Use a valid Kenyan mobile number');return}
+ const proof=$('#paymentProof')?.files?.[0];
+ if(method==='M-Pesa'&&!proof){msg.textContent='Please upload your M-Pesa payment screenshot before submitting.';action('Payment proof needed','Upload the M-Pesa confirmation screenshot');return}
+ if(proof&&(!/^image\/(png|jpeg|webp)$/.test(proof.type)||proof.size>5*1024*1024)){msg.textContent='Please choose a PNG, JPG or WEBP image under 5 MB.';action('Invalid screenshot','Choose a clear image under 5 MB');return}
+ const items=Object.values(cart).map(i=>{const p=products.find(x=>String(x.id)===String(i.id)||String(x.name).toLowerCase()===String(i.name||'').toLowerCase());return p?{...i,id:p.id,name:p.name,price:Number(p.price),image:p.image}:null}).filter(Boolean);if(!items.length){hide('checkoutOverlay');openCart();return}
+ const sub=items.reduce((sum,i)=>sum+i.price*i.qty,0),delivery=deliveryFee,total=sub+delivery;
+ btn.disabled=true;btn.classList.add('ebyan-loading');msg.textContent=method==='M-Pesa'?'Creating secure order…':'Creating your order…';
+ try{
+  let lat=null,lon=null;
+  const orderPayload={user_id:session.user.id,customer_name:name,customer_phone:normalized,checkout_phone:normalized,customer_email:session.user.email||null,delivery_address:address,town_area:town,subtotal:sub,delivery_fee:delivery,total,payment_method:method==='M-Pesa'?'mpesa':'cash_on_delivery',payment_status:method==='M-Pesa'?'proof_required':'unpaid',status:method==='M-Pesa'?'pending':'confirmed',delivery_status:method==='M-Pesa'?'awaiting_payment_verification':'confirmed'};
+  const r=await sb.from('orders').insert(orderPayload).select().single();
+  if(r.error)throw new Error('Could not create the order: '+r.error.message);
+  const order=r.data;
+  const ir=await sb.from('order_items').insert(items.map(i=>({order_id:order.id,product_id:i.id,product_name:i.name,unit_price:i.price,quantity:i.qty})));
+  if(ir.error)throw new Error('Order created but items could not be attached: '+ir.error.message);
+  // Saving the address is helpful but must never prevent a successful checkout.
+  try{await sb.from('addresses').insert({user_id:session.user.id,label:'Primary',full_name:name,phone:normalized,address_line:address,town_area:town});}catch(_){console.warn('Address save skipped')}
+  if(method==='M-Pesa'){
+   const path=`${session.user.id}/${order.id}-${Date.now()}-${proof.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
+   const up=await sb.storage.from('payment-proofs').upload(path,proof,{upsert:false,contentType:proof.type});
+   if(up.error)throw new Error('The order was created, but the payment screenshot could not be uploaded. Please contact Customer Care with order '+(order.order_number||order.id)+'.');
+   const ur=await sb.from('orders').update({payment_proof_path:path,payment_proof_uploaded_at:new Date().toISOString()}).eq('id',order.id);
+   if(ur.error)throw new Error('The payment proof was uploaded but could not be attached to the order. Please contact Customer Care with order '+(order.order_number||order.id)+'.');
+   msg.textContent=`Payment proof submitted. Order ${order.order_number||order.id} is waiting for verification.`;msg.style.color='#2d6a3a';
+   await notifyOrder(order.id);action('Payment proof sent','Order '+(order.order_number||order.id)+' is waiting for verification');
+  }else{
+   msg.textContent=`Order ${order.order_number||order.id} confirmed! Pay when your order arrives.`;msg.style.color='#2d6a3a';
+   await notifyOrder(order.id);action('Order confirmed','Order '+(order.order_number||order.id)+' is on its way to the store team');
+  }
+  cart={};saveCart();
+  setTimeout(()=>{hide('checkoutOverlay');account()},1100);
+ }catch(e){
+  console.error('Checkout error',e);msg.textContent=e?.message||'Checkout failed. Please try again.';msg.style.color='#a43a34';action('Checkout needs attention','Please review the message and try again');
+ }finally{btn.disabled=false;btn.classList.remove('ebyan-loading')}
+}
+async function notifyOrder(orderId){try{const tok=(await sb.auth.getSession()).data.session?.access_token;if(tok)await fetch(`${SUPABASE_URL}/functions/v1/notify_order_v2`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+tok},body:JSON.stringify({order_id:orderId})})}catch(e){console.warn('Notification unavailable',e)}}
+document.addEventListener('click',e=>{const b=e.target.closest('#cartBtn');if(b){e.preventDefault();openCart();}});
 $('#cartBtn').onclick=openCart;
-$('#checkoutBtn').onclick=openCheckout;
+$('#floatingCartBtn').onclick=openCart;
+$('#checkoutBtn').onclick=()=>Object.keys(cart).length?openCheckout():(action('Your cart is empty','Choose a soap before checkout'));
 $('#accountBtn').onclick=account;
+const moreBtn=$('#moreBtn');
+if(moreBtn) moreBtn.onclick=(e)=>{e.preventDefault();show('moreOverlay');action('More opened','Everything you need is here');};
+$('#moreAccount')?.addEventListener('click',async e=>{e.preventDefault();hide('moreOverlay');await account();});
+$('#moreCheckoutHelp')?.addEventListener('click',e=>{e.preventDefault();const box=$('#moreHelp');box.style.display='block';box.innerHTML='<b>Checkout help</b><br>Enter your name, Kenyan phone number, delivery address and town. Choose <b>Pay on Delivery</b> to pay when the order arrives, or choose <b>M-Pesa</b>, send the exact total to the Ebyan number shown at checkout, then upload the M-Pesa confirmation screenshot.';});
+$('#moreMpesaHelp')?.addEventListener('click',e=>{e.preventDefault();const box=$('#moreHelp');box.style.display='block';box.innerHTML='<b>M-Pesa proof</b><br>Pay the exact order total to the Ebyan M-Pesa number shown during checkout. Upload a clear screenshot of the confirmation. Your order remains <b>Pending Verification</b> until the store verifies the proof.';});
 $('#signIn').onclick=signIn;
 $('#register').onclick=register;
 $('#forgot').onclick=forgot;
@@ -536,57 +667,56 @@ document.getElementById('togglePw').onclick=()=>{
 </script>
 <script>
 (function(){
- const btn=document.getElementById('aiBtn');
- const box=document.getElementById('aiBox');
- const close=document.getElementById('aiClose');
- const form=document.getElementById('aiForm');
- const input=document.getElementById('aiInput');
- const body=document.getElementById('aiBody');
- const quick=document.getElementById('aiQuick');
- if(!btn||!box||!form||!input||!body)return;
-
- function toggle(open){
-   box.classList.toggle('open',open);
-   btn.setAttribute('aria-expanded',String(open));
-   if(open)setTimeout(()=>input.focus(),220);
- }
- btn.addEventListener('click',()=>toggle(!box.classList.contains('open')));
- close?.addEventListener('click',()=>toggle(false));
- document.addEventListener('click',e=>{
-   if(!document.getElementById('aiWidget').contains(e.target))toggle(false);
- });
-
- function reply(text){
-   const q=text.toLowerCase();
-   if(q.includes('aloe'))return 'Aloe Vera is a fresh, gentle choice with a moisturising-feel routine. It is a lovely everyday option for skin that prefers a softer cleanse.';
-   if(q.includes('honey'))return 'Honey is a rich, comforting option with a nourishing, soft-skin feel. It suits people who enjoy a warmer, sweeter soap experience.';
-   if(q.includes('papaya'))return 'Papaya has a fresh fruity character and is a popular choice for a smooth-feeling cleansing routine.';
-   if(q.includes('black seed')||q.includes('blackseed'))return 'Black Seed has an earthy herbal character and a deeper, clarifying-feel cleanse. It is especially popular with people who prefer a fresh, clean finish.';
-   if(q.includes('lemon'))return 'Lemon brings a bright citrus character and a refreshing cleansing experience.';
-   if(q.includes('cucumber'))return 'Cucumber gives a cool, fresh and gentle-feeling cleansing experience, making it a lovely choice for a simple everyday routine.';
-   if(q.includes('dry'))return 'For dry-feeling skin, I would start with Aloe Vera or Honey. Both have a softer, more moisturising-feel routine.';
-   if(q.includes('oily'))return 'For oily-feeling skin, Black Seed, Lemon or Papaya are good choices for a fresh, clarifying-feel cleanse.';
-   if(q.includes('sensitive'))return 'For sensitive-feeling skin, Cucumber is the gentlest match in the collection. Patch-test new skincare products if your skin is reactive.';
-   if(q.includes('price')||q.includes('cost'))return 'Every Ebyan soap is KSh 400.';
-   if(q.includes('delivery'))return 'Ebyan delivers across Kenya. The current cart shows the delivery charge before you place your order.';
-   return 'I can help you choose an Ebyan soap, compare benefits, check prices, explain the products, or help with delivery and orders.';
- }
- function send(text){
-   text=text.trim(); if(!text)return;
-   const user=document.createElement('div');user.className='ai-msg ai-user';user.textContent=text;
-   const bot=document.createElement('div');bot.className='ai-msg ai-bot';bot.textContent=reply(text);
-   body.append(user,bot);body.scrollTop=body.scrollHeight;
- }
- form.addEventListener('submit',e=>{e.preventDefault();send(input.value);input.value='';});
- [
-   ['Dry skin','I have dry skin'],
-   ['Sensitive skin','I have sensitive skin'],
-   ['Which soap?','Help me choose a soap'],
-   ['Prices','What are the prices?']
- ].forEach(([label,text])=>{
-   const q=document.createElement('button');q.type='button';q.textContent=label;q.onclick=()=>send(text);quick.appendChild(q);
- });
+ const btn=document.getElementById('aiBtn'),box=document.getElementById('aiBox'),close=document.getElementById('aiClose'),form=document.getElementById('aiForm'),input=document.getElementById('aiInput'),body=document.getElementById('aiBody'),quick=document.getElementById('aiQuick');if(!btn||!box||!form)return;
+ let history=[];
+ function toggle(open){box.classList.toggle('open',open);btn.setAttribute('aria-expanded',String(open));if(open)setTimeout(()=>input.focus(),180)}
+ btn.onclick=()=>toggle(!box.classList.contains('open'));close?.addEventListener('click',()=>toggle(false));
+ function siteContext(){return {page:location.pathname+location.hash,loggedIn:!!session,profile:session?{name:profile?.full_name||'',email:profile?.email||session.user.email||'',phone:profile?.phone||session.user.phone||'',preferred_contact:profile?.preferred_contact||''}:null,cart:Object.values(cart).map(x=>({name:x.name,quantity:x.qty,price:x.price})),site:{home:'#home',products:'#products',about:'#about',contact:'#contact',account:'ACCOUNT / MY ACCOUNT',cart:'cart button',checkout:'cart → CHECKOUT',benefits:'Explore More Benefits / soap-product.html',admin:'admin.html',receipt:'receipt.html',reset:'reset-password.html',customerCare:'0722 276 879',mpesa:['0722 276 879','0726 562 792']}}}
+ function fallback(text){const q=text.toLowerCase(),name=profile?.full_name?.trim();if(/^(hi|hello|hey|heya|hiya)\b/.test(q))return name?`Hey ${name}! ✦ Good to see you. What can I help you with today?`:`Hey! ✦ Welcome to Ebyan. What can I help you with today?`;if(/\b(what('?s| is) my name|my name|who am i)\b/.test(q))return name?`Your name is ${name} 😊 I remember you. What would you like to do next?`:`I don’t have your name saved yet. Sign in and save your profile and I’ll greet you by name.`;if(q.includes('thank'))return `You’re very welcome${name?', '+name:''}! ✦`;if(q.includes('checkout'))return 'Open your cart, tap CHECKOUT, enter your delivery details, then choose M-Pesa or Pay on Delivery. If you choose M-Pesa, pay to one of the listed Ebyan numbers and upload the screenshot before submitting.';if(q.includes('pay on delivery'))return 'Pay on Delivery is simple: choose it at checkout, confirm your order, and pay when your order arrives.';if(q.includes('screenshot')||q.includes('proof'))return 'For M-Pesa, make the payment first, then upload the M-Pesa confirmation screenshot in the checkout. Your proof stays private for verification.';if(q.includes('price')||q.includes('cost'))return 'The current Ebyan soap price is KSh 400 each.';if(q.includes('delivery'))return 'Ebyan delivers across Kenya. Checkout shows the current delivery charge before you confirm.';if(q.includes('dry'))return 'For dry-feeling skin, I’d start with Aloe Vera or Honey. Aloe Vera feels fresh; Honey has a warmer, sweeter feel.';if(q.includes('oily'))return 'For oily-feeling skin, Black Seed, Lemon or Papaya are good matches for a fresh, clarifying-feel cleanse.';if(q.includes('sensitive'))return 'For sensitive-feeling skin, Cucumber is the gentlest match in the current collection.';if(q.includes('aloe'))return 'Aloe Vera is a fresh, gentle everyday choice with a softer cleansing feel.';if(q.includes('honey'))return 'Honey is a warm, sweet option with a soft, nourishing-feel routine.';if(q.includes('papaya'))return 'Papaya has a fruity, refreshing character and a smooth-feeling cleanse.';if(q.includes('black seed')||q.includes('blackseed'))return 'Black Seed has an earthy herbal character and a fresh, clarifying-feel cleanse.';if(q.includes('lemon'))return 'Lemon has a bright citrus character and a refreshing cleanse.';if(q.includes('cucumber'))return 'Cucumber is cool, fresh and gentle-feeling, making it a lovely everyday option.';if(q.includes('account')||q.includes('profile'))return 'Open ACCOUNT to edit and save your personal information, view previous orders and sign out.';if(q.includes('reset')||q.includes('password'))return 'Use Forgot password? on the sign-in screen. The reset email opens the secure reset-password page where you can choose a new password.';return name?`I’m right here, ${name} ✦ I can help with products, prices, your account, cart, checkout, M-Pesa, Pay on Delivery, delivery, receipts, or just chat.`:`I’m Ask Ebyan ✦ I can help with the whole website, shopping, checkout, payments, accounts and casual questions.`}
+ async function send(text){text=text.trim();if(!text)return;const u=document.createElement('div');u.className='ai-msg ai-user';u.textContent=text;body.appendChild(u);body.scrollTop=body.scrollHeight;const typing=document.createElement('div');typing.className='ai-msg ai-bot';typing.textContent='Thinking…';body.appendChild(typing);body.scrollTop=body.scrollHeight;try{const r=await fetch(`${SUPABASE_URL}/functions/v1/ask_ebyan_v3`,{method:'POST',headers:{'Content-Type':'application/json',...(session?.access_token?{'Authorization':'Bearer '+session.access_token}:{})},body:JSON.stringify({message:text,history:history.slice(-12),context:siteContext()})});const j=await r.json();const reply=j.reply||fallback(text);typing.textContent=reply;history.push({role:'user',content:text},{role:'assistant',content:reply});}catch(e){const reply=fallback(text);typing.textContent=reply;history.push({role:'user',content:text},{role:'assistant',content:reply})}body.scrollTop=body.scrollHeight}
+ form.onsubmit=e=>{e.preventDefault();send(input.value);input.value=''};
+ [['Hi','Hello!'],['My name','What is my name?'],['Checkout help','How does checkout work?'],['Choose a soap','I have sensitive skin']].forEach(([label,text])=>{const q=document.createElement('button');q.type='button';q.textContent=label;q.onclick=()=>send(text);quick.appendChild(q)});
 })();
 </script>
-</body>
+<script id="eby-cart-benefits-runtime">
+(function(){
+const soapNames=['Aloe Vera','Honey','Papaya','Black Seed','Lemon','Cucumber'];
+function slugFor(n){return n.toLowerCase().replace(/\s+/g,'-')}
+function addButtons(){
+ const candidates=document.querySelectorAll('[class*="cart" i] [class*="item" i],[class*="cart-item" i],li');
+ candidates.forEach(el=>{
+   if(el.querySelector('.eby-cart-benefit')) return;
+   const txt=(el.textContent||'').trim();
+   const name=soapNames.find(n=>txt.toLowerCase().includes(n.toLowerCase()));
+   if(!name) return;
+   const a=document.createElement('a');a.className='eby-cart-benefit';a.href='soap-benefits.html?soap='+encodeURIComponent(name);a.textContent='✦ Explore benefits';
+   el.appendChild(a);
+ });
+}
+new MutationObserver(addButtons).observe(document.body,{subtree:true,childList:true});
+document.addEventListener('DOMContentLoaded',addButtons); setTimeout(addButtons,500);setTimeout(addButtons,1500);
+})();
+</script><script id="ebyan-everything-action-runtime">
+(function(){
+ document.addEventListener('click',e=>{const el=e.target.closest('button,a,.cta,.card,.cart-btn,.head-btn,.primary,.bridge-btn');if(!el)return;el.classList.remove('ebyan-press');void el.offsetWidth;el.classList.add('ebyan-press');setTimeout(()=>el.classList.remove('ebyan-press'),320);});
+})();
+</script>
+<script id="ebyan-everything-animation-runtime">
+(function(){
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ripple(el,e){if(reduce||!el||el.disabled)return; if(getComputedStyle(el).position==='static')el.style.position='relative'; if(getComputedStyle(el).overflow==='visible')el.style.overflow='hidden'; const r=document.createElement('span');r.className='ebyan-ripple';const rect=el.getBoundingClientRect();const size=Math.max(rect.width,rect.height)*.55;r.style.width=r.style.height=size+'px';r.style.left=(e.clientX-rect.left-size/2)+'px';r.style.top=(e.clientY-rect.top-size/2)+'px';el.appendChild(r);setTimeout(()=>r.remove(),600)}
+  function bind(root=document){root.querySelectorAll('button,a,.btn').forEach(el=>{if(el.dataset.ebyanMotion)return;el.dataset.ebyanMotion='1';el.addEventListener('pointerdown',e=>ripple(el,e));el.addEventListener('click',()=>{if(!reduce){el.classList.remove('ebyan-press');void el.offsetWidth;el.classList.add('ebyan-press');}})});}
+  function reveal(){document.querySelectorAll('.card,.feature,.panel,.order,.item,.benefit-bridge').forEach((el,i)=>{if(el.dataset.ebyanReveal)return;el.dataset.ebyanReveal='1';el.style.animationDelay=Math.min(i*.035,.35)+'s';el.classList.add('ebyan-reveal')})}
+  bind();reveal();new MutationObserver(m=>{if(m.some(x=>x.addedNodes.length)){bind();reveal()}}).observe(document.body,{subtree:true,childList:true});
+})();
+</script><script id="ebyan-page-navigation">
+(function(){
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('a[href="soap-benefits.html"]').forEach(a=>a.addEventListener('click',function(e){
+    if(reduce || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault(); document.body.classList.add('page-leave');
+    setTimeout(()=>location.href=this.href,280);
+  }));
+})();
+</script></body>
 </html>
