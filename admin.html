@@ -5,17 +5,18 @@
 <section id="app" class="app"><aside class="side"><div class="logo">🌿 Ebyan Admin</div><nav class="nav"><button data-page="dashboard" class="active"><span class="ico">⌂</span>Dashboard</button><button data-page="orders"><span class="ico">▣</span>Orders</button><button data-page="products"><span class="ico">◆</span>Products</button><button data-page="customers"><span class="ico">♙</span>Customers</button><button data-page="proofs"><span class="ico">✓</span>Payment Proofs</button><button data-page="cart"><span class="ico">🛒</span>Cart & Checkout</button><button data-page="settings"><span class="ico">⚙</span>Store Settings</button><button data-page="editor"><span class="ico">✎</span>Website Editing</button><button id="openStore"><span class="ico">↗</span>Open Store</button><button id="logout"><span class="ico">↪</span>Log Out</button></nav></aside><main class="main"><div class="top"><div><div class="eyebrow">Ebyan Cosmetics · Admin only</div><h1 id="pageTitle">Dashboard</h1></div><button class="btn soft" id="refresh">Refresh</button></div><div id="content" class="fade"></div></main></section>
 <div id="modalBack" class="modalback"><div class="modal"><button class="close" id="modalClose">×</button><div id="modalContent"></div></div></div><div id="toast" class="toast"></div>
 <script>
-const URL='https://ygcoolohknjfcxmcwbsm.supabase.co',KEY='sb_publishable_Zmog-FAbrdz6cxjW-NtxJQ_B4q_Dzgb';
+const SUPABASE_URL='https://ygcoolohknjfcxmcwbsm.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlnY29vbG9oa25qZmN4bWN3YnNtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgwMTg5NjQsImV4cCI6MjEwMzU5NDk2NH0.osJ600U2O3E_7qLavoFsFSLx1PAJdOUhkXfR9xQF3Qc';
 let sb=null, profile=null, current='dashboard', supabaseLoading=null;
 const $=id=>document.getElementById(id);
 async function ensureSupabase(){
   if(sb) return sb;
   if(supabaseLoading) return supabaseLoading;
   supabaseLoading=(async()=>{
-    if(window.supabase?.createClient){sb=window.supabase.createClient(URL,KEY);return sb}
+    if(window.supabase?.createClient){sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);return sb}
     const sources=['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2','https://unpkg.com/@supabase/supabase-js@2'];
     for(const src of sources){
-      try{await new Promise((resolve,reject)=>{const sc=document.createElement('script');sc.src=src;sc.async=true;sc.onload=resolve;sc.onerror=reject;document.head.appendChild(sc)});if(window.supabase?.createClient){sb=window.supabase.createClient(URL,KEY);return sb}}catch(_){ }
+      try{await new Promise((resolve,reject)=>{const sc=document.createElement('script');sc.src=src;sc.async=true;sc.onload=resolve;sc.onerror=reject;document.head.appendChild(sc)});if(window.supabase?.createClient){sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);return sb}}catch(_){ }
     }
     throw new Error('The secure login service could not be loaded. Please refresh and try again.');
   })();
