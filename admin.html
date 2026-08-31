@@ -1,66 +1,98 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ebyan Admin</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><style>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ebyan Admin</title><style>
 :root{--g:#174d3a;--g2:#2c6a52;--p:#f3f7f4;--line:#dfe8e2;--ink:#17382d;--muted:#738078;--white:#fff;--soft:#eaf3ed;--danger:#fff0f0;--gold:#d7a84b}*{box-sizing:border-box}body{margin:0;background:#f5f7f6;color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}#login{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(135deg,#edf5ef,#fff)}.loginbox{width:min(420px,100%);background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px;box-shadow:0 25px 80px #17382d18}.loginbox h1{margin:8px 0 4px}.muted{color:var(--muted);font-size:13px}.field{margin:14px 0}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid #d8e3dc;border-radius:10px;padding:11px 12px;outline:none;background:#fff}.field textarea{min-height:90px}.btn{border:0;border-radius:10px;padding:10px 14px;font-weight:800}.primary{background:var(--g);color:#fff}.soft{background:var(--soft);color:var(--g)}.danger{background:var(--danger);color:#a02d2d}.ghost{background:#fff;border:1px solid var(--line);color:var(--g)}.app{display:none}.side{position:fixed;inset:0 auto 0 0;width:232px;background:var(--g);color:#fff;padding:18px 16px;z-index:20}.logo{font-weight:900;font-size:17px;padding:12px 14px 20px}.nav button{display:flex;align-items:center;gap:9px;width:100%;border:0;background:transparent;color:#dcebe3;padding:11px 12px;border-radius:10px;margin:2px 0;text-align:left;font-size:13px}.nav button.active,.nav button:hover{background:#ffffff16;color:#fff}.nav .ico{width:18px;text-align:center}.main{margin-left:232px;padding:24px;min-height:100vh}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.top h1{font-size:28px;margin:4px 0}.top .eyebrow{font-size:12px;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:17px}.metric small{color:#77827b;font-size:12px}.metric strong{display:block;font-size:24px;margin-top:8px}.notice{background:#edf6f0;border-radius:11px;padding:12px;color:#2b5a43;font-size:12px}.section{margin-top:16px}.section h2{font-size:17px;margin:0 0 12px}.orders{display:grid;gap:10px}.order{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px;display:flex;justify-content:space-between;gap:15px;align-items:center}.order-main{min-width:0}.order-no{font-weight:900}.order-meta{font-size:11px;color:var(--muted);margin-top:4px}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{font-size:10px;font-weight:800;padding:6px 9px;border-radius:999px;background:#edf6f0;color:#286044}.chip.warn{background:#fff4db;color:#956700}.chip.danger{background:#fff0d9;color:#a06b00}.chip.blue{background:#eaf1ff;color:#315fba}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.toolbar{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}.tablewrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:15px}table{width:100%;border-collapse:collapse}th,td{padding:12px;text-align:left;border-bottom:1px solid #edf1ee;font-size:12px;white-space:nowrap}th{font-size:11px;color:#6d786f;background:#fbfcfb}.actions{display:flex;gap:6px;flex-wrap:wrap}.empty{text-align:center;padding:45px;color:var(--muted)}.modalback{position:fixed;inset:0;background:#0d241a66;backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modalback.open{display:flex}.modal{width:min(620px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:20px;padding:22px;position:relative;box-shadow:0 30px 90px #0b281a40}.close{position:absolute;right:12px;top:9px;border:0;background:none;font-size:26px;color:#65726b}.toast{position:fixed;right:20px;bottom:20px;background:#17382d;color:#fff;padding:12px 16px;border-radius:11px;opacity:0;transform:translateY(10px);transition:.22s;z-index:80}.toast.show{opacity:1;transform:none}.fade{animation:fade .3s ease}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@media(max-width:900px){.side{position:static;width:100%;padding:10px}.logo{padding:7px 10px}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap;width:auto}.main{margin:0;padding:14px}.cards{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.order{align-items:flex-start;flex-direction:column}.top{align-items:flex-start}.top .btn{display:none}}@media(max-width:520px){.cards{grid-template-columns:1fr}.main{padding-bottom:30px}.card{border-radius:14px}}
 </style></head><body>
-<section id="login"><div class="loginbox"><div style="font-size:36px">🌿</div><h1>Ebyan Admin</h1><div class="muted">Ebyan Cosmetics · Admin only</div><div class="field"><label>Email</label><input id="email" type="email" autocomplete="username"></div><div class="field"><label>Password</label><input id="password" type="password" autocomplete="current-password"></div><button class="btn primary" id="loginBtn" style="width:100%">Sign In</button><button class="btn ghost" id="resetBtn" style="width:100%;margin-top:8px">Forgot password?</button><p id="loginMsg" class="muted"></p></div></section>
+<section id="login"><div class="loginbox"><img src="ask-ebyan-logo.png" alt="Ebyan" style="width:86px;height:86px;object-fit:contain;display:block;margin:0 auto 8px"><div style="font-size:36px">🌿</div><h1>Ebyan Admin</h1><div class="muted">Ebyan Cosmetics · Admin only</div><div class="field"><label>Email</label><input id="email" type="email" autocomplete="username"></div><div class="field"><label>Password</label><input id="password" type="password" autocomplete="current-password"></div><button class="btn primary" id="loginBtn" style="width:100%">Sign In</button><button class="btn ghost" id="resetBtn" style="width:100%;margin-top:8px">Forgot password?</button><p id="loginMsg" class="muted"></p></div></section>
 <section id="app" class="app"><aside class="side"><div class="logo">🌿 Ebyan Admin</div><nav class="nav"><button data-page="dashboard" class="active"><span class="ico">⌂</span>Dashboard</button><button data-page="orders"><span class="ico">▣</span>Orders</button><button data-page="products"><span class="ico">◆</span>Products</button><button data-page="customers"><span class="ico">♙</span>Customers</button><button data-page="proofs"><span class="ico">✓</span>Payment Proofs</button><button data-page="cart"><span class="ico">🛒</span>Cart & Checkout</button><button data-page="settings"><span class="ico">⚙</span>Store Settings</button><button data-page="editor"><span class="ico">✎</span>Website Editing</button><button id="openStore"><span class="ico">↗</span>Open Store</button><button id="logout"><span class="ico">↪</span>Log Out</button></nav></aside><main class="main"><div class="top"><div><div class="eyebrow">Ebyan Cosmetics · Admin only</div><h1 id="pageTitle">Dashboard</h1></div><button class="btn soft" id="refresh">Refresh</button></div><div id="content" class="fade"></div></main></section>
 <div id="modalBack" class="modalback"><div class="modal"><button class="close" id="modalClose">×</button><div id="modalContent"></div></div></div><div id="toast" class="toast"></div>
 <script>
 const URL='https://ygcoolohknjfcxmcwbsm.supabase.co',KEY='sb_publishable_Zmog-FAbrdz6cxJQ_B4q_Dzgb';
-const sb=supabase.createClient(URL,KEY);const $=id=>document.getElementById(id);let profile=null,current='dashboard';
+let sb=null, profile=null, current='dashboard', supabaseLoading=null;
+const $=id=>document.getElementById(id);
+async function ensureSupabase(){
+  if(sb) return sb;
+  if(supabaseLoading) return supabaseLoading;
+  supabaseLoading=(async()=>{
+    if(window.supabase?.createClient){sb=window.supabase.createClient(URL,KEY);return sb}
+    const sources=['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2','https://unpkg.com/@supabase/supabase-js@2'];
+    for(const src of sources){
+      try{await new Promise((resolve,reject)=>{const sc=document.createElement('script');sc.src=src;sc.async=true;sc.onload=resolve;sc.onerror=reject;document.head.appendChild(sc)});if(window.supabase?.createClient){sb=window.supabase.createClient(URL,KEY);return sb}}catch(_){ }
+    }
+    throw new Error('The secure login service could not be loaded. Please refresh and try again.');
+  })();
+  try{return await supabaseLoading}finally{supabaseLoading=null}
+}
+
 const money=n=>'KSh '+Number(n||0).toLocaleString();const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2200)}
 function modal(html){$('modalContent').innerHTML=html;$('modalBack').classList.add('open')}function closeModal(){$('modalBack').classList.remove('open')}$('modalClose').onclick=closeModal;$('modalBack').onclick=e=>{if(e.target.id==='modalBack')closeModal()};
 async function loadProfile(){
+  await ensureSupabase();
   const {data:{user},error:userError}=await sb.auth.getUser();
-  if(userError||!user){profile=null;return null}
+  if(userError) throw userError;
+  if(!user){profile=null;return null}
   const r=await sb.from('profiles').select('*').eq('id',user.id).maybeSingle();
-  if(r.error){profile=null;throw r.error}
+  if(r.error) throw r.error;
   profile=r.data;
-  return profile
+  return profile;
 }
 async function auth(){
   try{
-    const {data:{user},error}=await sb.auth.getUser();
-    if(error||!user){$('login').style.display='grid';return}
+    await ensureSupabase();
+    const {data:{session}}=await sb.auth.getSession();
+    if(!session){$('login').style.display='grid';return}
     await loadProfile();
-    const allowed=['admin','manager'].includes(profile?.role);
+    const allowed=['admin','manager'].includes(profile?.role) && profile?.disabled!==true;
     if(allowed) showApp();
-    else {await sb.auth.signOut();$('login').style.display='grid';$('loginMsg').textContent='This account is not an administrator.'}
-  }catch(e){$('login').style.display='grid';$('loginMsg').textContent='Could not load admin access. '+(e.message||'Please try again.')}
+    else {await sb.auth.signOut();$('login').style.display='grid';$('loginMsg').textContent='This account is not authorized for Admin access.'}
+  }catch(e){
+    $('login').style.display='grid';
+    $('loginMsg').textContent=e?.message||'Could not load Admin login. Please refresh.';
+  }
 }
 function showApp(){$('login').style.display='none';$('app').style.display='block';go('dashboard')}
 async function signIn(){
-  const e=$('email').value.trim(),p=$('password').value;
-  if(!e||!p){$('loginMsg').textContent='Enter your email and password.';return}
-  $('loginBtn').disabled=true;$('loginBtn').textContent='Signing In…';$('loginMsg').textContent='';
+  $('loginMsg').textContent='';
   try{
+    await ensureSupabase();
+    const e=$('email').value.trim(),p=$('password').value;
+    if(!e||!p){$('loginMsg').textContent='Enter your email and password.';return}
+    $('loginBtn').disabled=true;$('loginBtn').textContent='Signing In…';
     const r=await sb.auth.signInWithPassword({email:e,password:p});
     if(r.error) throw r.error;
     await loadProfile();
-    const allowed=['admin','manager'].includes(profile?.role);
-    if(!allowed){await sb.auth.signOut();throw new Error('This account is not an administrator.')}
+    const allowed=['admin','manager'].includes(profile?.role) && profile?.disabled!==true;
+    if(!allowed){await sb.auth.signOut();throw new Error('This account is not authorized for Admin access.')}
     showApp();
-  }catch(e){$('loginMsg').textContent=e.message||'Sign in failed.';try{await sb.auth.signOut()}catch(_){}}
-  finally{$('loginBtn').disabled=false;$('loginBtn').textContent='Sign In'}
+  }catch(e){
+    $('loginMsg').textContent=e?.message||'Sign in failed. Check your email and password.';
+    $('loginMsg').style.color='#a02d2d';
+    try{if(sb) await sb.auth.signOut()}catch(_){ }
+  }finally{$('loginBtn').disabled=false;$('loginBtn').textContent='Sign In'}
 }
 async function resetPassword(){
-  const e=$('email').value.trim();
-  if(!e){$('loginMsg').textContent='Enter your admin email first.';return}
-  $('resetBtn').disabled=true;$('resetBtn').textContent='Sending…';$('loginMsg').textContent='';
+  $('loginMsg').textContent='';
   try{
+    await ensureSupabase();
+    const e=$('email').value.trim();
+    if(!e){$('loginMsg').textContent='Enter your admin email first.';return}
+    $('resetBtn').disabled=true;$('resetBtn').textContent='Sending…';
     const redirectTo=new URL('reset-password.html',location.href).href;
     const r=await sb.auth.resetPasswordForEmail(e,{redirectTo});
     if(r.error) throw r.error;
-    $('loginMsg').textContent='Password reset email sent. Check your inbox.';
-  }catch(err){$('loginMsg').textContent=err.message||'Could not send the reset email.'}
+    $('loginMsg').textContent='Password reset email sent. Check your inbox.';$('loginMsg').style.color='#286044';
+  }catch(err){$('loginMsg').textContent=err?.message||'Could not send the reset email.';$('loginMsg').style.color='#a02d2d'}
   finally{$('resetBtn').disabled=false;$('resetBtn').textContent='Forgot password?'}
 }
 
 $('email').value='anasfr181@gmail.com';
-$('loginBtn').addEventListener('click',function(ev){ev.preventDefault();signIn();});
-$('resetBtn').addEventListener('click',function(ev){ev.preventDefault();resetPassword();});
-$('password').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();signIn();}});
-$('email').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();signIn();}});$('logout').onclick=async()=>{await sb.auth.signOut();location.reload()};$('openStore').onclick=()=>window.open('index.html','_blank');$('refresh').onclick=()=>go(current);
+$('login').addEventListener('submit',e=>{e.preventDefault();signIn()});
+$('loginBtn').addEventListener('click',e=>{e.preventDefault();signIn()});
+$('resetBtn').addEventListener('click',e=>{e.preventDefault();resetPassword()});
+$('password').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();signIn()}});
+$('email').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();signIn()}});
+$('logout').onclick=async()=>{try{if(sb) await sb.auth.signOut()}finally{location.reload()}};
+$('openStore').onclick=()=>window.open('index.html','_blank');
+$('refresh').onclick=()=>go(current);
 function go(p){current=p;document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===p));const titles={dashboard:'Dashboard',orders:'Orders',products:'Products',customers:'Customers',proofs:'Payment Proofs',cart:'Cart & Checkout',settings:'Store Settings',editor:'Website Editing'};$('pageTitle').textContent=titles[p]||p;({dashboard,orders,products,customers,proofs,cart,settings,editor}[p])()}
 document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>go(b.dataset.page));
 async function dashboard(){const [o,p,u]=await Promise.all([sb.from('orders').select('id,total,status,created_at,customer_name,customer_phone,town_area,payment_method,order_number').order('created_at',{ascending:false}),sb.from('products').select('id,stock,price'),sb.from('profiles').select('id')]);const orders=o.data||[],products=p.data||[],rev=orders.filter(x=>x.status!=='cancelled').reduce((s,x)=>s+Number(x.total||0),0);$('content').innerHTML=`<div class="cards fade"><div class="card metric"><small>Orders</small><strong>${orders.length}</strong></div><div class="card metric"><small>Payment proofs to review</small><strong>${orders.filter(x=>x.payment_proof_path&&!x.payment_proof_reviewed_at).length}</strong></div><div class="card metric"><small>Confirmed / active</small><strong>${orders.filter(x=>['confirmed','processing','out_for_delivery'].includes(x.status)).length}</strong></div><div class="card metric"><small>Order value</small><strong>${money(rev)}</strong></div></div><div class="card section fade"><div class="notice"><b>Admin control center.</b> Products, prices, images, benefits, customers, orders, payment proofs and cart/checkout settings can be managed here.</div><h2 style="margin-top:22px">Latest orders</h2><div class="orders">${orders.slice(0,8).map(orderCard).join('')||'<div class="empty">No orders yet.</div>'}</div></div>`}

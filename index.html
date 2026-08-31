@@ -169,6 +169,23 @@ body{overflow-x:hidden;}
  .aibox{width:min(350px,calc(100vw - 20px))!important;max-height:72dvh!important;}
 }
 </style>
+
+<style id="ebyan-mobile-more-only">
+@media(max-width:760px){
+  .ebyan-mobile-nav{position:sticky;top:62px;z-index:180;height:44px;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);box-shadow:0 4px 14px rgba(20,50,30,.06)}
+  .ebyan-mobile-nav a,.ebyan-mobile-more-btn{border:0;background:transparent;text-align:center;color:#29472f;font:800 8px Arial,sans-serif;letter-spacing:.09em;padding:12px 2px;position:relative;text-decoration:none;cursor:pointer}
+  .ebyan-mobile-more-btn:after{content:"";position:absolute;left:50%;bottom:5px;width:0;height:2px;border-radius:2px;background:var(--green2);transform:translateX(-50%);transition:width .22s ease}
+  .ebyan-mobile-more-btn.active:after{width:22px}
+  .ebyan-mobile-more-menu{position:fixed;display:block;left:12px;right:12px;top:112px;z-index:9999;background:#fff;border:1px solid #dfe8e1;border-radius:16px;box-shadow:0 24px 60px rgba(20,55,38,.22);padding:8px;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px) scale(.97);transform-origin:top center;transition:opacity .22s ease,transform .28s cubic-bezier(.2,.8,.2,1),visibility 0s linear .28s}
+  .ebyan-mobile-more-menu.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1);transition-delay:0s}
+  .ebyan-mobile-more-menu a{display:flex;align-items:center;min-height:42px;padding:0 14px;border-radius:10px;color:#173b2d;text-decoration:none;font:800 9px Arial,sans-serif;letter-spacing:.02em;opacity:0;transform:translateY(-5px)}
+  .ebyan-mobile-more-menu.open a{animation:ebyanMobileMoreIn .28s both}
+  .ebyan-mobile-more-menu.open a:nth-child(2){animation-delay:.04s}.ebyan-mobile-more-menu.open a:nth-child(3){animation-delay:.08s}.ebyan-mobile-more-menu.open a:nth-child(4){animation-delay:.12s}.ebyan-mobile-more-menu.open a:nth-child(5){animation-delay:.16s}.ebyan-mobile-more-menu.open a:nth-child(6){animation-delay:.20s}
+  .ebyan-mobile-more-menu a:hover,.ebyan-mobile-more-menu a:active{background:#eff6f0;transform:translateX(3px)}
+  @keyframes ebyanMobileMoreIn{to{opacity:1;transform:none}}
+}
+@media(min-width:761px){.ebyan-mobile-nav,.ebyan-mobile-more-menu{display:none!important}}
+</style>
 </head>
 <body><div class="ebyan-action" id="actionAnimation"><div class="ebyan-action-card"><div class="ebyan-check">✓</div><b id="actionTitle">Done</b><span id="actionSub">Success</span></div></div>
 
@@ -182,6 +199,21 @@ body{overflow-x:hidden;}
 <button class="cart-btn" id="cartBtn" aria-label="Open cart">🛒</button>
 </div>
 </header>
+<div class="ebyan-mobile-nav" id="ebyanMobileNav" aria-label="Mobile navigation">
+  <a href="#home">HOME</a>
+  <a href="#products">PRODUCTS</a>
+  <button type="button" class="ebyan-mobile-more-btn" id="ebyanMobileMoreBtn" aria-expanded="false">MORE</button>
+  <a href="#about">ABOUT US</a>
+</div>
+<div class="ebyan-mobile-more-menu" id="ebyanMobileMoreMenu" aria-hidden="true">
+  <a href="soap-benefits.html">Explore</a>
+  <a href="receipt.html">Receipts</a>
+  <a href="#account" data-mobile-more-account>My Account</a>
+  <a href="#checkout" data-mobile-more-checkout>Checkout &amp; Payments</a>
+  <a href="#checkout" data-mobile-more-mpesa>M-Pesa Checkout</a>
+  <a href="reset-password.html">Password &amp; Security</a>
+</div>
+
 
 <section class="hero" id="home">
 <div class="hero-copy"><span class="kicker">EBYAN NATURAL SOAP</span><h1>Natural<br><em>Handmade Soap.</em></h1><p>Everyday cleansing, beautifully made. Discover the Ebyan natural soap collection.</p><a class="cta" href="#products">Explore soaps →</a></div>
@@ -718,5 +750,21 @@ document.addEventListener('DOMContentLoaded',addButtons); setTimeout(addButtons,
     setTimeout(()=>location.href=this.href,280);
   }));
 })();
-</script></body>
+</script>
+<script id="ebyan-mobile-more-only-runtime">
+(function(){
+  const btn=document.getElementById('ebyanMobileMoreBtn');
+  const menu=document.getElementById('ebyanMobileMoreMenu');
+  if(!btn||!menu)return;
+  function close(){menu.classList.remove('open');btn.classList.remove('active');btn.setAttribute('aria-expanded','false');menu.setAttribute('aria-hidden','true');}
+  btn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();const open=!menu.classList.contains('open');if(open){menu.classList.add('open');btn.classList.add('active');btn.setAttribute('aria-expanded','true');menu.setAttribute('aria-hidden','false');}else close();});
+  menu.addEventListener('click',function(e){const a=e.target.closest('a');if(!a)return;setTimeout(close,120);});
+  menu.querySelector('[data-mobile-more-account]')?.addEventListener('click',function(e){e.preventDefault();close();document.getElementById('accountBtn')?.click();});
+  menu.querySelector('[data-mobile-more-checkout]')?.addEventListener('click',function(e){e.preventDefault();close();document.getElementById('cartBtn')?.click();});
+  menu.querySelector('[data-mobile-more-mpesa]')?.addEventListener('click',function(e){e.preventDefault();close();document.getElementById('cartBtn')?.click();});
+  document.addEventListener('click',function(e){if(!menu.contains(e.target)&&e.target!==btn)close();});
+  window.addEventListener('resize',function(){if(window.innerWidth>760)close();});
+})();
+</script>
+</body>
 </html>
