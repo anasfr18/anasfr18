@@ -45,12 +45,22 @@ async function signIn(){
 }
 async function resetPassword(){
   const e=$('email').value.trim();
-  if(!e)return $('loginMsg').textContent='Enter your admin email first.';
-  const redirectTo=location.origin+location.pathname;
-  const r=await sb.auth.resetPasswordForEmail(e,{redirectTo});
-  $('loginMsg').textContent=r.error?r.error.message:'Password reset email sent. Check your inbox.';
+  if(!e){$('loginMsg').textContent='Enter your admin email first.';return}
+  $('resetBtn').disabled=true;$('resetBtn').textContent='Sending…';$('loginMsg').textContent='';
+  try{
+    const redirectTo=new URL('reset-password.html',location.href).href;
+    const r=await sb.auth.resetPasswordForEmail(e,{redirectTo});
+    if(r.error) throw r.error;
+    $('loginMsg').textContent='Password reset email sent. Check your inbox.';
+  }catch(err){$('loginMsg').textContent=err.message||'Could not send the reset email.'}
+  finally{$('resetBtn').disabled=false;$('resetBtn').textContent='Forgot password?'}
 }
-$('loginBtn').onclick=signIn;$('resetBtn').onclick=resetPassword;$('password').onkeydown=e=>{if(e.key==='Enter')signIn()};$('logout').onclick=async()=>{await sb.auth.signOut();location.reload()};$('openStore').onclick=()=>window.open('index.html','_blank');$('refresh').onclick=()=>go(current);
+
+$('email').value='anasfr181@gmail.com';
+$('loginBtn').addEventListener('click',function(ev){ev.preventDefault();signIn();});
+$('resetBtn').addEventListener('click',function(ev){ev.preventDefault();resetPassword();});
+$('password').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();signIn();}});
+$('email').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();signIn();}});$('logout').onclick=async()=>{await sb.auth.signOut();location.reload()};$('openStore').onclick=()=>window.open('index.html','_blank');$('refresh').onclick=()=>go(current);
 function go(p){current=p;document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===p));const titles={dashboard:'Dashboard',orders:'Orders',products:'Products',customers:'Customers',proofs:'Payment Proofs',cart:'Cart & Checkout',settings:'Store Settings',editor:'Website Editing'};$('pageTitle').textContent=titles[p]||p;({dashboard,orders,products,customers,proofs,cart,settings,editor}[p])()}
 document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>go(b.dataset.page));
 async function dashboard(){const [o,p,u]=await Promise.all([sb.from('orders').select('id,total,status,created_at,customer_name,customer_phone,town_area,payment_method,order_number').order('created_at',{ascending:false}),sb.from('products').select('id,stock,price'),sb.from('profiles').select('id')]);const orders=o.data||[],products=p.data||[],rev=orders.filter(x=>x.status!=='cancelled').reduce((s,x)=>s+Number(x.total||0),0);$('content').innerHTML=`<div class="cards fade"><div class="card metric"><small>Orders</small><strong>${orders.length}</strong></div><div class="card metric"><small>Payment proofs to review</small><strong>${orders.filter(x=>x.payment_proof_path&&!x.payment_proof_reviewed_at).length}</strong></div><div class="card metric"><small>Confirmed / active</small><strong>${orders.filter(x=>['confirmed','processing','out_for_delivery'].includes(x.status)).length}</strong></div><div class="card metric"><small>Order value</small><strong>${money(rev)}</strong></div></div><div class="card section fade"><div class="notice"><b>Admin control center.</b> Products, prices, images, benefits, customers, orders, payment proofs and cart/checkout settings can be managed here.</div><h2 style="margin-top:22px">Latest orders</h2><div class="orders">${orders.slice(0,8).map(orderCard).join('')||'<div class="empty">No orders yet.</div>'}</div></div>`}

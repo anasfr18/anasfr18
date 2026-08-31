@@ -168,16 +168,6 @@ body{overflow-x:hidden;}
  .ai{right:12px!important;bottom:12px!important;}
  .aibox{width:min(350px,calc(100vw - 20px))!important;max-height:72dvh!important;}
 }
-
-.mobile-nav{display:none}
-@media(max-width:760px){
-.mobile-nav{display:flex;position:sticky;top:0;z-index:180;background:#fff;border-top:1px solid #e4ebe4;border-bottom:1px solid #e4ebe4;align-items:center;justify-content:center;gap:0;box-shadow:0 4px 14px rgba(20,50,25,.05)}
-.mobile-nav a{flex:1;text-align:center;padding:12px 4px;color:#29472f;text-decoration:none;font:800 7px Arial,sans-serif;letter-spacing:.08em;white-space:nowrap;position:relative;transition:transform .2s ease,background .2s ease}
-.mobile-nav a:active{transform:scale(.94)}
-.mobile-nav .more-trigger{background:#174b27;color:#fff}
-.mobile-nav .more-trigger::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.32) 50%,transparent 80%);transform:translateX(-120%);transition:transform .45s ease;pointer-events:none}
-.mobile-nav .more-trigger:hover::after,.mobile-nav .more-trigger:focus-visible::after{transform:translateX(120%)}
-}
 </style>
 </head>
 <body><div class="ebyan-action" id="actionAnimation"><div class="ebyan-action-card"><div class="ebyan-check">✓</div><b id="actionTitle">Done</b><span id="actionSub">Success</span></div></div>
@@ -192,12 +182,6 @@ body{overflow-x:hidden;}
 <button class="cart-btn" id="cartBtn" aria-label="Open cart">🛒</button>
 </div>
 </header>
-<nav class="mobile-nav" aria-label="Mobile navigation">
-<a href="#home">HOME</a>
-<a href="#products">PRODUCTS</a>
-<a href="#more" class="more-trigger" id="mobileMoreBtn">MORE</a>
-<a href="#about">ABOUT US</a>
-</nav>
 
 <section class="hero" id="home">
 <div class="hero-copy"><span class="kicker">EBYAN NATURAL SOAP</span><h1>Natural<br><em>Handmade Soap.</em></h1><p>Everyday cleansing, beautifully made. Discover the Ebyan natural soap collection.</p><a class="cta" href="#products">Explore soaps →</a></div>
@@ -531,10 +515,6 @@ $('#floatingCartBtn').onclick=openCart;
 $('#checkoutBtn').onclick=()=>Object.keys(cart).length?openCheckout():(action('Your cart is empty','Choose a soap before checkout'));
 $('#accountBtn').onclick=account;
 const moreBtn=$('#moreBtn');
-
-const mobileMoreBtn=$('#mobileMoreBtn');
-if(mobileMoreBtn) mobileMoreBtn.onclick=(e)=>{e.preventDefault();show('moreOverlay');action('More opened','Everything you need is here');};
-
 if(moreBtn) moreBtn.onclick=(e)=>{e.preventDefault();show('moreOverlay');action('More opened','Everything you need is here');};
 $('#moreAccount')?.addEventListener('click',async e=>{e.preventDefault();hide('moreOverlay');await account();});
 $('#moreCheckoutHelp')?.addEventListener('click',e=>{e.preventDefault();const box=$('#moreHelp');box.style.display='block';box.innerHTML='<b>Checkout help</b><br>Enter your name, Kenyan phone number, delivery address and town. Choose <b>Pay on Delivery</b> to pay when the order arrives, or choose <b>M-Pesa</b>, send the exact total to the Ebyan number shown at checkout, then upload the M-Pesa confirmation screenshot.';});
