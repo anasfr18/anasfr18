@@ -5,4 +5,107 @@
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
+<!-- EBYAN MOBILE POLISH -->
+<style id="ebyan-mobile-polish">
+/* Ebyan mobile-only visual polish — desktop remains unchanged. */
+@media (max-width:760px){
+  html{overflow-x:hidden}
+  body{overflow-x:hidden;background:#fff}
+  header{height:92px!important;padding:0 14px!important;gap:0!important;display:flex!important;align-items:flex-start!important;position:sticky!important;background:rgba(255,255,255,.94)!important;backdrop-filter:blur(20px)!important;box-shadow:0 8px 30px rgba(18,48,27,.06)!important}
+  .brand{height:56px!important;gap:8px!important;align-items:center!important}
+  .brand img{width:38px!important;height:38px!important}
+  .brand b{display:block!important;font-size:11px!important;letter-spacing:.16em!important}
+  .head{margin-left:auto!important;height:56px!important;gap:6px!important;display:flex!important}
+  .top-search{font-size:0!important;width:36px!important;height:36px!important;border:1px solid #d7e2d7!important;border-radius:50%!important;background:#f8fbf7!important;position:relative!important;padding:0!important}
+  .top-search:before{content:'⌕';font-size:18px;color:#315f39;line-height:1}
+  .care{display:none!important}
+  .account-login-btn{font-size:0!important;width:36px!important;height:36px!important;border:1px solid #d7e2d7!important;border-radius:50%!important;background:#f8fbf7!important;position:relative!important;padding:0!important}
+  .account-login-btn:before{content:'◯';font-size:16px;color:#315f39}
+  .cart-btn{width:36px!important;height:36px!important;border-radius:50%!important;background:#174b27!important;color:#fff!important;border:0!important;font-size:15px!important;box-shadow:0 7px 18px rgba(23,75,39,.18)!important}
+  .nav{position:absolute!important;left:14px!important;right:14px!important;bottom:0!important;height:36px!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:7px!important;overflow-x:auto!important;scrollbar-width:none!important;margin:0!important;padding:0 0 5px!important}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a,.more-nav{flex:0 0 auto!important;padding:7px 10px!important;border:1px solid #dce6dc!important;border-radius:999px!important;background:#fff!important;color:#315f39!important;font-size:6px!important;letter-spacing:.13em!important;box-shadow:0 3px 10px rgba(23,75,39,.04)!important}
+  .nav a:first-child{background:#174b27!important;color:#fff!important;border-color:#174b27!important}
+  .more-nav{font-weight:700!important}
+  .hero{display:flex!important;flex-direction:column!important;min-height:0!important;background:#f7f9f6!important}
+  .hero-photo{order:1!important;min-height:38vh!important;max-height:410px!important;background:#e8eee5!important;padding:10px!important}
+  .hero-photo img{width:100%!important;height:100%!important;object-fit:contain!important;border-radius:18px!important}
+  .hero-copy{order:2!important;padding:34px 7% 44px!important;background:#f7f9f6!important}
+  .hero h1{font-size:clamp(48px,15vw,66px)!important;line-height:.86!important;margin:13px 0 16px!important}
+  .hero p{font-size:10px!important;max-width:300px!important;line-height:1.75!important}
+  .cta{padding:12px 16px!important;margin-top:12px!important;font-size:7px!important}
+  .benefit-bridge{width:calc(100% - 28px)!important;margin:18px auto!important;padding:23px 20px!important;border-radius:18px!important;box-shadow:0 12px 30px rgba(23,75,39,.06)!important}
+  .benefit-bridge h2{font-size:29px!important}
+  .benefit-bridge p{font-size:9px!important}
+  .section{padding:48px 0 42px 7%!important}
+  .section-head{padding-right:7%!important;margin-bottom:18px!important;align-items:flex-end!important}
+  .section h2{font-size:38px!important}
+  .track{gap:12px!important;padding-right:7%!important}
+  .card{flex:0 0 78vw!important;border-radius:18px!important;box-shadow:0 10px 28px rgba(16,45,24,.06)!important}
+  .card img{height:64vw!important;max-height:300px!important;border-radius:18px 18px 0 0!important}
+  .card-body{padding:14px!important}
+  .card h3{font-size:21px!important}
+  .add{padding:9px 12px!important}
+  .features{margin-top:0!important}
+  .feature{padding:25px 7%!important}
+  .about img{min-height:250px!important;max-height:330px!important}
+  .about-copy{padding:38px 7%!important}
+  .about h2{font-size:40px!important}
+  .contact{padding:48px 7%!important}
+  .contact h2{font-size:43px!important}
+  .contact-row{padding:15px 0!important}
+  .contact-row strong{font-size:16px!important}
+  .collection{padding-top:18px!important}
+  .subscribe{padding:32px 7%!important}
+  .subscribe h2{font-size:31px!important}
+  .subform{border-radius:12px!important;padding:6px!important}
+  .subform input{min-height:40px!important}
+  .subform button{min-height:40px!important}
+  footer{padding:26px 7%!important;display:block!important;text-align:center!important}
+  .footer-links{justify-content:center!important;flex-wrap:wrap!important;margin:17px 0!important}
+  .more-menu{left:14px!important;right:14px!important;transform:translateY(-8px) scale(.97)!important;width:auto!important;max-width:none!important;border-radius:18px!important}
+  .more-menu.open{transform:translateY(0) scale(1)!important}
+  .more-grid{grid-template-columns:1fr 1fr!important;gap:7px!important}
+  .more-item{padding:11px!important;border-radius:12px!important}
+  .overlay{padding:10px!important}
+  .modal{width:100%!important;max-height:94vh!important;border-radius:22px!important;padding:22px 18px!important}
+  .modal h2{font-size:28px!important}
+  .drawer{width:min(94vw,420px)!important;border-radius:22px 0 0 22px!important}
+  .drawer-head{padding:18px!important}
+  .drawer-body{padding:14px 16px!important}
+  .drawer-foot{padding:16px!important}
+  .location-card{margin:10px 0!important;padding:12px!important;border-radius:17px!important;box-shadow:0 10px 28px rgba(23,75,39,.08)!important}
+  .location-orb{width:42px!important;height:42px!important;flex-basis:42px!important}
+  .location-btn{width:auto!important;margin-left:0!important;padding:10px 12px!important}
+  .account-contact-field select{min-height:44px!important;border-radius:12px!important;font-size:10px!important}
+  .checkout-pay-card{min-height:70px!important;border-radius:15px!important}
+  .search-modal{width:calc(100vw - 20px)!important;padding:22px 16px!important;border-radius:22px!important}
+  .search-modal h2{font-size:32px!important}
+  .search-results{max-height:46vh!important}
+  .search-result{padding:9px!important;border-radius:13px!important}
+  .ai{right:10px!important;bottom:10px!important}
+  .ai-btn{min-width:0!important;width:auto!important;max-width:142px!important;padding:6px 10px 6px 7px!important;border-radius:999px!important;box-shadow:0 12px 30px rgba(16,45,24,.25)!important}
+  .ai-btn img{width:30px!important;height:30px!important}
+  .ai-btn span{font-size:7px!important}
+  .aibox{width:calc(100vw - 24px)!important;max-width:390px!important;height:min(410px,62vh)!important;bottom:48px!important;border-radius:20px!important;box-shadow:0 24px 65px rgba(10,30,15,.25)!important}
+  .aibody{height:calc(min(410px,62vh) - 107px)!important;padding:12px!important}
+  .ai-brand b{font-size:17px!important}
+  .ai-brand img{width:38px!important;height:38px!important}
+}
+@media(max-width:420px){
+  header{height:88px!important;padding:0 11px!important}
+  .brand img{width:35px!important;height:35px!important}.brand b{font-size:10px!important}
+  .head{gap:4px!important}.top-search,.account-login-btn,.cart-btn{width:34px!important;height:34px!important}
+  .nav{left:11px!important;right:11px!important}
+  .hero-photo{min-height:34vh!important}
+  .hero-copy{padding-top:29px!important}
+  .hero h1{font-size:52px!important}
+  .card{flex-basis:82vw!important}
+  .card img{height:68vw!important}
+  .location-card{display:grid!important;grid-template-columns:42px 1fr!important;align-items:center!important}
+  .location-btn{grid-column:1/-1!important;width:100%!important}
+  .checkout-pay-card{padding:10px!important}
+}
+
+</style>
 </head><body><header><a href="soap-benefits.html">← EXPLORE</a><strong style="font-size:10px;letter-spacing:.14em">EBYAN</strong><a href="index.html#products">SHOP</a></header><main class="wrap"><section class="hero"><div class="photo"><img src="assets/cucumber-exact.jpg" alt="Cucumber handmade soap"></div><div class="copy"><div class="eyebrow">EBYAN HANDMADE SOAP</div><h1>Cucumber<br><em>Soap.</em></h1><p>A cool, refreshing handmade cucumber bar for a clean, comfortable and fresh-feeling cleanse.</p><div style="font-weight:900;font-size:14px;margin:10px 0">KSh 400</div><a class="btn" href="index.html#products">ADD TO CART / SHOP</a></div></section><section class="benefits"><h2>Why choose Cucumber?</h2><div class="grid"><div class="item"><span>✦</span>Helps cleanse everyday impurities</div><div class="item"><span>✦</span>Leaves skin feeling fresh and cool</div><div class="item"><span>✦</span>Helps skin feel comfortable after washing</div><div class="item"><span>✦</span>Provides a refreshing bathing experience</div><div class="item"><span>✦</span>Helps remove excess surface oil</div><div class="item"><span>✦</span>Leaves a clean, smooth finish</div><div class="item"><span>✦</span>Great for a refreshing shower routine</div><div class="item"><span>✦</span>Helps skin feel soft after cleansing</div><div class="item"><span>✦</span>Pairs well with moisturizers</div><div class="item"><span>✦</span>Leaves a light, refreshed feeling</div><div class="item"><span>✦</span>A botanical-inspired everyday option</div><div class="item"><span>✦</span>Handmade with a fresh character</div><div class="item"><span>✦</span>Helps revive tired-feeling skin</div><div class="item"><span>✦</span>Suitable for regular cleansing when tolerated</div><div class="item"><span>✦</span>Leaves skin feeling clean without a heavy finish</div></div></section></main></body></html>
