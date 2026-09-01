@@ -45,16 +45,7 @@ input:focus,select:focus,textarea:focus{transform:translateY(-1px);box-shadow:0 
 .ebyan-loading:after{content:"";width:13px;height:13px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;display:inline-block;margin-left:8px;vertical-align:-2px;animation:ebyanSpin .65s linear infinite}
 @keyframes ebyanSpin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
-</style>
-
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="manifest" href="/site.webmanifest">
-</head>
+</style></head>
 <body><div class="wrap"><div class="receipt">
 <header><div><div class="muted">EBYAN COSMETICS</div><h1>Order Receipt</h1></div><div style="text-align:right"><div id="orderNo" class="muted"></div><div id="status" class="status"></div></div></header>
 <div style="margin-top:18px"><div class="row"><span class="muted">Customer</span><b id="customer"></b></div><div class="row"><span class="muted">Phone</span><b id="phone"></b></div><div class="row"><span class="muted">Delivery</span><b id="address"></b></div><div class="row"><span class="muted">Date</span><b id="date"></b></div><div class="row"><span class="muted">Payment</span><b id="payment"></b></div></div>
@@ -63,46 +54,18 @@ input:focus,select:focus,textarea:focus{transform:translateY(-1px);box-shadow:0 
 <div id="note" class="muted" style="margin-top:18px"></div>
 <div class="actions"><button class="btn" onclick="window.print()">Print / Save PDF</button><button class="btn soft" onclick="location.href='index.html'">Continue Shopping</button></div>
 </div></div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const SUPABASE_URL='https://ygcoolohknjfcxmcwbsm.supabase.co';
-const SUPABASE_KEY='sb_publishable_Zmog-FAbrdz6cxjW-NtxJQ_B4q_Dzgb';
-const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-const money=n=>'KSh '+Number(n||0).toLocaleString('en-KE');
-const esc=x=>String(x??'').replace(/[&<>\"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-const root=document.querySelector('.wrap');
-function showError(text){root.innerHTML=`<div class="receipt"><h1>${esc(text)}</h1><p class="muted">Sign in and place an order to view your customer receipts.</p><div class="actions"><button class="btn" onclick="location.href='index.html'">Back to Ebyan</button></div></div>`}
-function renderReceipt(o,items){
- const list=Array.isArray(items)?items:[];
- root.innerHTML=`<div class="receipt">
- <header><div><div class="muted">EBYAN COSMETICS</div><h1>Order Receipt</h1></div><div style="text-align:right"><div class="muted">${esc(o.order_number||o.id)}</div><div class="status">${esc(String(o.status||'pending').replaceAll('_',' ').toUpperCase())}</div></div></header>
- <div style="margin-top:18px"><div class="row"><span class="muted">Customer</span><b>${esc(o.customer_name||'-')}</b></div><div class="row"><span class="muted">Phone</span><b>${esc(o.customer_phone||o.checkout_phone||'-')}</b></div><div class="row"><span class="muted">Delivery</span><b>${esc((o.delivery_address||'-')+(o.town_area?', '+o.town_area:''))}</b></div><div class="row"><span class="muted">Date</span><b>${o.created_at?new Date(o.created_at).toLocaleString():'-'}</b></div><div class="row"><span class="muted">Payment</span><b>${esc(o.payment_method||'-')}</b></div></div>
- <div class="items">${list.map(i=>`<div class="row"><span>${esc(i.product_name||i.name||'Soap')} × ${Number(i.quantity||1)}</span><b>${money(Number(i.unit_price||i.price||0)*Number(i.quantity||1))}</b></div>`).join('')||'<div class="row"><span>No item details available</span></div>'}</div>
- <div><div class="row"><span>Subtotal</span><b>${money(o.subtotal)}</b></div><div class="row"><span>Delivery</span><b>${money(o.delivery_fee)}</b></div><div class="row total"><span>Total</span><span>${money(o.total)}</span></div></div>
- <div id="note" class="muted" style="margin-top:18px">${o.payment_method==='cash_on_delivery'?'Your order is confirmed. Payment will be made on delivery.':o.payment_status==='paid'?'Your M-Pesa payment has been verified.':'Your payment proof is awaiting verification.'}</div>
- <div class="actions"><button class="btn" onclick="window.print()">Print / Save PDF</button><button class="btn soft" onclick="location.href='receipt.html'">All Receipts</button><button class="btn soft" onclick="location.href='index.html'">Continue Shopping</button></div>
- </div>`;
+const o=JSON.parse(localStorage.getItem('ebyan_last_order')||'null');
+if(!o){document.body.innerHTML='<div class="wrap"><div class="receipt"><h1>No receipt found</h1><p class="muted">Place an order first.</p></div></div>'}
+else{
+const money=n=>'KSh '+Number(n||0).toLocaleString();
+document.getElementById('orderNo').textContent=o.orderNumber||('EBY-'+Date.now());
+document.getElementById('status').textContent=o.status==='paid'?'CONFIRMED / PAID':o.status==='confirmed'?'ORDER CONFIRMED':'PAYMENT PENDING VERIFICATION';
+document.getElementById('customer').textContent=o.customerName||'-';document.getElementById('phone').textContent=o.phone||'-';document.getElementById('address').textContent=o.address||'-';document.getElementById('date').textContent=o.date?new Date(o.date).toLocaleString():new Date().toLocaleString();document.getElementById('payment').textContent=o.paymentMethod||'-';
+const list=Array.isArray(o.items)?o.items:[];document.getElementById('items').innerHTML=list.map(i=>`<div class="row"><span>${String(i.name||'Soap')} × ${Number(i.quantity||1)}</span><b>${money((Number(i.price)||400)*(Number(i.quantity)||1))}</b></div>`).join('');
+document.getElementById('subtotal').textContent=money(o.subtotal);document.getElementById('delivery').textContent=money(o.delivery);document.getElementById('total').textContent=money(o.total);
+document.getElementById('note').textContent=o.paymentMethod==='Pay on Delivery'?'Your order is confirmed. Payment will be made on delivery.':o.status==='paid'?'Your M-Pesa payment has been verified.':'Your M-Pesa screenshot has been received and is awaiting verification.';
 }
-function renderList(orders){
- root.innerHTML=`<div class="receipt"><header><div><div class="muted">EBYAN COSMETICS</div><h1>Your Receipts</h1></div><div class="status">${orders.length} ORDER${orders.length===1?'':'S'}</div></header><p class="muted" style="margin:14px 0 18px">Your previous Ebyan orders and printable receipts.</p>${orders.map(o=>`<div class="row" style="border-bottom:1px solid #e3e9e4;align-items:center"><div><b>${esc(o.order_number||o.id)}</b><div class="muted">${o.created_at?new Date(o.created_at).toLocaleString():''} · ${money(o.total)}</div></div><button class="btn" data-view="${o.id}">View Receipt</button></div>`).join('')||'<p class="muted">No receipts yet. Place your first order to see it here.</p>'}<div class="actions"><button class="btn soft" onclick="location.href='index.html'">Continue Shopping</button></div></div>`;
- root.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>location.href='receipt.html?order='+encodeURIComponent(b.dataset.view));
-}
-async function load(){
- const local=JSON.parse(localStorage.getItem('ebyan_last_order')||'null');
- const {data:{session}}=await sb.auth.getSession();
- if(!session){if(local){renderReceipt({id:local.orderId,order_number:local.orderNumber,customer_name:local.customerName,customer_phone:local.phone,delivery_address:local.address,created_at:local.date,payment_method:local.paymentMethod,status:local.status,subtotal:local.subtotal,delivery_fee:local.delivery,total:local.total},local.items)}else showError('No receipt found');return}
- const orderId=new URLSearchParams(location.search).get('order');
- if(orderId){
-  const {data:o,error}=await sb.from('orders').select('*').eq('id',orderId).eq('user_id',session.user.id).maybeSingle();
-  if(error||!o)return showError('Receipt not found');
-  const {data:items}=await sb.from('order_items').select('*').eq('order_id',o.id);
-  renderReceipt(o,items||[]);return;
- }
- const {data:orders,error}=await sb.from('orders').select('*').eq('user_id',session.user.id).order('created_at',{ascending:false});
- if(error)return showError('Could not load receipts');
- renderList(orders||[]);
-}
-load();
 </script><script id="ebyan-everything-animation-runtime">
 (function(){
   const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;

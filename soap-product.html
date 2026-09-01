@@ -56,21 +56,12 @@ input:focus,select:focus,textarea:focus{transform:translateY(-1px);box-shadow:0 
 .ebyan-loading:after{content:"";width:13px;height:13px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;display:inline-block;margin-left:8px;vertical-align:-2px;animation:ebyanSpin .65s linear infinite}
 @keyframes ebyanSpin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
-</style>
-
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="manifest" href="/site.webmanifest">
-</head>
+</style></head>
 <body>
 <main class="wrap">
 <div class="top"><a class="back" href="index.html#products" class="ebyan-cart-benefit-btn ebayan-explore-btn">Explore More Benefits →</a><a class="back" href="index.html#products">Back to shop</a></div>
 <section class="product">
-<div class="photo"><img id="photo" src="aloe.jpg" alt="Ebyan soap"></div>
+<div class="photo"><img id="photo" src="assets/aloe.jpg" alt="Ebyan soap"></div>
 <div class="copy">
 <span class="eyebrow">EBYAN NATURAL SOAP · HANDMADE CARE</span>
 <h1 id="name">Aloe Vera</h1><div class="price">KSh 300</div>
@@ -92,10 +83,10 @@ const D={
 "Cucumber":{img:"cucumber.jpg",desc:"A cool, refreshing handmade soap for a gentle-feeling everyday cleansing routine.",benefits:["Cooling-feel cleanse","Gentle everyday wash","Fresh cucumber character","Refreshing after-feel","Comfortable lather","Cool shower experience","Simple daily care","Soft-feeling cleanse","Fresh botanical routine","Light clean finish","Pairs well with moisturiser","Handmade natural character","Calm-feeling routine","Refreshing daily use"]}
 };
 const q=new URLSearchParams(location.search),n=q.get("soap")||"Aloe Vera",d=D[n]||D["Aloe Vera"];
-document.title="Ebyan — "+n+" Soap";document.getElementById("name").textContent=n;document.getElementById("photo").src=""+d.img;document.getElementById("photo").alt=n+" soap";document.getElementById("desc").textContent=d.desc;
+document.title="Ebyan — "+n+" Soap";document.getElementById("name").textContent=n;document.getElementById("photo").src="assets/"+d.img;document.getElementById("photo").alt=n+" soap";document.getElementById("desc").textContent=d.desc;
 document.getElementById("list").innerHTML=d.benefits.map(x=>'<div class="item">✦ '+x+'</div>').join('');
-document.getElementById("add").onclick=()=>{let c=JSON.parse(localStorage.getItem("ebyan_cart")||"{}"),id=n.toLowerCase().replace(/\s+/g,"-");const price=300;c[id]={id,name:n,price,qty:(c[id]?.qty||0)+1,image:""+d.img};localStorage.setItem("ebyan_cart",JSON.stringify(c));document.getElementById("ok").textContent=n+" added to cart · KSh "+price;};
-document.getElementById("related").innerHTML=Object.keys(D).filter(x=>x!==n).map(x=>'<article class="related-card"><img src="'+D[x].img+'" alt="'+x+' soap"><b>'+x+'</b><a href="soap-product.html?soap='+encodeURIComponent(x)+'" class="ebyan-cart-benefit-btn ebyan-explore-btn">Explore More Benefits →</a></article>').join("");
+document.getElementById("add").onclick=()=>{let c=JSON.parse(localStorage.getItem("ebyan_cart")||"{}"),id=n.toLowerCase().replace(/\s+/g,"-");const price=300;c[id]={id,name:n,price,qty:(c[id]?.qty||0)+1,image:"assets/"+d.img};localStorage.setItem("ebyan_cart",JSON.stringify(c));document.getElementById("ok").textContent=n+" added to cart · KSh "+price;};
+document.getElementById("related").innerHTML=Object.keys(D).filter(x=>x!==n).map(x=>'<article class="related-card"><img src="assets/'+D[x].img+'" alt="'+x+' soap"><b>'+x+'</b><a href="soap-product.html?soap='+encodeURIComponent(x)+'" class="ebyan-cart-benefit-btn ebyan-explore-btn">Explore More Benefits →</a></article>').join("");
 </script>
 <!-- EBYAN RECEIPT LINK --><a href="receipt.html" class="ebyan-receipt-link" style="display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800;background:#174d3a;color:#fff">View / Print Receipt</a><script id="ebyan-everything-animation-runtime">
 (function(){
