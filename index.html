@@ -40,6 +40,19 @@ body{overflow-x:hidden}.cart-open{overflow:hidden}.drawer{position:fixed;right:0
 }
 .inline{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.badge{display:inline-block;padding:5px 8px;border-radius:999px;background:#eef3ed;color:#2b5c36;font-size:7px}.muted{color:#7a837c;font-size:8px}
 @media(max-width:760px){header{height:62px;padding:0 4%;gap:6px}.brand b{display:none}.brand img{width:39px;height:39px}.nav{display:none}.head{margin-left:auto}.care{padding:9px 10px;font-size:6px}.top-search{font-size:6px}.hero{display:flex;flex-direction:column}.hero-photo{order:1;min-height:47vh}.hero-copy{order:2;padding:34px 7% 42px}.hero h1{font-size:58px}.section{padding:50px 0 45px 7%}.section-head{padding-right:7%;display:block}.card{flex-basis:82vw}.features{grid-template-columns:1fr}.feature{border-right:0;border-bottom:1px solid rgba(255,255,255,.1)}.about{display:flex;flex-direction:column}.about img{min-height:280px}.about-copy{padding:42px 7%}.contact{display:block;padding:52px 7%}.contact-right{display:block}.collection{border-left:0;border-top:1px solid var(--line);padding:20px 0 0;margin-top:22px}.subscribe{display:block;padding:34px 7%}.subform{display:block}.subform input{width:100%}.subform button{width:100%;margin-top:8px}.grid4{grid-template-columns:1fr 1fr}.ai{right:10px;bottom:10px}.aibox{width:min(330px,calc(100vw - 20px))}}
+
+/* Location control — visual-only upgrade */
+.location-wrap{margin:9px 0 12px}
+.location-btn{width:100%;display:flex;align-items:center;gap:11px;text-align:left;border:1px solid #d6e2d5;background:linear-gradient(135deg,#f7fbf6,#edf5ec);color:#174b27;border-radius:14px;padding:11px 12px;box-shadow:0 5px 18px rgba(23,75,39,.07);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,background .2s ease}
+.location-btn:hover{transform:translateY(-1px);box-shadow:0 9px 24px rgba(23,75,39,.12);border-color:#b9cfb9}
+.location-btn:active{transform:translateY(0) scale(.99)}
+.location-btn:disabled{opacity:.72;cursor:wait;transform:none}
+.location-pin{width:32px;height:32px;display:grid;place-items:center;flex:none;border-radius:10px;background:#174b27;color:#fff;font-size:19px;line-height:1;box-shadow:0 5px 13px rgba(23,75,39,.2)}
+.location-btn strong{display:block;font-size:9px;letter-spacing:.04em}
+.location-btn small{display:block;margin-top:3px;color:#728076;font-size:7px}
+.location-arrow{margin-left:auto;font-size:20px;font-weight:300;color:#5d8064}
+.location-status{display:block;min-height:11px;margin:5px 4px 0;color:#6d786f;font-size:7px}
+.location-status:not(:empty){color:#2f7140}
 </style>
 
 
@@ -197,11 +210,38 @@ body{overflow-x:hidden;}
 }
 @media(min-width:761px){.ebyan-mobile-nav,.ebyan-mobile-more-menu{display:none!important}}
 </style>
-</head>
+<link rel="icon" type="image/png" href="assets/ebyan-real-logo.png"><link rel="apple-touch-icon" href="assets/ebyan-real-logo.png">
+<style id="ebyan-search-only">
+.ebyan-search-modal{width:min(600px,94vw)!important;padding:30px!important}.ebyan-search-modal h2{font-size:40px!important;margin-bottom:18px!important}.ebyan-search-modal h2 em{color:var(--green2);font-style:italic}.ebyan-search-field{height:54px;display:flex;align-items:center;gap:10px;border:1px solid #d5e0d6;border-radius:14px;background:#f8faf8;padding:0 12px;box-shadow:0 5px 18px rgba(20,55,30,.05)}.ebyan-search-field>span{font-size:24px;color:#55715c;line-height:1}.ebyan-search-field input{flex:1;border:0!important;background:transparent!important;outline:0!important;box-shadow:none!important;transform:none!important;padding:0!important;font-size:13px;color:#18321f}.ebyan-search-field button{border:0;background:#edf3ed;color:#54705b;width:28px;height:28px;border-radius:50%;font-size:17px;line-height:1}.ebyan-search-results{margin-top:14px;max-height:430px;overflow:auto}.ebyan-search-result{width:100%;display:flex;align-items:center;gap:12px;text-align:left;border:1px solid #e0e7e0;background:#fff;border-radius:13px;padding:9px;margin:7px 0}.ebyan-search-result:hover{background:#f3f8f3;transform:translateY(-1px)}.ebyan-search-result img{width:52px;height:52px;object-fit:cover;border-radius:9px;background:#f2f5f1}.ebyan-search-result span{flex:1}.ebyan-search-result b{display:block;font:400 17px Georgia,serif;color:#18321f}.ebyan-search-result small{display:block;margin-top:4px;font:700 9px Arial;color:#55715c}.ebyan-search-result i{font-style:normal;font-size:18px;color:#2f7140}.ebyan-search-empty{text-align:center;padding:30px 15px;color:#687269;font-size:12px}.ebyan-search-empty small{display:block;margin-top:7px;font-size:9px}@media(max-width:760px){.ebyan-search-modal{width:calc(100vw - 24px)!important;padding:22px!important}.ebyan-search-modal h2{font-size:34px!important}.ebyan-search-results{max-height:55vh}}
+</style>
+<style id="ebyan-ai-cool-only">
+/* Ebyan AI appearance only */
+.ai-btn{position:relative;overflow:hidden;padding:7px 13px 7px 8px;gap:8px;border:1px solid rgba(255,255,255,.22);background:linear-gradient(135deg,#0b2414,#174b27 55%,#285f35);border-radius:999px;box-shadow:0 12px 32px rgba(16,45,24,.28),inset 0 1px 0 rgba(255,255,255,.12);font-size:8px;letter-spacing:.08em;transition:transform .22s ease,box-shadow .22s ease}
+.ai-btn:before{content:"";position:absolute;inset:-40%;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.14) 50%,transparent 65%);transform:translateX(-70%) rotate(8deg);transition:transform .7s ease;pointer-events:none}
+.ai-btn:hover:before{transform:translateX(70%) rotate(8deg)}
+.ai-btn:hover{transform:translateY(-3px) scale(1.015);box-shadow:0 16px 40px rgba(16,45,24,.36),inset 0 1px 0 rgba(255,255,255,.15)}
+.ai-btn img{position:relative;width:31px;height:31px;padding:3px;object-fit:contain;background:#fff;border:2px solid rgba(255,255,255,.75);border-radius:50%;box-shadow:0 0 0 2px rgba(180,211,185,.24),0 4px 12px rgba(0,0,0,.2)}
+.ai-btn span{position:relative;font:700 8px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.aibox{border:1px solid rgba(47,102,64,.22);border-radius:22px;box-shadow:0 28px 80px rgba(7,25,12,.25),0 4px 16px rgba(7,25,12,.08);background:#fff}
+.aitop{position:relative;background:linear-gradient(135deg,#0d2b17,#174b27 55%,#2c6940);padding:15px 16px;overflow:hidden}
+.aitop:after{content:"";position:absolute;width:150px;height:150px;right:-65px;top:-85px;border-radius:50%;background:rgba(255,255,255,.09);box-shadow:0 0 0 18px rgba(255,255,255,.025);pointer-events:none}
+.ai-brand{position:relative;z-index:1;gap:10px}
+.ai-brand img{width:40px;height:40px;padding:4px;background:#fff;border:2px solid rgba(255,255,255,.8);border-radius:50%;box-shadow:0 0 0 3px rgba(207,230,211,.16),0 6px 16px rgba(0,0,0,.18)}
+.ai-brand b{font:600 17px Georgia,serif;letter-spacing:.01em}
+.ai-brand span{font-size:8px;color:rgba(255,255,255,.78);margin-top:3px;letter-spacing:.04em}
+.ai-close{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.14);transition:background .2s ease,transform .2s ease}.ai-close:hover{background:rgba(255,255,255,.22);transform:rotate(90deg)}
+.aibody{height:330px;background:linear-gradient(180deg,#fbfdfb,#f6f9f5);padding:15px}
+.ai-msg{box-shadow:0 3px 12px rgba(20,50,27,.06)}
+.ai-bot{background:#e9f2e8;border:1px solid #d5e4d5}
+.aiform{background:#fff;padding:5px;border-top:1px solid #dfe7df;gap:5px}
+.aiform input{border:1px solid #dfe7df;border-radius:13px;padding:10px 12px;background:#fbfcfb}.aiform input:focus{border-color:#8eaa92;box-shadow:0 0 0 3px rgba(46,102,64,.08)}
+.aiform button{width:38px;height:38px;border-radius:12px;background:#174b27;color:#fff;padding:0;transition:transform .2s ease,background .2s ease}.aiform button:hover{transform:translateY(-1px);background:#245e32}
+@media(max-width:760px){.ai{right:12px;bottom:12px}.ai-btn{padding:7px 11px 7px 7px}.ai-btn img{width:29px;height:29px}.aibox{right:0;width:min(360px,calc(100vw - 18px));border-radius:20px}}
+</style></head>
 <body><div class="ebyan-action" id="actionAnimation"><div class="ebyan-action-card"><div class="ebyan-check">✓</div><b id="actionTitle">Done</b><span id="actionSub">Success</span></div></div>
 
 <header>
-<a class="brand" href="#home"><img src="assets/site-logo.jpeg" alt="Ebyan"><b>EBYAN</b></a>
+<a class="brand" href="#home"><img src="assets/ebyan-real-logo.png" alt="Ebyan"><b>EBYAN</b></a>
 <nav class="nav"><a href="#home">HOME</a><a class="benefit-top explore-nav" href="soap-benefits.html">EXPLORE</a><a href="#more" class="more-trigger" id="moreBtn">MORE</a><a href="#products">PRODUCTS</a><a href="#about">ABOUT US</a><a href="#contact">CONTACT</a></nav>
 <div class="head">
 <button class="head-btn top-search" id="searchBtn">SEARCH</button>
@@ -258,7 +298,7 @@ body{overflow-x:hidden;}
 
 <div class="drawer" id="cartDrawer"><div class="drawer-head"><div><span class="label">YOUR BAG</span><h3 style="font:400 28px Georgia,serif;margin:5px 0">Cart</h3></div><button class="close" data-close="cartDrawer">×</button></div><div class="drawer-body" id="cartItems"></div><div class="drawer-foot"><div><span>Subtotal</span><b id="cartSub">KSh 0</b></div><div><span>Delivery</span><b id="cartDel">KSh 0</b></div><div class="tot"><span>Total</span><b id="cartTot">KSh 0</b></div><button class="primary" id="checkoutBtn">CHECKOUT</button></div></div>
 
-<div class="overlay" id="authOverlay"><div class="modal"><button class="close" data-close="authOverlay">×</button><img class="modal-logo" src="assets/site-logo.jpeg" alt="Ebyan Natural Soap"><h2>Welcome to Ebyan</h2><p class="modal-sub">Sign in to complete your order, or create an account.</p><div class="tabs"><button class="on" data-auth-tab="login">Sign in</button><button data-auth-tab="register">Register</button></div>
+<div class="overlay" id="authOverlay"><div class="modal"><button class="close" data-close="authOverlay">×</button><img class="modal-logo" src="assets/ebyan-real-logo.png" alt="Ebyan Natural Soap"><h2>Welcome to Ebyan</h2><p class="modal-sub">Sign in to complete your order, or create an account.</p><div class="tabs"><button class="on" data-auth-tab="login">Sign in</button><button data-auth-tab="register">Register</button></div>
 <div id="loginFields"><input class="field" id="identifier" placeholder="Email or phone number"><div style="position:relative"><input class="field" id="password" type="password" placeholder="Password" style="padding-right:70px"><button type="button" id="togglePw" style="position:absolute;right:8px;top:5px;border:0;background:transparent;color:#315f39;font-size:8px;padding:8px">SHOW</button></div><button class="primary" id="signIn">SIGN IN</button><div class="auth-links"><button class="link-btn" id="forgot">Forgot password?</button></div><button class="guest" id="guest">Skip for now</button></div>
 <div id="regFields" style="display:none"><input class="field" id="rname" placeholder="Full name"><input class="field" id="remail" type="email" placeholder="Email (optional)"><input class="field" id="rphone" placeholder="Phone number (optional)"><input class="field" id="rpass" type="password" placeholder="Password (6+ characters)"><button class="primary" id="register">CREATE ACCOUNT</button><p class="muted" style="text-align:center">We use email for account activation and password recovery. Your phone can be kept for delivery.</p></div>
 
@@ -296,7 +336,7 @@ body{overflow-x:hidden;}
 <a class="more-card" href="reset-password.html"><b>Password & Security</b><span>Reset your password and manage account access.</span></a>
 </div><div id="moreHelp" style="display:none;margin-top:14px;padding:13px;border:1px solid #d9e3da;background:#f5f8f5;border-radius:12px;font-size:9px;line-height:1.65"></div></div></div>
 
-<div class="overlay" id="checkoutOverlay"><div class="modal"><button class="close" data-close="checkoutOverlay">×</button><span class="label">CHECKOUT</span><h2 style="text-align:left">Complete your order</h2><p class="modal-sub" style="text-align:left">Almost done. We’ll guide you through every step.</p><div style="background:#f5f8f5;border:1px solid var(--line);border-radius:12px;padding:11px;margin:10px 0;font-size:9px;line-height:1.6"><b>1. Delivery details</b> → <b>2. Payment</b> → <b>3. Confirmation</b><br><span class="muted">Need help? Ask Ebyan below or contact Customer Care.</span></div><input class="field" id="cname" placeholder="Full name"><label for="cphone" style="display:block;font-size:9px;font-weight:800;margin:8px 0 3px">PHONE NUMBER <span style="color:#b33">*</span></label><input class="field" id="cphone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 0722 276 879" required><input class="field" id="caddress" placeholder="Delivery address / building"><input class="field" id="ctown" placeholder="Town / Area"><div class="inline"><button class="link-btn" id="useLocation" type="button">Use my current location</button><span class="muted" id="locMsg"></span></div><label for="pm" style="display:block;font-size:9px;font-weight:800;margin:8px 0 3px">HOW WOULD YOU LIKE TO PAY?</label><select class="field" id="pm"><option value="Pay on Delivery">Pay on Delivery — pay when your order arrives</option><option value="M-Pesa">M-Pesa — pay now &amp; upload proof</option></select><div id="mpesaHelp" style="display:none;margin:10px 0;padding:12px;background:#eef6f0;border:1px solid #cfe0d3;border-radius:12px;font-size:9px;line-height:1.6"><b>M-Pesa payment</b><br>Send the exact total to the Ebyan M-Pesa number shown below.<br>After paying, upload a clear screenshot of the M-Pesa confirmation below.</div><div id="proofWrap" style="display:none;margin:10px 0"><label for="paymentProof" style="display:block;font-size:9px;font-weight:800;margin:0 0 4px">PAYMENT SCREENSHOT <span style="color:#b33">*</span></label><input class="field" id="paymentProof" type="file" accept="image/png,image/jpeg,image/webp"><div class="muted">Max 5 MB. Use a clear image of the M-Pesa confirmation. Your proof is private and only used to verify this order.</div></div><div style="display:flex;justify-content:space-between;font-size:10px;margin-top:10px"><b>Products</b><b id="checkoutSub">KSh 0</b></div><div style="display:flex;justify-content:space-between;font-size:10px;margin-top:5px"><b>Delivery</b><b id="checkoutDel">KSh 0</b></div><div style="display:flex;justify-content:space-between;font-size:13px;margin-top:8px;padding-top:8px;border-top:1px solid var(--line)"><b>Total</b><b id="checkoutTotal">KSh 0</b></div><button class="primary" id="placeOrder" type="button">CONFIRM ORDER</button><div class="auth-msg" id="checkoutMsg"></div><div id="mpesaBox" style="display:none"></div></div></div>
+<div class="overlay" id="checkoutOverlay"><div class="modal"><button class="close" data-close="checkoutOverlay">×</button><span class="label">CHECKOUT</span><h2 style="text-align:left">Complete your order</h2><p class="modal-sub" style="text-align:left">Almost done. We’ll guide you through every step.</p><div style="background:#f5f8f5;border:1px solid var(--line);border-radius:12px;padding:11px;margin:10px 0;font-size:9px;line-height:1.6"><b>1. Delivery details</b> → <b>2. Payment</b> → <b>3. Confirmation</b><br><span class="muted">Need help? Ask Ebyan below or contact Customer Care.</span></div><input class="field" id="cname" placeholder="Full name"><label for="cphone" style="display:block;font-size:9px;font-weight:800;margin:8px 0 3px">PHONE NUMBER <span style="color:#b33">*</span></label><input class="field" id="cphone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 0722 276 879" required><input class="field" id="caddress" placeholder="Delivery address / building"><input class="field" id="ctown" placeholder="Town / Area"><div class="location-wrap"><button class="location-btn" id="useLocation" type="button"><span class="location-pin">⌖</span><span><strong>Use my current location</strong><small>Auto-fill your delivery address</small></span><span class="location-arrow">›</span></button><span class="location-status" id="locMsg"></span></div><label for="pm" style="display:block;font-size:9px;font-weight:800;margin:8px 0 3px">HOW WOULD YOU LIKE TO PAY?</label><select class="field" id="pm"><option value="Pay on Delivery">Pay on Delivery — pay when your order arrives</option><option value="M-Pesa">M-Pesa — pay now &amp; upload proof</option></select><div id="mpesaHelp" style="display:none;margin:10px 0;padding:12px;background:#eef6f0;border:1px solid #cfe0d3;border-radius:12px;font-size:9px;line-height:1.6"><b>M-Pesa payment</b><br>Send the exact total to the Ebyan M-Pesa number shown below.<br>After paying, upload a clear screenshot of the M-Pesa confirmation below.</div><div id="proofWrap" style="display:none;margin:10px 0"><label for="paymentProof" style="display:block;font-size:9px;font-weight:800;margin:0 0 4px">PAYMENT SCREENSHOT <span style="color:#b33">*</span></label><input class="field" id="paymentProof" type="file" accept="image/png,image/jpeg,image/webp"><div class="muted">Max 5 MB. Use a clear image of the M-Pesa confirmation. Your proof is private and only used to verify this order.</div></div><div style="display:flex;justify-content:space-between;font-size:10px;margin-top:10px"><b>Products</b><b id="checkoutSub">KSh 0</b></div><div style="display:flex;justify-content:space-between;font-size:10px;margin-top:5px"><b>Delivery</b><b id="checkoutDel">KSh 0</b></div><div style="display:flex;justify-content:space-between;font-size:13px;margin-top:8px;padding-top:8px;border-top:1px solid var(--line)"><b>Total</b><b id="checkoutTotal">KSh 0</b></div><button class="primary" id="placeOrder" type="button">CONFIRM ORDER</button><div class="auth-msg" id="checkoutMsg"></div><div id="mpesaBox" style="display:none"></div></div></div>
 
 <div class="overlay" id="accountOverlay"><div class="modal" style="width:min(720px,96vw)"><button class="close" data-close="accountOverlay">×</button><span class="label">MY ACCOUNT</span><h2 id="acctTitle" style="text-align:left">My Account</h2><div id="acctBody"></div></div></div>
 </div>
@@ -304,12 +344,12 @@ body{overflow-x:hidden;}
 <div class="ai" id="aiWidget">
   <div class="aibox" id="aiBox" aria-live="polite">
     <div class="aitop">
-      <div class="ai-brand"><img src="assets/ask-ebyan-logo.png" alt="Ebyan"><div><b>Ask Ebyan</b><span>Your natural soap guide</span></div><button class="ai-close" id="aiClose" type="button" aria-label="Close">×</button></div>
+      <div class="ai-brand"><img src="assets/ask-ebyan-logo.png" alt="Ask Ebyan"><div><b>Ask Ebyan</b><span>Your natural soap guide</span></div><button class="ai-close" id="aiClose" type="button" aria-label="Close">×</button></div>
     </div>
     <div class="aibody" id="aiBody"><div class="ai-msg ai-bot">Welcome to Ebyan ✦ Tell me your skin type, what you want from a soap, or ask about any Ebyan product.</div><div class="quick" id="aiQuick"></div></div>
     <form class="aiform" id="aiForm"><input id="aiInput" autocomplete="off" placeholder="Ask about Ebyan..."><button aria-label="Send">➤</button></form>
   </div>
-  <button class="ai-btn" id="aiBtn" type="button" aria-expanded="false" aria-controls="aiBox"><img src="assets/ask-ebyan-logo.png" alt="Ebyan"><span>Ask Ebyan</span></button>
+  <button class="ai-btn" id="aiBtn" type="button" aria-expanded="false" aria-controls="aiBox"><img src="assets/ask-ebyan-logo.png" alt="Ask Ebyan"><span>Ask Ebyan</span></button>
 </div>
 <button class="cart-float" id="floatingCartBtn" type="button" hidden aria-label="Open cart"><span>🛒 CART</span><span class="badge" id="floatingCartCount">0</span></button>
 
@@ -501,8 +541,8 @@ function updateAccountAfterAuth(){
   return true;
 }
 function action(title,sub='Done'){const o=$('#actionAnimation');if(!o)return;$('#actionTitle').textContent=title;$('#actionSub').textContent=sub;o.classList.add('show');setTimeout(()=>o.classList.remove('show'),1100)}
-async function account(){if(!session)return show('authOverlay');await loadProfile();const o=await sb.from('orders').select('*').eq('user_id',session.user.id).order('created_at',{ascending:false});lastOrders=o.data||[];$('#acctTitle').textContent=profile?.full_name||'My Account';$('#acctBody').innerHTML=`<div class="inline"><span class="badge">${profile?.role||'customer'}</span><span class="muted">${profile?.email||session.user.email||''}</span><span class="muted">${profile?.phone||session.user.phone||''}</span></div><div style="margin:18px 0"><h3 style="font:400 21px Georgia,serif">Your information</h3><p class="muted">Keep your delivery details saved so checkout is faster next time.</p><input class="field" id="pname" value="${profile?.full_name||''}" placeholder="Full name"><input class="field" id="pphone" value="${profile?.phone||session.user.phone||''}" placeholder="Phone"><select class="field" id="pcontact"><option value="phone">Preferred contact: Phone</option><option value="email">Preferred contact: Email</option></select><button class="primary" id="saveProfile">SAVE PROFILE</button><div class="auth-msg" id="profileMsg"></div></div><h3 style="font:400 21px Georgia,serif">Previous orders</h3>${lastOrders.map(o=>`<div style="padding:10px 0;border-bottom:1px solid var(--line);font-size:9px"><b>${o.order_number||o.id}</b> · ${money(o.total)} · ${String(o.status||'pending').replaceAll('_',' ') } · ${o.payment_method||''}</div>`).join('')||'<p class="muted">No orders yet.</p>'}<button class="link-btn" id="logout">Log out</button>`;$('#pcontact').value=profile?.preferred_contact||'phone';$('#saveProfile').onclick=async()=>{const btn=$('#saveProfile');btn.disabled=true;const r=await sb.from('profiles').update({full_name:$('#pname').value.trim(),phone:$('#pphone').value.trim(),preferred_contact:$('#pcontact').value}).eq('id',session.user.id);btn.disabled=false;if(r.error){$('#profileMsg').textContent=r.error.message;return}await loadProfile();setAccount();$('#profileMsg').textContent='✓ Profile saved successfully.';$('#profileMsg').style.color='#2d6a3a';action('Profile saved','Your information is ready for faster checkout');};$('#logout').onclick=async()=>{action('Signing out…','See you again soon');await new Promise(r=>setTimeout(r,350));await sb.auth.signOut();location.reload()};show('accountOverlay')}
-async function openCheckout(){if(!Object.keys(cart).length)return;hide('cartDrawer');if(!session){show('authOverlay');authMsg('Please sign in or register before completing an order.');return}renderCart();show('checkoutOverlay');checkoutMotion();if(profile){$('#cname').value=profile.full_name||'';$('#cphone').value=profile.phone||session.user.phone||''}$('#caddress').value='';$('#ctown').value='';$('#paymentProof').value='';togglePaymentMethod()}
+async function account(){if(!session)return show('authOverlay');await loadProfile();const o=await sb.from('orders').select('*').eq('user_id',session.user.id).order('created_at',{ascending:false});lastOrders=o.data||[];$('#acctTitle').textContent=profile?.full_name||'My Account';$('#acctBody').innerHTML=`<div class="inline"><span class="badge">${profile?.role||'customer'}</span><span class="muted">${profile?.email||session.user.email||''}</span><span class="muted">${profile?.phone||session.user.phone||''}</span></div><div style="margin:18px 0"><h3 style="font:400 21px Georgia,serif">Your information</h3><p class="muted">Keep your delivery details saved so checkout is faster next time.</p><input class="field" id="pname" value="${profile?.full_name||''}" placeholder="Full name"><input class="field" id="pphone" value="${profile?.phone||session.user.phone||''}" placeholder="Phone"><select class="field" id="pcontact"><option value="phone">Preferred contact: Phone</option><option value="email">Preferred contact: Email</option></select><button class="primary" id="saveProfile">SAVE PROFILE</button><div class="auth-msg" id="profileMsg"></div></div><h3 style="font:400 21px Georgia,serif">Previous orders</h3>${lastOrders.map(o=>`<div style="padding:12px 0;border-bottom:1px solid var(--line);font-size:9px;display:flex;align-items:center;justify-content:space-between;gap:10px"><div><b>${o.order_number||o.id}</b><div class="muted" style="margin-top:4px">${money(o.total)} · ${String(o.status||'pending').replaceAll('_',' ')} · ${o.payment_method||''}</div></div><button class="link-btn ebyan-receipt-mini" type="button" data-receipt-order="${o.id}">VIEW RECEIPT</button></div>`).join('')||'<p class="muted">No orders yet.</p>'}<button class="link-btn" id="logout">Log out</button>`;$('#pcontact').value=profile?.preferred_contact||'phone';$('#saveProfile').onclick=async()=>{const btn=$('#saveProfile');btn.disabled=true;const r=await sb.from('profiles').update({full_name:$('#pname').value.trim(),phone:$('#pphone').value.trim(),preferred_contact:$('#pcontact').value}).eq('id',session.user.id);btn.disabled=false;if(r.error){$('#profileMsg').textContent=r.error.message;return}await loadProfile();setAccount();$('#profileMsg').textContent='✓ Profile saved successfully.';$('#profileMsg').style.color='#2d6a3a';action('Profile saved','Your information is ready for faster checkout');};$('#acctBody').querySelectorAll('[data-receipt-order]').forEach(b=>b.onclick=()=>{location.href='receipt.html?order='+encodeURIComponent(b.dataset.receiptOrder)});$('#logout').onclick=async()=>{action('Signing out…','See you again soon');await new Promise(r=>setTimeout(r,350));await sb.auth.signOut();location.reload()};show('accountOverlay')}
+async function openCheckout(){if(!Object.keys(cart).length)return;hide('cartDrawer');if(!session){show('authOverlay');authMsg('Please sign in or register before completing an order.');return}renderCart();show('checkoutOverlay');checkoutMotion();if(profile){$('#cname').value=profile.full_name||'';$('#cphone').value=profile.phone||session.user.phone||''}$('#caddress').value='';$('#ctown').value='';$('#paymentProof').value='';checkoutLocation={lat:null,lon:null};$('#locMsg').textContent='';togglePaymentMethod()}
 function togglePaymentMethod(){const mp=$('#pm').value==='M-Pesa';$('#mpesaHelp').innerHTML='<b>M-Pesa payment</b><br>Send the exact total to <b>'+mpesaNumbers.join('</b> or <b>')+'</b>.<br>After paying, upload a clear screenshot of the M-Pesa confirmation below.';$('#mpesaHelp').style.display=mp?'block':'none';$('#proofWrap').style.display=mp?'block':'none';$('#placeOrder').textContent=mp?'SUBMIT PAYMENT PROOF':'CONFIRM ORDER';$('#checkoutMsg').textContent=''}
 
 function checkoutMotion(){
@@ -511,47 +551,84 @@ function checkoutMotion(){
  ['#cname','#cphone','#caddress','#ctown','#pm','#placeOrder'].forEach((sel,i)=>{const el=$(sel);if(el)el.style.animationDelay=(i*.04)+'s'});
 }
 $('#pm').addEventListener('change',togglePaymentMethod);
+// Current-location checkout helper: asks for the browser's location, fills the
+// delivery fields, and keeps the coordinates with the order. Nothing else in
+// the checkout flow is changed.
+let checkoutLocation={lat:null,lon:null};
+$('#useLocation')?.addEventListener('click',()=>{
+  const btn=$('#useLocation'),msg=$('#locMsg');
+  if(!navigator.geolocation){if(msg)msg.textContent='Location is not supported by this browser.';return;}
+  btn.disabled=true;btn.classList.add('ebyan-loading');if(msg)msg.textContent='Finding your location…';
+  navigator.geolocation.getCurrentPosition(async pos=>{
+    const lat=Number(pos.coords.latitude.toFixed(6)),lon=Number(pos.coords.longitude.toFixed(6));
+    checkoutLocation={lat,lon};
+    $('#caddress').value=`Current location (${lat}, ${lon})`;
+    if(msg)msg.textContent='Location found ✓';
+    try{
+      const r=await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}&zoom=18&addressdetails=1`,{headers:{'Accept':'application/json'}});
+      if(r.ok){
+        const d=await r.json(),a=d.address||{};
+        const area=a.suburb||a.neighbourhood||a.village||a.town||a.city_district||'';
+        const city=a.city||a.town||a.municipality||a.county||'';
+        if(d.display_name)$('#caddress').value=d.display_name;
+        if(area||city)$('#ctown').value=[area,city].filter(Boolean).filter((v,i,a)=>a.indexOf(v)===i).join(', ');
+      }
+    }catch(_){/* Coordinates remain usable if address lookup is unavailable. */}
+    btn.disabled=false;btn.classList.remove('ebyan-loading');
+  },err=>{
+    const messages={1:'Please allow location access in your browser.',2:'Your location could not be found.',3:'Location request timed out.'};
+    if(msg)msg.textContent=messages[err.code]||'Could not get your location.';
+    btn.disabled=false;btn.classList.remove('ebyan-loading');
+  },{enableHighAccuracy:true,timeout:12000,maximumAge:60000});
+});
 async function saveOrder(){
  const name=$('#cname').value.trim(),phone=$('#cphone').value.trim(),address=$('#caddress').value.trim(),town=$('#ctown').value.trim(),method=$('#pm').value,msg=$('#checkoutMsg'),btn=$('#placeOrder');
  msg.style.color='';
+ if(!session){show('authOverlay');authMsg('Please sign in or register before completing an order.');return}
  if(!name||!phone||!address||!town){msg.textContent='Please complete your name, phone, address and town/area.';action('Almost there','Complete all delivery details');return}
  const normalized=normalizeKePhone(phone);
  if(!/^\+2547\d{8}$/.test(normalized)){msg.textContent='Enter a valid Kenyan mobile number, e.g. 0722 276 879.';action('Check your phone','Use a valid Kenyan mobile number');return}
  const proof=$('#paymentProof')?.files?.[0];
  if(method==='M-Pesa'&&!proof){msg.textContent='Please upload your M-Pesa payment screenshot before submitting.';action('Payment proof needed','Upload the M-Pesa confirmation screenshot');return}
  if(proof&&(!/^image\/(png|jpeg|webp)$/.test(proof.type)||proof.size>5*1024*1024)){msg.textContent='Please choose a PNG, JPG or WEBP image under 5 MB.';action('Invalid screenshot','Choose a clear image under 5 MB');return}
- const items=Object.values(cart).map(i=>{const p=products.find(x=>String(x.id)===String(i.id)||String(x.name).toLowerCase()===String(i.name||'').toLowerCase());return p?{...i,id:p.id,name:p.name,price:Number(p.price),image:p.image}:null}).filter(Boolean);if(!items.length){hide('checkoutOverlay');openCart();return}
- const sub=items.reduce((sum,i)=>sum+i.price*i.qty,0),delivery=deliveryFee,total=sub+delivery;
- btn.disabled=true;btn.classList.add('ebyan-loading');msg.textContent=method==='M-Pesa'?'Creating secure order…':'Creating your order…';
+ const items=Object.values(cart).map(i=>{const p=products.find(x=>String(x.id)===String(i.id)||String(x.name).toLowerCase()===String(i.name||'').toLowerCase());return p?{...i,id:p.id,name:p.name,price:Number(p.price),image:p.image}:null}).filter(Boolean);
+ if(!items.length){hide('checkoutOverlay');openCart();action('Your cart is empty','Choose a soap before checkout');return}
+ const sub=items.reduce((sum,i)=>sum+i.price*Number(i.qty||0),0),delivery=deliveryFee,total=sub+delivery;
+ if(!Number.isFinite(total)||total<=0){msg.textContent='We could not calculate the order total. Please refresh the page and try again.';return}
+ btn.disabled=true;btn.classList.add('ebyan-loading');msg.textContent=method==='M-Pesa'?'Creating your order and preparing payment verification…':'Creating your order…';
  try{
-  let lat=null,lon=null;
-  const orderPayload={user_id:session.user.id,customer_name:name,customer_phone:normalized,checkout_phone:normalized,customer_email:session.user.email||null,delivery_address:address,town_area:town,subtotal:sub,delivery_fee:delivery,total,payment_method:method==='M-Pesa'?'mpesa':'cash_on_delivery',payment_status:method==='M-Pesa'?'proof_required':'unpaid',status:method==='M-Pesa'?'pending':'confirmed',delivery_status:method==='M-Pesa'?'awaiting_payment_verification':'confirmed'};
+  const {data:{session:liveSession}}=await sb.auth.getSession();
+  if(!liveSession){show('authOverlay');throw new Error('Your sign-in session expired. Please sign in again.');}
+  session=liveSession;
+  const orderPayload={user_id:session.user.id,customer_name:name,customer_phone:normalized,checkout_phone:normalized,customer_email:session.user.email||null,delivery_address:address,town_area:town,subtotal:sub,delivery_fee:delivery,total,payment_method:method==='M-Pesa'?'mpesa':'cash_on_delivery',payment_status:method==='M-Pesa'?'proof_required':'unpaid',status:method==='M-Pesa'?'pending':'confirmed',delivery_status:method==='M-Pesa'?'awaiting_payment_verification':'confirmed',latitude:lat,longitude:lon};
   const r=await sb.from('orders').insert(orderPayload).select().single();
   if(r.error)throw new Error('Could not create the order: '+r.error.message);
   const order=r.data;
-  const ir=await sb.from('order_items').insert(items.map(i=>({order_id:order.id,product_id:i.id,product_name:i.name,unit_price:i.price,quantity:i.qty})));
-  if(ir.error)throw new Error('Order created but items could not be attached: '+ir.error.message);
-  // Saving the address is helpful but must never prevent a successful checkout.
-  try{await sb.from('addresses').insert({user_id:session.user.id,label:'Primary',full_name:name,phone:normalized,address_line:address,town_area:town});}catch(_){console.warn('Address save skipped')}
+  const ir=await sb.from('order_items').insert(items.map(i=>({order_id:order.id,product_id:i.id,product_name:i.name,unit_price:i.price,quantity:Number(i.qty||1)})));
+  if(ir.error){try{await sb.from('orders').delete().eq('id',order.id).eq('user_id',session.user.id)}catch(_){}throw new Error('Could not attach the items to your order. Your order was not completed. Please try again.');}
+  try{await sb.from('addresses').upsert({user_id:session.user.id,label:'Primary',full_name:name,phone:normalized,address_line:address,town_area:town},{onConflict:'user_id'});}catch(_){console.warn('Address save skipped')}
   if(method==='M-Pesa'){
-   const path=`${session.user.id}/${order.id}-${Date.now()}-${proof.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
+   const safeName=proof.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+   const path=`${session.user.id}/${order.id}-${Date.now()}-${safeName}`;
    const up=await sb.storage.from('payment-proofs').upload(path,proof,{upsert:false,contentType:proof.type});
-   if(up.error)throw new Error('The order was created, but the payment screenshot could not be uploaded. Please contact Customer Care with order '+(order.order_number||order.id)+'.');
-   const ur=await sb.from('orders').update({payment_proof_path:path,payment_proof_uploaded_at:new Date().toISOString()}).eq('id',order.id);
-   if(ur.error)throw new Error('The payment proof was uploaded but could not be attached to the order. Please contact Customer Care with order '+(order.order_number||order.id)+'.');
-   msg.textContent=`Payment proof submitted. Order ${order.order_number||order.id} is waiting for verification.`;msg.style.color='#2d6a3a';
+   if(up.error){msg.textContent='Your order was created, but the payment screenshot could not be uploaded. Please try the screenshot again.';action('Payment proof not uploaded','Your order is saved — retry with the screenshot');throw new Error('Payment proof upload failed: '+up.error.message);}
+   const ur=await sb.from('orders').update({payment_proof_path:path,payment_proof_uploaded_at:new Date().toISOString(),payment_status:'proof_required'}).eq('id',order.id).eq('user_id',session.user.id);
+   if(ur.error){msg.textContent='Your payment screenshot was uploaded, but the order could not be updated. Please contact Customer Care with order '+(order.order_number||order.id)+'.';throw new Error('Payment proof was uploaded but could not be attached to the order.');}
+   msg.textContent=`Payment proof submitted successfully. Order ${order.order_number||order.id} is waiting for verification.`;msg.style.color='#2d6a3a';
    await notifyOrder(order.id);action('Payment proof sent','Order '+(order.order_number||order.id)+' is waiting for verification');
   }else{
-   msg.textContent=`Order ${order.order_number||order.id} confirmed! Pay when your order arrives.`;msg.style.color='#2d6a3a';
-   await notifyOrder(order.id);action('Order confirmed','Order '+(order.order_number||order.id)+' is on its way to the store team');
+   msg.textContent=`Order ${order.order_number||order.id} confirmed. Pay when your order arrives.`;msg.style.color='#2d6a3a';
+   await notifyOrder(order.id);action('Order confirmed','Order '+(order.order_number||order.id)+' was sent to the store team');
   }
+  try{localStorage.setItem('ebyan_last_order',JSON.stringify({orderId:order.id,orderNumber:order.order_number||order.id,customerName:name,phone:normalized,address:address+(town?', '+town:''),date:order.created_at||new Date().toISOString(),paymentMethod:method,status:method==='M-Pesa'?'pending':'confirmed',items:items.map(i=>({name:i.name,price:i.price,quantity:i.qty})),subtotal:sub,delivery,total}))}catch(_){ }
   cart={};saveCart();
   setTimeout(()=>{hide('checkoutOverlay');account()},1100);
  }catch(e){
-  console.error('Checkout error',e);msg.textContent=e?.message||'Checkout failed. Please try again.';msg.style.color='#a43a34';action('Checkout needs attention','Please review the message and try again');
+  console.error('Checkout error',e);
+  if(!String(e?.message||'').startsWith('Payment proof upload failed:')){msg.textContent=e?.message||'Checkout failed. Please try again.';msg.style.color='#a43a34';action('Checkout needs attention','Please review the message and try again');}
  }finally{btn.disabled=false;btn.classList.remove('ebyan-loading')}
 }
-async function notifyOrder(orderId){try{const tok=(await sb.auth.getSession()).data.session?.access_token;if(tok)await fetch(`${SUPABASE_URL}/functions/v1/notify_order_v3`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+tok},body:JSON.stringify({order_id:orderId})})}catch(e){console.warn('Notification unavailable',e)}}
+async function notifyOrder(orderId){try{const tok=(await sb.auth.getSession()).data.session?.access_token;if(!tok)return;const res=await fetch(`${SUPABASE_URL}/functions/v1/notify_order_v3`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+tok},body:JSON.stringify({order_id:orderId})});if(!res.ok)console.warn('Order notification returned',res.status)}catch(e){console.warn('Notification unavailable',e)}}
 document.addEventListener('click',e=>{const b=e.target.closest('#cartBtn');if(b){e.preventDefault();openCart();}});
 $('#cartBtn').onclick=openCart;
 $('#floatingCartBtn').onclick=openCart;
@@ -598,12 +675,24 @@ $('#resendCodeBtn').onclick=async()=>{
 };
 $('#backToLoginBtn').onclick=()=>{resetAuthView();authMsg('');};
 $('#searchBtn').onclick=()=>{
-  const q=prompt('Search Ebyan soaps');
-  if(q){
-    location.hash='#products';
-    const cards=$$('#productTrack .card');
-    cards.forEach(c=>c.style.display=c.textContent.toLowerCase().includes(q.toLowerCase())?'block':'none');
+  let o=document.getElementById('ebyanSearchOverlay');
+  if(!o){
+    o=document.createElement('div'); o.id='ebyanSearchOverlay'; o.className='overlay';
+    o.innerHTML=`<div class="modal ebyan-search-modal"><button class="close" type="button" aria-label="Close search">×</button><span class="label">EBYAN COLLECTION</span><h2 style="text-align:left">Search <em>soaps.</em></h2><div class="ebyan-search-field"><span>⌕</span><input id="ebyanSearchInput" type="search" autocomplete="off" placeholder="Search Aloe Vera, Honey, Papaya..."><button type="button" id="ebyanSearchClear">×</button></div><div id="ebyanSearchResults" class="ebyan-search-results"></div></div>`;
+    document.body.appendChild(o);
+    const input=o.querySelector('#ebyanSearchInput'), results=o.querySelector('#ebyanSearchResults');
+    const close=()=>{o.classList.remove('open');input.value='';render('');};
+    o.querySelector('.close').onclick=close; o.addEventListener('click',e=>{if(e.target===o)close()});
+    o.querySelector('#ebyanSearchClear').onclick=()=>{input.value='';render('');input.focus()};
+    function render(q){
+      const query=(q||'').trim().toLowerCase();
+      const matches=products.filter(p=>(p.name+' '+(p.description||'')).toLowerCase().includes(query));
+      results.innerHTML=matches.length?matches.map(p=>`<button type="button" class="ebyan-search-result" data-product="${String(p.id).replace(/"/g,'&quot;')}"><img src="${p.image}" alt=""><span><b>${p.name}</b><small>${money(p.price)}</small></span><i>→</i></button>`).join(''):`<div class="ebyan-search-empty">No soaps found.<small>Try another product name.</small></div>`;
+      results.querySelectorAll('[data-product]').forEach(b=>b.onclick=()=>{const id=b.dataset.product;close();location.hash='#products';requestAnimationFrame(()=>{const cards=$$('#productTrack .card');cards.forEach(c=>c.style.display=String(products.find(p=>String(p.id)===id)?.name||'').toLowerCase()===c.querySelector('h3')?.textContent.toLowerCase()?'block':'none');document.getElementById('products')?.scrollIntoView({behavior:'smooth'});});});
+    }
+    input.addEventListener('input',()=>render(input.value)); render('');
   }
+  o.classList.add('open'); setTimeout(()=>o.querySelector('#ebyanSearchInput')?.focus(),120);
 };
 $('#placeOrder').onclick=saveOrder;
 $('#subForm').onsubmit=async e=>{
