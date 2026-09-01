@@ -45,7 +45,16 @@ input:focus,select:focus,textarea:focus{transform:translateY(-1px);box-shadow:0 
 .ebyan-loading:after{content:"";width:13px;height:13px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;display:inline-block;margin-left:8px;vertical-align:-2px;animation:ebyanSpin .65s linear infinite}
 @keyframes ebyanSpin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
-</style><link rel="icon" type="image/png" href="assets/ebyan-real-logo.png"><link rel="apple-touch-icon" href="assets/ebyan-real-logo.png"></head>
+</style>
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="/site.webmanifest">
+</head>
 <body><div class="wrap"><div class="receipt">
 <header><div><div class="muted">EBYAN COSMETICS</div><h1>Order Receipt</h1></div><div style="text-align:right"><div id="orderNo" class="muted"></div><div id="status" class="status"></div></div></header>
 <div style="margin-top:18px"><div class="row"><span class="muted">Customer</span><b id="customer"></b></div><div class="row"><span class="muted">Phone</span><b id="phone"></b></div><div class="row"><span class="muted">Delivery</span><b id="address"></b></div><div class="row"><span class="muted">Date</span><b id="date"></b></div><div class="row"><span class="muted">Payment</span><b id="payment"></b></div></div>
